@@ -1,0 +1,18 @@
+{
+	"manifest_version": 3,
+	"name": "CTU Management System Extension",
+	"version": "1.0",
+	"description": "Skip captcha and more",
+	"content_scripts": [
+		{
+			"js": ["scripts/content.js"],
+			"matches": [
+				"https://htql.ctu.edu.vn/*",
+				"https://dkmh3.ctu.edu.vn/*",
+				"https://qldt.ctu.edu.vn/*"
+			],
+			"css": ["styles/fix.css"]
+		}
+	]
+}
+
