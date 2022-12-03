@@ -13,5 +13,11 @@
 			],
 			"css": ["styles/fix.css"]
 		}
-	]
+	],
+	"icons": {
+		"192": "icons/icon-192x192.png",
+		"256": "icons/icon-256x256.png",
+		"384": "icons/icon-384x384.png",
+		"512": "icons/icon-512x512.png"
+	}
 }
