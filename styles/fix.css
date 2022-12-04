@@ -51,6 +51,7 @@ body {
 
 table {
 	max-width: 100%;
+	margin: 0 auto !important;
 }
 
 #banner,
@@ -81,7 +82,7 @@ table {
 	display: none;
 }
 
-#footer {
+#page-footer {
 	background: #333 !important;
 	color: #fff;
 }
