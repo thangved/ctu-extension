@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="vi">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>CTU Management System Extension</title>
+		<style>
+			* {
+				margin: 0;
+				padding: 0;
+				box-sizing: border-box;
+			}
+
+			body {
+				width: 300px;
+				height: 400px;
+				padding: 20px;
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				justify-content: center;
+				user-select: none;
+			}
+
+			h1 {
+				text-align: center;
+				background: linear-gradient(#2aabfc, #1389ff);
+				color: transparent;
+				-webkit-background-clip: text;
+				-webkit-text-fill-color: transparent;
+				margin-top: 30px;
+			}
+
+			.logo {
+				animation: logo 1s ease infinite alternate;
+			}
+
+			.footer {
+				background: linear-gradient(#2aabfc, #1389ff);
+				position: fixed;
+				bottom: 0;
+				left: 0;
+				right: 0;
+				padding: 10px;
+				color: #fff;
+			}
+
+			.footer a {
+				text-decoration: none;
+				font-weight: bold;
+				color: #fff;
+			}
+
+			@keyframes logo {
+				from {
+					clip-path: circle(100%);
+				}
+				to {
+					clip-path: circle(40%);
+					transform: rotate(20deg);
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<img src="./icons/icon-512x512.png" alt="Logo" width="100" class="logo" />
+		<h1>CTU Management System Extension</h1>
+
+		<footer class="footer">
+			Dev by <a target="_blank" href="https://github.com/thangved">Minh Thang</a>
+		</footer>
+	</body>
+</html>

@@ -14,6 +14,9 @@
 			"css": ["styles/fix.css"]
 		}
 	],
+	"action": {
+		"default_popup": "popup.html"
+	},
 	"icons": {
 		"192": "icons/icon-192x192.png",
 		"256": "icons/icon-256x256.png",
