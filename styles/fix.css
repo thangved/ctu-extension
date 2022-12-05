@@ -106,7 +106,3 @@ table {
 .mmenu {
 	margin: 10px 0;
 }
-
-#login-sv > tbody > tr:nth-child(3) {
-	display: none;
-}
