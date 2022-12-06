@@ -3,7 +3,6 @@
 	"name": "CTU Management System Extension",
 	"version": "1.0",
 	"description": "Skip captcha and more",
-	"default_locale": "vi",
 	"content_scripts": [
 		{
 			"js": ["scripts/content.js"],
