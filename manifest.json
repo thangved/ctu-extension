@@ -11,8 +11,7 @@
 				"https://dkmh3.ctu.edu.vn/*",
 				"https://qldt.ctu.edu.vn/*"
 			],
-			"css": ["styles/fix.css"],
-			"run_at": "document_start"
+			"css": ["styles/fix.css"]
 		}
 	],
 	"action": {
