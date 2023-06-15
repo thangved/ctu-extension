@@ -5,6 +5,7 @@ import insertAddButtons from './insertAddButtons';
 import './style.css';
 
 window.onload = function () {
+	document.querySelector('#login-sv > tbody > tr:nth-child(3)')?.remove();
 	const loginForm = document.querySelector(
 		'#table-main > tbody > tr > td:nth-child(1) > form'
 	) as HTMLFormElement;
