@@ -5,7 +5,7 @@
 	"description": "Skip captcha and more",
 	"content_scripts": [
 		{
-			"js": ["scripts/content.js"],
+			"js": ["scripts/bundle.js"],
 			"matches": [
 				"https://htql.ctu.edu.vn/*",
 				"https://dkmh3.ctu.edu.vn/*",

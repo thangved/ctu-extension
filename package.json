@@ -5,13 +5,16 @@
 	"main": "index.js",
 	"scripts": {
 		"format": "prettier --write .",
-		"prepare": "husky install"
+		"prepare": "husky install",
+		"build": "esbuild scripts/index.js --bundle --minify --outfile=scripts/bundle.js --watch"
 	},
 	"keywords": [],
 	"author": "",
 	"license": "ISC",
 	"devDependencies": {
-		"prettier": "^2.8.8",
-		"husky": "^8.0.0"
+		"esbuild": "^0.18.3",
+		"eslint": "^8.42.0",
+		"husky": "^8.0.0",
+		"prettier": "^2.8.8"
 	}
 }
