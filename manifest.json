@@ -25,5 +25,6 @@
 		"512": "icons/icon-512x512.png"
 	},
 	"author": "Kim Minh Thang<thangved02@gmail.com>",
-	"short_name": "htql-ctu"
+	"short_name": "htql-ctu",
+	"permissions": ["storage"]
 }
