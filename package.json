@@ -6,7 +6,7 @@
 	"scripts": {
 		"format": "prettier --write .",
 		"prepare": "husky install",
-		"build": "esbuild scripts/index.js --bundle --minify --outfile=scripts/bundle.js --watch"
+		"dev": "esbuild scripts/index.ts --bundle --minify --sourcemap --outfile=build/bundle.js --watch"
 	},
 	"keywords": [],
 	"author": "",
@@ -16,5 +16,8 @@
 		"eslint": "^8.42.0",
 		"husky": "^8.0.0",
 		"prettier": "^2.8.8"
+	},
+	"dependencies": {
+		"bootstrap": "5.3.0"
 	}
 }

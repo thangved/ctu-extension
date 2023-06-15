@@ -1,0 +1,25 @@
+.ttb-wrapper {
+	max-height: 40vh;
+	overflow: auto;
+	max-width: 100%;
+	z-index: 100;
+}
+
+.ttb-wrapper thead,
+.ttb-wrapper th {
+	position: sticky;
+	top: 0;
+	background: #fff;
+	z-index: 999;
+	border: 1px solid #ddd;
+	background: #ddd;
+}
+
+.ttb-wrapper th {
+	padding: 10px;
+	text-align: center;
+}
+
+.ttb-wrapper.expanded {
+	max-height: unset;
+}

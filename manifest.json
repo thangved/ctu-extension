@@ -5,13 +5,13 @@
 	"description": "Skip captcha and more",
 	"content_scripts": [
 		{
-			"js": ["scripts/bundle.js"],
+			"js": ["build/bundle.js"],
 			"matches": [
 				"https://htql.ctu.edu.vn/*",
 				"https://dkmh3.ctu.edu.vn/*",
 				"https://qldt.ctu.edu.vn/*"
 			],
-			"css": ["styles/fix.css"],
+			"css": ["build/bundle.css"],
 			"run_at": "document_start"
 		}
 	],
