@@ -6,7 +6,8 @@
 	"scripts": {
 		"format": "prettier --write .",
 		"prepare": "husky install",
-		"dev": "esbuild scripts/index.ts --bundle --minify --sourcemap --outfile=build/bundle.js --watch"
+		"dev": "esbuild scripts/index.ts --bundle --minify --sourcemap --outfile=build/bundle.js --watch",
+		"build": "esbuild scripts/index.ts --bundle --minify --outfile=build/bundle.js"
 	},
 	"keywords": [],
 	"author": "",
