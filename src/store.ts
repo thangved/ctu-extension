@@ -3,7 +3,9 @@ import { LocalGroupType } from './types';
 
 declare const chrome: any;
 
-export async function getStoragedGroups(): Promise<Record<string, LocalGroupType[]>> {
+export async function getStoragedGroups(): Promise<
+	Record<string, LocalGroupType[]>
+> {
 	const store = chrome.storage.sync;
 	const { year, semester } = getInfo();
 
@@ -12,7 +14,9 @@ export async function getStoragedGroups(): Promise<Record<string, LocalGroupType
 	return groups[`${year}-${semester}`] || {};
 }
 
-export async function checkConflict(session: LocalGroupType): Promise<string | undefined> {
+export async function checkConflict(
+	session: LocalGroupType
+): Promise<string | undefined> {
 	const storaged = await getStoragedGroups();
 
 	for (const courseCode in storaged) {
@@ -46,7 +50,9 @@ export async function insertGroup(group: LocalGroupType[]) {
 	for (const session of group) {
 		const conflict = await checkConflict(session);
 		if (conflict) {
-			throw new Error(`Nhóm học phần bạn đang chọn bị trùng với học phần ${conflict}`);
+			throw new Error(
+				`Nhóm học phần bạn đang chọn bị trùng với học phần ${conflict}`
+			);
 		}
 	}
 

@@ -27,7 +27,11 @@ export default async function addGroupToTable() {
 	</div>
 </div>`;
 
-			for (let i = session.start + 1; i < session.start + session.count; i++) {
+			for (
+				let i = session.start + 1;
+				i < session.start + session.count;
+				i++
+			) {
 				const tableCell = document.getElementById(
 					`ttbc-${session.day}-${i}`
 				) as HTMLTableCellElement;

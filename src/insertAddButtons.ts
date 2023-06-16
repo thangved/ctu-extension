@@ -20,9 +20,11 @@ export default async function insertAddButtons() {
 		const added = !!(courseGroups[courseCode]?.[0]?.id === groupId);
 
 		group.innerHTML += /*html*/ `<td class='level_1_1' align='center'>
-			<button class='btn m-2 add-course ${added ? 'btn-success' : 'btn-primary'}' data-id='${groupId}' ${
-			added ? 'disabled' : ''
-		}>${added ? 'Đã thêm' : 'Thêm'}</button>
+			<button class='btn m-2 add-course ${
+				added ? 'btn-success' : 'btn-primary'
+			}' data-id='${groupId}' ${added ? 'disabled' : ''}>${
+			added ? 'Đã thêm' : 'Thêm'
+		}</button>
 		</td>`;
 	}
 
