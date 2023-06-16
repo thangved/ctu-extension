@@ -7,13 +7,17 @@
 		"format": "prettier --write .",
 		"prepare": "husky install",
 		"dev": "nodemon",
-		"build": "node esbuild.mjs"
+		"build": "node esbuild.mjs",
+		"postinstall": "npm run dev",
+		"lint": "eslint . --ext .js,.jsx,.ts,.tsx"
 	},
 	"keywords": [],
 	"author": "",
 	"license": "ISC",
 	"devDependencies": {
 		"@types/esbuild-copy-static-files": "^0.1.0",
+		"@typescript-eslint/eslint-plugin": "^5.59.11",
+		"@typescript-eslint/parser": "^5.59.11",
 		"esbuild": "^0.18.3",
 		"esbuild-copy-static-files": "^0.1.0",
 		"eslint": "^8.42.0",
