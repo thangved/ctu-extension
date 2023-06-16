@@ -6,16 +6,18 @@
 	"scripts": {
 		"format": "prettier --write .",
 		"prepare": "husky install",
-		"dev": "esbuild scripts/index.ts --bundle --minify --sourcemap --outfile=build/bundle.js --watch",
-		"build": "esbuild scripts/index.ts --bundle --minify --outfile=build/bundle.js"
+		"dev": "nodemon",
+		"build": "node esbuild.mjs"
 	},
 	"keywords": [],
 	"author": "",
 	"license": "ISC",
 	"devDependencies": {
 		"esbuild": "^0.18.3",
+		"esbuild-copy-static-files": "^0.1.0",
 		"eslint": "^8.42.0",
 		"husky": "^8.0.0",
+		"nodemon": "^2.0.22",
 		"prettier": "^2.8.8"
 	},
 	"dependencies": {

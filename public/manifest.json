@@ -1,17 +1,17 @@
 {
 	"manifest_version": 3,
-	"name": "CTU Management System Extension",
+	"name": "CTU Extension",
 	"version": "2.0.2",
-	"description": "Skip captcha and more",
+	"description": "Tiện ích mở rộng cho sinh viên CTU với các tính năng như sắp thời khóa biểu, bỏ qua captcha khi đăng nhập vào hệ thống quản lý",
 	"content_scripts": [
 		{
-			"js": ["build/bundle.js"],
+			"js": ["bundle.js"],
 			"matches": [
 				"https://htql.ctu.edu.vn/*",
 				"https://dkmh3.ctu.edu.vn/*",
 				"https://qldt.ctu.edu.vn/*"
 			],
-			"css": ["build/bundle.css"],
+			"css": ["bundle.css"],
 			"run_at": "document_start"
 		}
 	],
