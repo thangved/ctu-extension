@@ -1,6 +1,7 @@
 import getInfo from './getInfo';
 import { LocalGroupType } from './types';
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 declare const chrome: any;
 
 export async function getStoragedGroups(): Promise<
@@ -48,6 +49,10 @@ export async function insertGroup(group: LocalGroupType[]) {
 	const store = chrome.storage.sync;
 
 	for (const session of group) {
+		if (Number.isNaN(session.day)) {
+			throw new Error('Ngày học không hợp lệ');
+		}
+
 		const conflict = await checkConflict(session);
 		if (conflict) {
 			throw new Error(

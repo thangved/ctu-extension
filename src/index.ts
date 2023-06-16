@@ -11,8 +11,6 @@ window.onload = function () {
 	const params = new URLSearchParams(window.location.search);
 	const action = params.get('action');
 
-	const buttons = document.querySelectorAll('button');
-
 	document.querySelector('#login-sv > tbody > tr:nth-child(3)')?.remove();
 	const loginForm = document.querySelector(
 		'#table-main > tbody > tr > td:nth-child(1) > form'
@@ -26,9 +24,9 @@ window.onload = function () {
 };
 
 async function startTimeTable() {
-	addTimeTableWrapper();
-
 	await insertAddButtons();
+
+	addTimeTableWrapper();
 
 	await addGroupToTable();
 }

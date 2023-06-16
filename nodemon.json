@@ -1,6 +1,0 @@
-{
-	"verbose": true,
-	"ignore": ["dist"],
-	"exec": "pnpm run build",
-	"watch": ["./src/index.ts"]
-}

@@ -15,6 +15,8 @@ export default async function addGroupToTable() {
 				`ttbc-${session.day}-${session.start}`
 			) as HTMLTableCellElement;
 
+			if (!tableCell) continue;
+
 			tableCell.rowSpan = session.count;
 
 			tableCell.innerHTML += /*html*/ `<div class="card m-0">
