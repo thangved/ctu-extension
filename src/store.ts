@@ -1,9 +1,6 @@
 import getInfo from './getInfo';
 import { LocalGroupType } from './types';
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-declare const chrome: any;
-
 export async function getStoragedGroups(): Promise<
 	Record<string, LocalGroupType[]>
 > {

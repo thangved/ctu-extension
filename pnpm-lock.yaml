@@ -10,6 +10,9 @@ dependencies:
     version: 5.3.0(@popperjs/core@2.11.8)
 
 devDependencies:
+  '@types/chrome':
+    specifier: ^0.0.237
+    version: 0.0.237
   '@types/esbuild-copy-static-files':
     specifier: ^0.1.0
     version: 0.1.0
@@ -320,8 +323,29 @@ packages:
     resolution: {integrity: sha512-P1st0aksCrn9sGZhp8GMYwBnQsbvAWsZAX44oXNNvLHGqAOcoVxmjZiohstwQ7SqKnbR47akdNi+uleWD8+g6A==}
     dev: false
 
+  /@types/chrome@0.0.237:
+    resolution: {integrity: sha512-krsRmyfMlck5r+H1EapsrrucDRq6iRm0NAi5fapr93CgnpVMDdK+h2+z4x79GegdW7BNH9Vb//gkptORwwwVIQ==}
+    dependencies:
+      '@types/filesystem': 0.0.32
+      '@types/har-format': 1.2.11
+    dev: true
+
   /@types/esbuild-copy-static-files@0.1.0:
     resolution: {integrity: sha512-wHE2+jRAz8IMGhtRE2JXjXMapJvdea4x0NIy2Dix+6V7Lf1Y5shzV1isAvqY/T+vr4tcvh+vDugo0LnMuH/Hwg==}
+    dev: true
+
+  /@types/filesystem@0.0.32:
+    resolution: {integrity: sha512-Yuf4jR5YYMR2DVgwuCiP11s0xuVRyPKmz8vo6HBY3CGdeMj8af93CFZX+T82+VD1+UqHOxTq31lO7MI7lepBtQ==}
+    dependencies:
+      '@types/filewriter': 0.0.29
+    dev: true
+
+  /@types/filewriter@0.0.29:
+    resolution: {integrity: sha512-BsPXH/irW0ht0Ji6iw/jJaK8Lj3FJemon2gvEqHKpCdDCeemHa+rI3WBGq5z7cDMZgoLjY40oninGxqk+8NzNQ==}
+    dev: true
+
+  /@types/har-format@1.2.11:
+    resolution: {integrity: sha512-T232/TneofqK30AD1LRrrf8KnjLvzrjWDp7eWST5KoiSzrBfRsLrWDPk4STQPW4NZG6v2MltnduBVmakbZOBIQ==}
     dev: true
 
   /@types/json-schema@7.0.12:
