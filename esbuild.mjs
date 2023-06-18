@@ -5,7 +5,7 @@ esbuild.build({
 	entryPoints: ['src/index.tsx'],
 	bundle: true,
 	outfile: 'dist/bundle.js',
-	target: 'es2015',
+	target: 'es6',
 	minify: true,
 	plugins: [
 		copyStaticFiles({

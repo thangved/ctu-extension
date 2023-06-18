@@ -1,11 +1,13 @@
-import { StarOutlined } from '@ant-design/icons';
+import { BarsOutlined, StarOutlined } from '@ant-design/icons';
 import { Button, Col, Row } from 'antd';
 import ButtonGroup from 'antd/es/button/button-group';
 import { useState } from 'react';
 import QuickStart from './components/QuickStart';
+import StudyPlan from './components/StudyPlan';
 
 const App = () => {
 	const [openQuickStart, setOpenQuickStart] = useState(false);
+	const [openStudyPlan, setOpenStudyPlan] = useState(true);
 
 	return (
 		<>
@@ -21,6 +23,13 @@ const App = () => {
 						>
 							Bắt đầu nhanh
 						</Button>
+
+						<Button
+							icon={<BarsOutlined />}
+							onClick={() => setOpenStudyPlan(true)}
+						>
+							Xem kế hoạch học tập
+						</Button>
 					</ButtonGroup>
 				</Col>
 
@@ -30,6 +39,11 @@ const App = () => {
 			<QuickStart
 				open={openQuickStart}
 				onClose={() => setOpenQuickStart(false)}
+			/>
+
+			<StudyPlan
+				open={openStudyPlan}
+				onClose={() => setOpenStudyPlan(false)}
 			/>
 		</>
 	);
