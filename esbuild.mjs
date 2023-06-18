@@ -6,7 +6,8 @@ esbuild.build({
 	bundle: true,
 	outfile: 'dist/bundle.js',
 	target: 'es6',
-	minify: true,
+	// minify: true,
+	jsxDev: true,
 	plugins: [
 		copyStaticFiles({
 			src: './public',

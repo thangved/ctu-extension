@@ -11,7 +11,11 @@ export type SemesterType = Record<string, CourseType[]>;
 export type StudyPlanType = Record<string, SemesterType>;
 
 class StudyPlanServive {
-	async crawl() {
+	studyPlan: StudyPlanType;
+
+	async get() {
+		if (this.studyPlan) return this.studyPlan;
+
 		const htmlString = (await client.get(
 			'/htql/sinhvien/ctdt/codes/sindex.php?mID=S101'
 		)) as unknown as string;
@@ -35,8 +39,12 @@ class StudyPlanServive {
 				credit: Number(courseRow.children[3].textContent?.trim() ?? ''),
 			};
 
-			const semester = courseRow.children[5].textContent?.trim() ?? '';
+			let semester = courseRow.children[5].textContent?.trim() ?? '';
 			const year = courseRow.children[4].textContent?.trim() ?? '';
+
+			if (Number.isNaN(Number(semester))) {
+				semester = '3';
+			}
 
 			if (!studyPlan[year]) {
 				studyPlan[year] = {};
@@ -50,16 +58,6 @@ class StudyPlanServive {
 		}
 
 		return studyPlan;
-	}
-
-	async get() {
-		const storage = await chrome.storage.sync.get('studyPlan');
-
-		return storage.studyPlan as StudyPlanType;
-	}
-
-	async set(studyPlan: StudyPlanType) {
-		await chrome.storage.sync.set({ studyPlan });
 	}
 }
 

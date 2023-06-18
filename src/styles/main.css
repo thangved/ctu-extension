@@ -1,0 +1,38 @@
+.ttb-table {
+	width: 100%;
+	background: #fff;
+	margin: 10px 0;
+}
+
+.ttb-table thead tr {
+	background: #fafafa;
+}
+
+.ttb-table th,
+.ttb-table td {
+	padding: 10px;
+	border: 1px solid #ddd;
+}
+
+.ttb-course {
+	color: #fff;
+}
+
+.ttb-course h5 {
+	font-weight: normal;
+}
+
+.ttb-course h4 {
+	font-weight: bold;
+}
+
+@media print {
+	.ttb-course {
+		position: fixed;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		background: #fff;
+	}
+}

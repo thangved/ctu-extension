@@ -1,50 +1,39 @@
-import { BarsOutlined, StarOutlined } from '@ant-design/icons';
-import { Button, Col, Row } from 'antd';
-import ButtonGroup from 'antd/es/button/button-group';
-import { useState } from 'react';
-import QuickStart from './components/QuickStart';
+import { Col, Row, Tabs, TabsProps } from 'antd';
+import { Content } from 'antd/es/layout/layout';
 import StudyPlan from './components/StudyPlan';
+import Timetable from './components/Timetable';
+
+const tabItems: TabsProps['items'] = [
+	{
+		key: 'home',
+		label: 'CTU Extension',
+	},
+	{
+		key: 'study-plan',
+		label: 'Kế hoạch học tập',
+		children: <StudyPlan />,
+	},
+	{
+		key: 'timetable',
+		label: 'Thời khóa biểu',
+		children: <Timetable />,
+	},
+];
 
 const App = () => {
-	const [openQuickStart, setOpenQuickStart] = useState(false);
-	const [openStudyPlan, setOpenStudyPlan] = useState(false);
-
 	return (
 		<>
 			<Row>
 				<Col sm={4}></Col>
 
 				<Col sm={16}>
-					<ButtonGroup>
-						<Button
-							type="primary"
-							icon={<StarOutlined />}
-							onClick={() => setOpenQuickStart(true)}
-						>
-							Bắt đầu nhanh
-						</Button>
-
-						<Button
-							icon={<BarsOutlined />}
-							onClick={() => setOpenStudyPlan(true)}
-						>
-							Xem kế hoạch học tập
-						</Button>
-					</ButtonGroup>
+					<Content>
+						<Tabs items={tabItems} defaultActiveKey="home" />
+					</Content>
 				</Col>
 
 				<Col sm={4}></Col>
 			</Row>
-
-			<QuickStart
-				open={openQuickStart}
-				onClose={() => setOpenQuickStart(false)}
-			/>
-
-			<StudyPlan
-				open={openStudyPlan}
-				onClose={() => setOpenStudyPlan(false)}
-			/>
 		</>
 	);
 };
