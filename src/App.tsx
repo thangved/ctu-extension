@@ -7,7 +7,7 @@ import StudyPlan from './components/StudyPlan';
 
 const App = () => {
 	const [openQuickStart, setOpenQuickStart] = useState(false);
-	const [openStudyPlan, setOpenStudyPlan] = useState(true);
+	const [openStudyPlan, setOpenStudyPlan] = useState(false);
 
 	return (
 		<>
