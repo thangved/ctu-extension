@@ -1,8 +1,9 @@
 {
-	"name": "ctu-management-system-extension",
+	"name": "ctu-extension",
 	"version": "1.0.0",
 	"description": "",
 	"main": "index.js",
+	"type": "module",
 	"scripts": {
 		"format": "prettier --write .",
 		"prepare": "husky install",
