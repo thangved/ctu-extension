@@ -1,4 +1,5 @@
-import { Alert, Button, Card, Pagination, Table } from 'antd';
+import { SyncOutlined } from '@ant-design/icons';
+import { Alert, Button, Card, Pagination, Table, message } from 'antd';
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import courseService, {
 	CourseTypeWithGroups,
@@ -22,27 +23,39 @@ const Timetable = () => {
 	const [excepts, setExcepts] = useState<ExceptType>({});
 
 	const fetchCourses = useCallback(async (year: string, semester: string) => {
-		setLoading(true);
+		try {
+			setLoading(true);
 
-		const courses = await courseService.get(year, semester);
+			const courses = await courseService.get(year, semester);
 
-		setCourses(courses);
-
-		setLoading(false);
+			setCourses(courses);
+		} catch (error) {
+			message.error(error.message);
+		} finally {
+			setLoading(false);
+		}
 	}, []);
 
 	const fetchTimetable = useCallback(
 		async (year: string, semester: string) => {
-			const timetable = await timetableService.get(year, semester);
+			try {
+				const timetable = await timetableService.get(year, semester);
 
-			setFilter(timetable);
+				setFilter(timetable);
+			} catch (error) {
+				message.error(error.message);
+			}
 		},
 		[]
 	);
 
 	const fetchExcepts = useCallback(async (year: string, semester: string) => {
-		const excepts = await exceptService.get(year, semester);
-		setExcepts(excepts);
+		try {
+			const excepts = await exceptService.get(year, semester);
+			setExcepts(excepts);
+		} catch (error) {
+			message.error(error.message);
+		}
 	}, []);
 
 	const timetables = useMemo(
@@ -105,9 +118,29 @@ const Timetable = () => {
 						dataIndex: 'code',
 						title: 'Nhóm đã chọn',
 						render(code) {
-							return (
-								filter[code]?.join(', ') ||
-								'Không có nhóm nào được chọn'
+							const isFiltered = filter[code]?.length > 0;
+
+							return isFiltered ? (
+								<>
+									{filter[code]?.join(', ')}{' '}
+									<Button
+										size="small"
+										icon={<SyncOutlined />}
+										onClick={async (event) => {
+											event.stopPropagation();
+											await timetableService.set(
+												year,
+												semester,
+												code,
+												[]
+											);
+										}}
+									>
+										Đặt lại
+									</Button>
+								</>
+							) : (
+								<>Không có nhóm nào được chọn</>
 							);
 						},
 					},

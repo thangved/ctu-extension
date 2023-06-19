@@ -58,6 +58,24 @@ class TimetableService {
 			timetable,
 		});
 	}
+
+	async setSemester(
+		year: string,
+		semester: string,
+		timetable: TimetableSemesterType
+	) {
+		await this.get(year, semester);
+
+		const { timetable: currentTimetable } = await chrome.storage.sync.get(
+			'timetable'
+		);
+
+		currentTimetable[year][semester] = timetable;
+
+		await chrome.storage.sync.set({
+			timetable: currentTimetable,
+		});
+	}
 }
 
 export default new TimetableService();

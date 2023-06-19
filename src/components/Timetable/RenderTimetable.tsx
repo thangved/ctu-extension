@@ -1,11 +1,13 @@
-import { SaveOutlined } from '@ant-design/icons';
-import { Button, Card } from 'antd';
+import { SaveOutlined, SyncOutlined } from '@ant-design/icons';
+import { Button, Card, message } from 'antd';
 import ButtonGroup from 'antd/es/button/button-group';
 import { useEffect, useRef } from 'react';
 import { renderToString } from 'react-dom/server';
 import COLORS from '../../constants/colors';
 import { CourseTypeWithGroups } from '../../services/course.service';
-import timetableService from '../../services/timetable.service';
+import timetableService, {
+	TimetableSemesterType,
+} from '../../services/timetable.service';
 
 export interface RenderTimetableProps {
 	timetable: Record<string, string>;
@@ -37,10 +39,30 @@ const RenderTimetable = ({
 	const tableRef = useRef<HTMLTableElement>(null);
 
 	const handleSelectTimetable = async () => {
-		for (const courseCode in timetable) {
-			await timetableService.set(year, semester, courseCode, [
-				timetable[courseCode],
-			]);
+		try {
+			const _timetable: TimetableSemesterType = {};
+
+			for (const courseCode in timetable) {
+				const groupId = timetable[courseCode];
+
+				_timetable[courseCode] = [groupId];
+			}
+
+			await timetableService.setSemester(year, semester, _timetable);
+
+			message.success('Lưu thành công');
+		} catch (error) {
+			message.error(error.message);
+		}
+	};
+
+	const handleReset = async () => {
+		try {
+			await timetableService.setSemester(year, semester, {});
+
+			message.success('Đặt lại thành công');
+		} catch (error) {
+			message.error(error.message);
 		}
 	};
 
@@ -96,62 +118,64 @@ const RenderTimetable = ({
 	}, [timetable]);
 
 	return (
-		<>
-			<Card size="small">
-				<ButtonGroup>
-					<Button
-						type="primary"
-						icon={<SaveOutlined />}
-						onClick={handleSelectTimetable}
-					>
-						Lưu
-					</Button>
-				</ButtonGroup>
+		<Card size="small" style={{ margin: '10px 0' }}>
+			<ButtonGroup>
+				<Button
+					type="primary"
+					icon={<SaveOutlined />}
+					onClick={handleSelectTimetable}
+				>
+					Lưu
+				</Button>
 
-				<table className="ttb-table" ref={tableRef}>
-					<thead>
-						<tr>
-							<th>Thứ/Tiết</th>
-							<th>2</th>
-							<th>3</th>
-							<th>4</th>
-							<th>5</th>
-							<th>6</th>
-							<th>7</th>
-						</tr>
-					</thead>
+				<Button icon={<SyncOutlined />} onClick={handleReset}>
+					Đặt lại
+				</Button>
+			</ButtonGroup>
 
-					<tbody>
-						<tr>
-							<td colSpan={7}>Sáng</td>
-						</tr>
+			<table className="ttb-table" ref={tableRef}>
+				<thead>
+					<tr>
+						<th>Thứ/Tiết</th>
+						<th>2</th>
+						<th>3</th>
+						<th>4</th>
+						<th>5</th>
+						<th>6</th>
+						<th>7</th>
+					</tr>
+				</thead>
 
-						<RenderRow row={1} />
-						<RenderRow row={2} />
-						<RenderRow row={3} />
-						<RenderRow row={4} />
-						<RenderRow row={5} />
+				<tbody>
+					<tr>
+						<td colSpan={7}>Sáng</td>
+					</tr>
 
-						<tr>
-							<td colSpan={7}>Chiều</td>
-						</tr>
+					<RenderRow row={1} />
+					<RenderRow row={2} />
+					<RenderRow row={3} />
+					<RenderRow row={4} />
+					<RenderRow row={5} />
 
-						<RenderRow row={6} />
-						<RenderRow row={7} />
-						<RenderRow row={8} />
-						<RenderRow row={9} />
+					<tr>
+						<td colSpan={7}>Chiều</td>
+					</tr>
 
-						<tr>
-							<td colSpan={7}>Tối</td>
-						</tr>
+					<RenderRow row={6} />
+					<RenderRow row={7} />
+					<RenderRow row={8} />
+					<RenderRow row={9} />
 
-						<RenderRow row={10} />
-						<RenderRow row={11} />
-						<RenderRow row={12} />
-					</tbody>
-				</table>
-			</Card>
-		</>
+					<tr>
+						<td colSpan={7}>Tối</td>
+					</tr>
+
+					<RenderRow row={10} />
+					<RenderRow row={11} />
+					<RenderRow row={12} />
+				</tbody>
+			</table>
+		</Card>
 	);
 };
 
