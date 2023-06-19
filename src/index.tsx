@@ -2,6 +2,8 @@ import { createRoot } from 'react-dom/client';
 import App from './App';
 import './styles/main.css';
 import removeTxtMaBaoVe from './utils/removeTxtMaBaoVe';
+import { ConfigProvider } from 'antd';
+import viVN from 'antd/lib/locale/vi_VN';
 
 const loggedHost = 'qldt.ctu.edu.vn';
 
@@ -22,5 +24,9 @@ async function mountApp() {
 	<div id="${rootId}"></div>
 	`;
 
-	createRoot(document.getElementById(rootId)).render(<App />);
+	createRoot(document.getElementById(rootId)).render(
+		<ConfigProvider locale={viVN}>
+			<App />
+		</ConfigProvider>
+	);
 }

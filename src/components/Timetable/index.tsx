@@ -153,12 +153,13 @@ const Timetable = () => {
 				}}
 			/>
 
-			{page > 1 && (
+			{timetables.length > 1 && (
 				<Card size="small" style={{ margin: '10px 0' }}>
 					<Pagination
 						size="small"
 						total={timetables.length}
 						current={page}
+						pageSize={1}
 						showQuickJumper
 						onChange={(page) => setPage(page)}
 					/>
