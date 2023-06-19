@@ -10,17 +10,30 @@ function recursive(
 	calendar: CourseTypeWithGroups[],
 	courses: string[],
 	currentIndex: number,
-	result: TimetableType[]
+	result: TimetableType[],
+	excepts: Record<string, boolean>
 ) {
 	if (currentIndex === calendar.length) {
 		return result;
 	}
 
-	const _result = [];
-	const _dayHash = [];
-
 	const currentCourse = courses[currentIndex];
 	const filteredGroups = filter[currentCourse];
+
+	if (excepts[currentCourse]) {
+		return recursive(
+			dayHash,
+			filter,
+			calendar,
+			courses,
+			currentIndex + 1,
+			result,
+			excepts
+		);
+	}
+
+	const _result = [];
+	const _dayHash = [];
 
 	for (let i = 0; i < result.length; i++) {
 		for (const filteredGroup of filteredGroups || []) {
@@ -64,13 +77,15 @@ function recursive(
 		calendar,
 		courses,
 		currentIndex + 1,
-		_result
+		_result,
+		excepts
 	);
 }
 
 export default function getTimetables(
 	filter: TimetableSemesterType,
-	calendar: CourseTypeWithGroups[]
+	calendar: CourseTypeWithGroups[],
+	excepts: Record<string, boolean>
 ) {
 	if (!calendar.length) return [] as TimetableType[];
 
@@ -87,7 +102,7 @@ export default function getTimetables(
 	let result = [{}];
 	const courses = Object.keys(filter);
 
-	result = recursive([], filter, calendar, courses, 0, result);
+	result = recursive([], filter, calendar, courses, 0, result, excepts);
 
 	return result;
 }

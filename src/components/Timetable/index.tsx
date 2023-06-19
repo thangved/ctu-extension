@@ -1,8 +1,9 @@
-import { Alert, Card, Pagination, Table } from 'antd';
+import { Alert, Button, Card, Pagination, Table } from 'antd';
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import courseService, {
 	CourseTypeWithGroups,
 } from '../../services/course.service';
+import exceptService, { ExceptType } from '../../services/except.service';
 import timetableService, {
 	TimetableSemesterType,
 } from '../../services/timetable.service';
@@ -18,6 +19,7 @@ const Timetable = () => {
 	const [loading, setLoading] = useState<boolean>(false);
 	const [filter, setFilter] = useState<TimetableSemesterType>({});
 	const [page, setPage] = useState<number>(1);
+	const [excepts, setExcepts] = useState<ExceptType>({});
 
 	const fetchCourses = useCallback(async (year: string, semester: string) => {
 		setLoading(true);
@@ -38,8 +40,13 @@ const Timetable = () => {
 		[]
 	);
 
+	const fetchExcepts = useCallback(async (year: string, semester: string) => {
+		const excepts = await exceptService.get(year, semester);
+		setExcepts(excepts);
+	}, []);
+
 	const timetables = useMemo(
-		() => getTimetables(filter, courses),
+		() => getTimetables(filter, courses, excepts),
 		[filter, courses]
 	);
 
@@ -48,11 +55,14 @@ const Timetable = () => {
 
 		fetchCourses(year, semester);
 		fetchTimetable(year, semester);
+		fetchExcepts(year, semester);
 	}, [year, semester]);
 
 	useEffect(() => {
 		const handler = () => {
 			fetchTimetable(year, semester);
+			fetchExcepts(year, semester);
+			setPage(1);
 		};
 
 		chrome.storage.sync.onChanged.addListener(handler);
@@ -68,6 +78,14 @@ const Timetable = () => {
 					showIcon
 					message="Cảnh báo"
 					description="Số lượng lịch khả dụng đang rất lớn, nếu không muốn duyệt mỏi tay thì bạn có thể chọn thêm điều kiện để giảm bớt số lượng"
+				/>
+			)}
+			{timetables.length === 0 && (
+				<Alert
+					type="error"
+					showIcon
+					message="Cảnh báo"
+					description="Hiện không có lịch học nào phù hợp với điều kiện bạn đã chọn, hãy thử chọn lại các điều kiện"
 				/>
 			)}
 			<SemesterSelector
@@ -93,6 +111,31 @@ const Timetable = () => {
 							);
 						},
 					},
+					{
+						dataIndex: 'code',
+						title: 'Loại trừ',
+						render(code) {
+							const isExcept = excepts[code];
+
+							return (
+								<Button
+									type={isExcept ? 'default' : 'primary'}
+									size="small"
+									danger={!isExcept}
+									onClick={async (event) => {
+										event.stopPropagation();
+										return await exceptService.toggle(
+											year,
+											semester,
+											code
+										);
+									}}
+								>
+									{isExcept ? 'Đã loại' : 'Loại'}
+								</Button>
+							);
+						},
+					},
 				]}
 				rowKey="code"
 				pagination={false}
@@ -110,15 +153,17 @@ const Timetable = () => {
 				}}
 			/>
 
-			<Card size="small" style={{ margin: '10px 0' }}>
-				<Pagination
-					size="small"
-					total={timetables.length}
-					current={page}
-					showQuickJumper
-					onChange={(page) => setPage(page)}
-				/>
-			</Card>
+			{page > 1 && (
+				<Card size="small" style={{ margin: '10px 0' }}>
+					<Pagination
+						size="small"
+						total={timetables.length}
+						current={page}
+						showQuickJumper
+						onChange={(page) => setPage(page)}
+					/>
+				</Card>
+			)}
 
 			{timetables[page - 1] && (
 				<RenderTimetable

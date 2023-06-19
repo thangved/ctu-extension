@@ -16,7 +16,23 @@ export interface GroupType {
 }
 
 class GroupService {
+	logged: boolean;
+
+	constructor() {
+		this.logged = false;
+	}
+
+	async login() {
+		await client.postForm('/htql/dkmh/student/dang_nhap.php', {
+			txtMatKhau: 'p',
+		});
+	}
+
 	async find(code: string, year: string, semester: string) {
+		if (!this.logged) {
+			await this.login();
+		}
+
 		year = year.split('-')[1];
 
 		const htmlString = (await client.postForm(
@@ -33,6 +49,10 @@ class GroupService {
 		const dom = new DOMParser().parseFromString(htmlString, 'text/html');
 
 		const table = dom.querySelectorAll('.border_1')[1] as HTMLTableElement;
+
+		if (!table) {
+			return {};
+		}
 
 		const rows = Array.from(table.querySelectorAll('tr')).slice(
 			1
