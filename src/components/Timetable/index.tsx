@@ -93,14 +93,7 @@ const Timetable = () => {
 					description="Số lượng lịch khả dụng đang rất lớn, nếu không muốn duyệt mỏi tay thì bạn có thể chọn thêm điều kiện để giảm bớt số lượng"
 				/>
 			)}
-			{timetables.length === 0 && (
-				<Alert
-					type="error"
-					showIcon
-					message="Cảnh báo"
-					description="Hiện không có lịch học nào phù hợp với điều kiện bạn đã chọn, hãy thử chọn lại các điều kiện"
-				/>
-			)}
+
 			<SemesterSelector
 				onChange={(year, semester) => {
 					setYear(year);
@@ -204,8 +197,18 @@ const Timetable = () => {
 					courses={courses}
 					year={year}
 					semester={semester}
-					key={page}
+					key={`${page}-${timetables.length}`}
 					timetable={timetables[page - 1]}
+				/>
+			)}
+
+			{timetables.length === 0 && (
+				<Alert
+					style={{ margin: '10px 0' }}
+					type="error"
+					showIcon
+					message="Cảnh báo"
+					description="Hiện không có lịch học nào phù hợp với điều kiện bạn đã chọn, hãy thử chọn lại các điều kiện"
 				/>
 			)}
 		</div>
