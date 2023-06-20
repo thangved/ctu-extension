@@ -26,6 +26,10 @@
 	font-weight: bold;
 }
 
+.ttb-removed {
+	opacity: 0.5 !important;
+}
+
 @media print {
 	.ttb-course {
 		position: fixed;

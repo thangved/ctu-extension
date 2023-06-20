@@ -1,9 +1,9 @@
+import { ConfigProvider } from 'antd';
+import viVN from 'antd/lib/locale/vi_VN';
 import { createRoot } from 'react-dom/client';
 import App from './App';
 import './styles/main.css';
 import removeTxtMaBaoVe from './utils/removeTxtMaBaoVe';
-import { ConfigProvider } from 'antd';
-import viVN from 'antd/lib/locale/vi_VN';
 
 const loggedHost = 'qldt.ctu.edu.vn';
 
