@@ -1,5 +1,26 @@
-import { SyncOutlined } from '@ant-design/icons';
-import { Alert, Button, Card, Pagination, Table, message } from 'antd';
+import {
+	DeleteOutlined,
+	InfoCircleTwoTone,
+	PlusOutlined,
+	SyncOutlined,
+} from '@ant-design/icons';
+import {
+	Alert,
+	AutoComplete,
+	Button,
+	Card,
+	Checkbox,
+	Form,
+	Pagination,
+	Popover,
+	Space,
+	Table,
+	Typography,
+	message,
+	notification,
+} from 'antd';
+import { DefaultOptionType } from 'antd/es/select';
+import { ColumnsType } from 'antd/es/table';
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import courseService, {
 	CourseTypeWithGroups,
@@ -13,6 +34,126 @@ import SemesterSelector from '../SemesterSelector';
 import GroupsTable from './GroupsTable';
 import RenderTimetable from './RenderTimetable';
 
+const lengthOptons: DefaultOptionType[] = [
+	{ value: 10, label: '10' },
+	{ value: 100, label: '100' },
+	{ value: 1000, label: '1000' },
+	{ value: 2000, label: '2000' },
+	{ value: 5000, label: '5000' },
+	{ value: 10000, label: '10000' },
+	{ value: 20000, label: '20000' },
+	{ value: 50000, label: '50000' },
+	{ value: 100000, label: '100000' },
+	{ value: 200000, label: '200000' },
+	{ value: 500000, label: '500000' },
+];
+
+const getColumns = (
+	filter: Record<string, string[]>,
+	year: string,
+	semester: string,
+	excepts: Record<string, boolean>,
+	courses: CourseTypeWithGroups[]
+): ColumnsType<CourseTypeWithGroups> => [
+	{ dataIndex: 'code', title: 'Mã học phần' },
+	{ dataIndex: 'name', title: 'Tên học phần' },
+	{ dataIndex: 'credit', title: 'Số tín chỉ' },
+	{
+		dataIndex: 'code',
+		title: 'Nhóm đã chọn',
+		render(code) {
+			const isFiltered = filter[code]?.length > 0;
+
+			return isFiltered ? (
+				<>
+					{filter[code]?.join(', ')}{' '}
+					<Button
+						size="small"
+						icon={<SyncOutlined />}
+						onClick={async (event) => {
+							event.stopPropagation();
+							await timetableService.set(
+								year,
+								semester,
+								code,
+								[]
+							);
+						}}
+					>
+						Đặt lại
+					</Button>
+				</>
+			) : (
+				<>Không có nhóm nào được chọn</>
+			);
+		},
+	},
+	{
+		dataIndex: 'code',
+		title: 'Xóa ngày',
+		render(code) {
+			return (
+				<div onClick={(event) => event.stopPropagation()}>
+					<Typography.Text>
+						Chọn những ngày mà bạn <strong>không muốn</strong> học
+					</Typography.Text>
+
+					<Checkbox.Group
+						onChange={(checked) => {
+							const groups = courses.find(
+								(e) => e.code === code
+							).groups;
+
+							const _filter = Object.keys(groups)
+								.map((key) => groups[key])
+								.filter((group) => {
+									const sessions = group.sessions;
+
+									return sessions.every(
+										(session) =>
+											!checked.includes(session.day)
+									);
+								})
+								.map((group) => group.id);
+
+							timetableService.set(year, semester, code, _filter);
+						}}
+					>
+						<Checkbox value="2">Thứ 2</Checkbox>
+						<Checkbox value="3">Thứ 3</Checkbox>
+						<Checkbox value="4">Thứ 4</Checkbox>
+						<Checkbox value="5">Thứ 5</Checkbox>
+						<Checkbox value="6">Thứ 6</Checkbox>
+						<Checkbox value="7">Thứ 7</Checkbox>
+					</Checkbox.Group>
+				</div>
+			);
+		},
+	},
+	{
+		dataIndex: 'code',
+		title: 'Loại trừ',
+		render(code) {
+			const isExcept = excepts[code];
+
+			return (
+				<Button
+					type={isExcept ? 'primary' : 'default'}
+					size="small"
+					icon={isExcept ? <PlusOutlined /> : <DeleteOutlined />}
+					danger={!isExcept}
+					onClick={async (event) => {
+						event.stopPropagation();
+						return await exceptService.toggle(year, semester, code);
+					}}
+				>
+					{isExcept ? 'Đã loại' : 'Loại'}
+				</Button>
+			);
+		},
+	},
+];
+
 const Timetable = () => {
 	const [year, setYear] = useState<string>('');
 	const [semester, setSemester] = useState<string>('');
@@ -21,6 +162,7 @@ const Timetable = () => {
 	const [filter, setFilter] = useState<TimetableSemesterType>({});
 	const [page, setPage] = useState<number>(1);
 	const [excepts, setExcepts] = useState<ExceptType>({});
+	const [maxLength, setMaxLength] = useState<number>(1000);
 
 	const fetchCourses = useCallback(async (year: string, semester: string) => {
 		try {
@@ -58,10 +200,15 @@ const Timetable = () => {
 		}
 	}, []);
 
-	const timetables = useMemo(
-		() => getTimetables(filter, courses, excepts),
-		[filter, courses]
-	);
+	const timetables = useMemo(() => {
+		try {
+			return getTimetables(filter, courses, excepts, maxLength);
+		} catch (error) {
+			notification.error({ message: error.message });
+
+			return [];
+		}
+	}, [filter, courses, maxLength]);
 
 	useEffect(() => {
 		if (!year || !semester) return;
@@ -72,10 +219,10 @@ const Timetable = () => {
 	}, [year, semester]);
 
 	useEffect(() => {
-		const handler = () => {
-			fetchTimetable(year, semester);
-			fetchExcepts(year, semester);
+		const handler = async () => {
 			setPage(1);
+			await fetchTimetable(year, semester);
+			await fetchExcepts(year, semester);
 		};
 
 		chrome.storage.sync.onChanged.addListener(handler);
@@ -101,70 +248,35 @@ const Timetable = () => {
 				}}
 			/>
 			<Table
+				footer={() => {
+					return (
+						<Space>
+							<Typography.Text>Giới hạn tính</Typography.Text>
+							<AutoComplete
+								placeholder="Giới hạn tính"
+								value={maxLength}
+								style={{ width: 200 }}
+								options={lengthOptons}
+								onSelect={(value) => setMaxLength(value)}
+							/>
+
+							<Popover
+								title="Lưu ý"
+								content="Giới hạn quá cao có thể gây ra tình trạng tràn bộ nhớ"
+							>
+								<InfoCircleTwoTone />
+							</Popover>
+						</Space>
+					);
+				}}
+				pagination={false}
 				size="small"
 				loading={loading}
-				columns={[
-					{ dataIndex: 'code', title: 'Mã học phần' },
-					{ dataIndex: 'name', title: 'Tên học phần' },
-					{ dataIndex: 'credit', title: 'Số tín chỉ' },
-					{
-						dataIndex: 'code',
-						title: 'Nhóm đã chọn',
-						render(code) {
-							const isFiltered = filter[code]?.length > 0;
-
-							return isFiltered ? (
-								<>
-									{filter[code]?.join(', ')}{' '}
-									<Button
-										size="small"
-										icon={<SyncOutlined />}
-										onClick={async (event) => {
-											event.stopPropagation();
-											await timetableService.set(
-												year,
-												semester,
-												code,
-												[]
-											);
-										}}
-									>
-										Đặt lại
-									</Button>
-								</>
-							) : (
-								<>Không có nhóm nào được chọn</>
-							);
-						},
-					},
-					{
-						dataIndex: 'code',
-						title: 'Loại trừ',
-						render(code) {
-							const isExcept = excepts[code];
-
-							return (
-								<Button
-									type={isExcept ? 'default' : 'primary'}
-									size="small"
-									danger={!isExcept}
-									onClick={async (event) => {
-										event.stopPropagation();
-										return await exceptService.toggle(
-											year,
-											semester,
-											code
-										);
-									}}
-								>
-									{isExcept ? 'Đã loại' : 'Loại'}
-								</Button>
-							);
-						},
-					},
-				]}
+				rowClassName={(record) =>
+					excepts[record.code] ? 'ttb-removed' : ''
+				}
+				columns={getColumns(filter, year, semester, excepts, courses)}
 				rowKey="code"
-				pagination={false}
 				dataSource={courses}
 				expandable={{
 					expandedRowRender: (record) => (
@@ -187,6 +299,7 @@ const Timetable = () => {
 						current={page}
 						pageSize={1}
 						showQuickJumper
+						showSizeChanger={false}
 						onChange={(page) => setPage(page)}
 					/>
 				</Card>
