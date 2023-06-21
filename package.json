@@ -9,6 +9,7 @@
 		"prepare": "husky install",
 		"dev": "nodemon --exec \"node esbuild.mjs\" --ignore dist --watch src/ public/",
 		"build": "node esbuild.mjs",
+		"postbuild": "node scripts/postbuild",
 		"postinstall": "npm run dev",
 		"lint": "eslint . --ext .js,.jsx,.ts,.tsx"
 	},
@@ -36,6 +37,7 @@
 		"antd": "^5.6.2",
 		"axios": "^1.4.0",
 		"react": "^18.2.0",
-		"react-dom": "^18.2.0"
+		"react-dom": "^18.2.0",
+		"zip-a-folder": "^2.0.0"
 	}
 }
