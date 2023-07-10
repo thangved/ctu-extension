@@ -27,7 +27,7 @@
 		"eslint": "^8.44.0",
 		"eslint-plugin-react": "^7.32.2",
 		"husky": "^8.0.0",
-		"nodemon": "^2.0.22",
+		"nodemon": "^3.0.1",
 		"prettier": "^2.8.8",
 		"prop-types": "^15.8.1"
 	},
