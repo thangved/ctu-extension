@@ -16,7 +16,7 @@
 	"author": "",
 	"license": "ISC",
 	"devDependencies": {
-		"@types/chrome": "^0.0.243",
+		"@types/chrome": "^0.0.244",
 		"@types/esbuild-copy-static-files": "^0.1.0",
 		"@types/react": "^18.2.20",
 		"@types/react-dom": "^18.2.7",
