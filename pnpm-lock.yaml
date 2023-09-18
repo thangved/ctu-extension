@@ -23,8 +23,8 @@ dependencies:
 
 devDependencies:
   '@types/chrome':
-    specifier: ^0.0.243
-    version: 0.0.243
+    specifier: ^0.0.246
+    version: 0.0.246
   '@types/esbuild-copy-static-files':
     specifier: ^0.1.0
     version: 0.1.0
@@ -525,8 +525,8 @@ packages:
       react-dom: 18.2.0(react@18.2.0)
     dev: false
 
-  /@types/chrome@0.0.243:
-    resolution: {integrity: sha512-4PHv0kxxxpZFHWPBiJJ9TWH8kbx0567j1b2djnhpJjpiSGNI7UKkz7dSEECBtQ0B3N5nQTMwSB/5IopkWGAbEA==}
+  /@types/chrome@0.0.246:
+    resolution: {integrity: sha512-MxGxEomGxsJiL9xe/7ZwVgwdn8XVKWbPvxpVQl3nWOjrS0Ce63JsfzxUc4aU3GvRcUPYsfufHmJ17BFyKxeA4g==}
     dependencies:
       '@types/filesystem': 0.0.32
       '@types/har-format': 1.2.11
