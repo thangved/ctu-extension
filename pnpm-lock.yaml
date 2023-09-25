@@ -26,8 +26,8 @@ devDependencies:
     specifier: ^0.0.246
     version: 0.0.246
   '@types/esbuild-copy-static-files':
-    specifier: ^0.1.0
-    version: 0.1.0
+    specifier: ^0.1.1
+    version: 0.1.1
   '@types/react':
     specifier: ^18.2.21
     version: 18.2.21
@@ -532,8 +532,8 @@ packages:
       '@types/har-format': 1.2.11
     dev: true
 
-  /@types/esbuild-copy-static-files@0.1.0:
-    resolution: {integrity: sha512-wHE2+jRAz8IMGhtRE2JXjXMapJvdea4x0NIy2Dix+6V7Lf1Y5shzV1isAvqY/T+vr4tcvh+vDugo0LnMuH/Hwg==}
+  /@types/esbuild-copy-static-files@0.1.1:
+    resolution: {integrity: sha512-FJXuT96ENMNRhDkjzi/qHsuxZhpKVkJ4msnX5PizYeNIAYcHBBgmDLAMonNeiRCvrio8GcKLcwbbT9Z3GUKbyw==}
     dev: true
 
   /@types/filesystem@0.0.32:
