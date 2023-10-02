@@ -22,7 +22,7 @@
 		"@types/react-dom": "^18.2.7",
 		"@typescript-eslint/eslint-plugin": "^5.62.0",
 		"@typescript-eslint/parser": "^5.62.0",
-		"esbuild": "^0.19.2",
+		"esbuild": "^0.19.4",
 		"esbuild-copy-static-files": "^0.1.0",
 		"eslint": "^8.49.0",
 		"eslint-plugin-react": "^7.33.2",
