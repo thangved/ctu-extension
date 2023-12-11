@@ -5,13 +5,18 @@
 	"description": "Tiện ích mở rộng cho sinh viên CTU với các tính năng như sắp thời khóa biểu, bỏ qua captcha khi đăng nhập vào hệ thống quản lý",
 	"content_scripts": [
 		{
-			"js": ["bundle.js"],
+			"js": [
+				"bundle.js"
+			],
 			"matches": [
 				"https://htql.ctu.edu.vn/*",
 				"https://dkmh3.ctu.edu.vn/*",
+				"https://dkmh.ctu.edu.vn/*",
 				"https://qldt.ctu.edu.vn/*"
 			],
-			"css": ["bundle.css"],
+			"css": [
+				"bundle.css"
+			],
 			"run_at": "document_start"
 		}
 	],
@@ -26,5 +31,7 @@
 	},
 	"author": "Kim Minh Thang<thangved02@gmail.com>",
 	"short_name": "htql-ctu",
-	"permissions": ["storage"]
+	"permissions": [
+		"storage"
+	]
 }
