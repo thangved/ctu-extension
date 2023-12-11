@@ -5,7 +5,7 @@ import App from './App';
 import './styles/main.css';
 import removeTxtMaBaoVe from './utils/removeTxtMaBaoVe';
 
-const loggedHost = 'qldt.ctu.edu.vn';
+const loggedHost = 'dkmh.ctu.edu.vn';
 
 window.addEventListener('load', () => {
 	removeTxtMaBaoVe();
@@ -27,6 +27,6 @@ async function mountApp() {
 	createRoot(document.getElementById(rootId)).render(
 		<ConfigProvider locale={viVN}>
 			<App />
-		</ConfigProvider>
+		</ConfigProvider>,
 	);
 }
