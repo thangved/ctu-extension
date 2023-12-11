@@ -1,8 +1,9 @@
-import { Button, Table } from 'antd';
+import { Button, Descriptions, Space, Table, Tag } from 'antd';
 import { CourseTypeWithGroups } from '../../services/course.service';
 import timetableService, {
 	TimetableSemesterType,
 } from '../../services/timetable.service';
+import { ArrowRightOutlined } from '@ant-design/icons';
 
 interface GroupsTableProps {
 	record: CourseTypeWithGroups;
@@ -40,14 +41,29 @@ const GroupsTable = ({
 				title: 'Ngày học',
 				render(_, record) {
 					return (
-						record.sessions
-							.map(
-								(session) =>
-									`Thứ ${session.day}: tiết ${
-										session.start
-									} -> ${session.lesson + session.start - 1}`
-							)
-							.join(', ') || 'Không có thời khóa biểu'
+						<Descriptions
+							size="small"
+							column={1}
+							bordered
+							items={record.sessions.map((session) => {
+								return {
+									label: `Thứ ${session.day}`,
+									children: (
+										<Space direction="horizontal">
+											<Tag color="blue">
+												{session.start}
+											</Tag>
+											<ArrowRightOutlined />
+											<Tag color="green">
+												{session.start +
+													session.lesson -
+													1}
+											</Tag>
+										</Space>
+									),
+								};
+							})}
+						/>
 					);
 				},
 			},
@@ -68,7 +84,7 @@ const GroupsTable = ({
 									year,
 									semester,
 									record.code,
-									id
+									id,
 								)
 							}
 						>
@@ -81,6 +97,7 @@ const GroupsTable = ({
 		rowKey="id"
 		dataSource={Object.keys(record.groups).map((key) => record.groups[key])}
 		pagination={false}
+		sticky
 	/>
 );
 
