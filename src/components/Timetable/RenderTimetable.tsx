@@ -83,7 +83,7 @@ const RenderTimetable = ({
 
 			for (const session of group.sessions) {
 				const cell = tableRef.current.querySelector(
-					`.ttb-${session.day}-${session.start}`
+					`.ttb-${session.day}-${session.start}`,
 				) as HTMLTableCellElement;
 
 				cell.rowSpan = session.lesson;
@@ -103,12 +103,12 @@ const RenderTimetable = ({
 						<h5>Sỉ số {group.wholesale}</h5>
 
 						<h5>Còn lại {group.remain}</h5>
-					</>
+					</>,
 				);
 
 				for (let i = 1; i < session.lesson; i++) {
 					const cell = tableRef.current.querySelector(
-						`.ttb-${session.day}-${session.start + i}`
+						`.ttb-${session.day}-${session.start + i}`,
 					) as HTMLTableCellElement;
 
 					cell.style.display = 'none';
