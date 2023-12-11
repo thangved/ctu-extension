@@ -10,7 +10,6 @@ import {
 	Button,
 	Card,
 	Checkbox,
-	Form,
 	Pagination,
 	Popover,
 	Space,
@@ -53,7 +52,7 @@ const getColumns = (
 	year: string,
 	semester: string,
 	excepts: Record<string, boolean>,
-	courses: CourseTypeWithGroups[]
+	courses: CourseTypeWithGroups[],
 ): ColumnsType<CourseTypeWithGroups> => [
 	{ dataIndex: 'code', title: 'Mã học phần' },
 	{ dataIndex: 'name', title: 'Tên học phần' },
@@ -76,7 +75,7 @@ const getColumns = (
 								year,
 								semester,
 								code,
-								[]
+								[],
 							);
 						}}
 					>
@@ -90,18 +89,18 @@ const getColumns = (
 	},
 	{
 		dataIndex: 'code',
-		title: 'Xóa ngày',
+		title: (
+			<Typography.Text>
+				Chọn những ngày mà bạn <strong>không muốn</strong> học
+			</Typography.Text>
+		),
 		render(code) {
 			return (
 				<div onClick={(event) => event.stopPropagation()}>
-					<Typography.Text>
-						Chọn những ngày mà bạn <strong>không muốn</strong> học
-					</Typography.Text>
-
 					<Checkbox.Group
 						onChange={(checked) => {
 							const groups = courses.find(
-								(e) => e.code === code
+								(e) => e.code === code,
 							).groups;
 
 							const _filter = Object.keys(groups)
@@ -111,7 +110,7 @@ const getColumns = (
 
 									return sessions.every(
 										(session) =>
-											!checked.includes(session.day)
+											!checked.includes(session.day),
 									);
 								})
 								.map((group) => group.id);
@@ -188,7 +187,7 @@ const Timetable = () => {
 				message.error(error.message);
 			}
 		},
-		[]
+		[],
 	);
 
 	const fetchExcepts = useCallback(async (year: string, semester: string) => {
