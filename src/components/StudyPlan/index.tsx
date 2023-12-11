@@ -115,7 +115,7 @@ const StudyPlan = () => {
 												}
 											/>
 										);
-									}
+									},
 								)}
 							</Fragment>
 						);

@@ -2,6 +2,7 @@ import {
 	BugOutlined,
 	CalendarOutlined,
 	CarryOutFilled,
+	CarryOutOutlined,
 	ChromeOutlined,
 	FacebookOutlined,
 	GithubOutlined,
@@ -12,6 +13,7 @@ import {
 	Button,
 	Card,
 	Col,
+	Descriptions,
 	Row,
 	Space,
 	Tabs,
@@ -26,12 +28,8 @@ import Timetable from './components/Timetable';
 const tabItems: TabsProps['items'] = [
 	{
 		key: 'home',
-		label: (
-			<span>
-				<HomeOutlined />
-				CTU Extension
-			</span>
-		),
+		label: 'CTU Extension',
+		icon: <HomeOutlined />,
 		children: (
 			<Card style={{ margin: '10px 0' }} size="small">
 				<Space>
@@ -68,33 +66,21 @@ const tabItems: TabsProps['items'] = [
 	},
 	{
 		key: 'study-plan',
-		label: (
-			<span>
-				<CalendarOutlined />
-				Kế hoạch học tập
-			</span>
-		),
+		label: 'Kế hoạch học tập',
+		icon: <CalendarOutlined />,
 		children: <StudyPlan />,
 	},
 	{
 		key: 'timetable',
-		label: (
-			<span>
-				<CarryOutFilled />
-				Thời khóa biểu
-			</span>
-		),
+		label: 'Thời khóa biểu',
 		children: <Timetable />,
+		icon: <CarryOutOutlined />,
 	},
 	{
 		key: 'report',
-		label: (
-			<span>
-				<BugOutlined />
-				Phản hồi
-			</span>
-		),
+		label: 'Phản hồi',
 		children: <Report />,
+		icon: <BugOutlined />,
 	},
 ];
 

@@ -1,8 +1,8 @@
-const loginHref = '//qldt.ctu.edu.vn/htql/sinhvien/dang_nhap.php';
+const loginHref = '//dkmh.ctu.edu.vn/htql/sinhvien/dang_nhap.php';
 
 export default function removeTxtMaBaoVe() {
 	const txtMaBaoVe = document.getElementById(
-		'txtMaBaoVe'
+		'txtMaBaoVe',
 	) as HTMLInputElement;
 
 	if (!txtMaBaoVe) return;
@@ -10,7 +10,7 @@ export default function removeTxtMaBaoVe() {
 	txtMaBaoVe.parentElement?.remove();
 
 	const loginForm = document.querySelector(
-		'[name=frmLogin]'
+		'[name=frmLogin]',
 	) as HTMLFormElement;
 
 	loginForm.action = loginHref;
