@@ -208,7 +208,7 @@ const Timetable = () => {
 
 			return [];
 		}
-	}, [filter, courses, maxLength]);
+	}, [filter, courses, excepts, maxLength]);
 
 	useEffect(() => {
 		if (!year || !semester) return;
