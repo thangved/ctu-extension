@@ -1,7 +1,19 @@
+/**
+ * @description Các môn học được loại trừ {mã môn học: boolean}
+ */
 export type ExceptType = Record<string, boolean>;
 
+/**
+ * @description Service lấy thông tin các môn học được loại trừ
+ */
 class ExceptService {
-	async get(year: string, semester: string) {
+	/**
+	 * @description Lấy thông tin các môn học được loại trừ
+	 * @param year - Năm học
+	 * @param semester - Học kỳ
+	 * @returns - Các môn học được loại trừ
+	 */
+	async get(year: string, semester: string): Promise<ExceptType> {
 		let { excepts } = await chrome.storage.sync.get('excepts');
 
 		if (!excepts) {
@@ -21,7 +33,13 @@ class ExceptService {
 		return excepts[year][semester] as ExceptType;
 	}
 
-	async toggle(year: string, semester: string, code: string) {
+	/**
+	 * @description Thay đổi trạng thái loại trừ của môn học (true -> false, false -> true)
+	 * @param year - Năm học
+	 * @param semester - Học kỳ
+	 * @param code - Mã môn học
+	 */
+	async toggle(year: string, semester: string, code: string): Promise<void> {
 		await this.get(year, semester);
 
 		const { excepts } = await chrome.storage.sync.get('excepts');
@@ -36,4 +54,4 @@ class ExceptService {
 	}
 }
 
-export default new ExceptService();
+export default new ExceptService() as ExceptService;

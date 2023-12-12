@@ -1,38 +1,93 @@
 import client from '../utils/client';
 
+/**
+ * @description Thông tin một buổi học của một lớp học phần
+ */
 export interface GroupSessionType {
+	/**
+	 * @description Thứ trong tuần (Thứ 2, Thứ 3, ...)
+	 */
 	day: string;
+	/**
+	 * @description Tiết bắt đầu
+	 */
 	start: number;
+	/**
+	 * @description Số tiết
+	 */
 	lesson: number;
+	/**
+	 * @description Phòng học (101/C1, 102/C1, ...)
+	 */
 	location: string;
 }
 
+/**
+ * @description Thông tin một nhóm lớp học phần
+ */
 export interface GroupType {
+	/**
+	 * @description Tên lớp học phần
+	 */
 	name: string;
+	/**
+	 * @description Mã lớp học phần
+	 */
 	id: string;
+	/**
+	 * @description Số lượng tín chỉ
+	 */
 	wholesale: number;
+	/**
+	 * @description Số lượng chỗ còn lại
+	 */
 	remain: number;
+	/**
+	 * @description Các buổi học của lớp học phần
+	 */
 	sessions: GroupSessionType[];
 }
 
+/**
+ * @description Service lấy thông tin lớp học phần
+ */
 class GroupService {
-	logged: boolean;
+	/**
+	 * @description Trạng thái đăng nhập
+	 */
+	private logged: boolean;
 
 	constructor() {
 		this.logged = false;
 	}
 
-	async login() {
+	/**
+	 * @description Đăng nhập vào hệ thống
+	 */
+	async login(): Promise<void> {
 		await client.postForm('/htql/dkmh/student/dang_nhap.php', {
 			txtMatKhau: 'p',
 		});
 	}
 
-	async find(code: string, year: string, semester: string) {
+	/**
+	 * @description Lấy thông tin lớp học phần
+	 * @param code - Mã môn học
+	 * @param year - Năm học
+	 * @param semester - Học kỳ
+	 * @returns
+	 */
+	async find(
+		code: string,
+		year: string,
+		semester: string,
+	): Promise<Record<string, GroupType>> {
+		// Đăng nhập nếu chưa đăng nhập
 		if (!this.logged) {
 			await this.login();
 		}
 
+		// Lấy thông tin lớp học phần
 		year = year.split('-')[1];
 
 		const htmlString = (await client.postForm(
@@ -43,7 +98,7 @@ class GroupService {
 				txtMaMH: code,
 				flag: 1,
 				Button: 'Tìm',
-			}
+			},
 		)) as unknown as string;
 
 		const dom = new DOMParser().parseFromString(htmlString, 'text/html');
@@ -55,7 +110,7 @@ class GroupService {
 		}
 
 		const rows = Array.from(table.querySelectorAll('tr')).slice(
-			1
+			1,
 		) as HTMLTableRowElement[];
 
 		if (rows[0].querySelector('td').colSpan === 12) {
@@ -67,7 +122,7 @@ class GroupService {
 		for (const row of rows) {
 			let distance = 0;
 			const noSechedule = Number.isNaN(
-				Number(row.children[2].textContent)
+				Number(row.children[2].textContent),
 			);
 
 			if (noSechedule) {
@@ -100,4 +155,4 @@ class GroupService {
 	}
 }
 
-export default new GroupService();
+export default new GroupService() as GroupService;

@@ -1,23 +1,51 @@
 import client from '../utils/client';
 
+/**
+ * @description Thông tin môn học
+ */
 export interface CourseType {
+	/**
+	 * @description Mã môn học
+	 */
 	code: string;
+	/**
+	 * @description Tên môn học
+	 */
 	name: string;
+	/**
+	 * @description Số tín chỉ
+	 */
 	credit: number;
 }
 
+/**
+ * @description Thông tin kế hoạch học tập {học kỳ: [môn học]}
+ */
 export type SemesterType = Record<string, CourseType[]>;
 
+/**
+ * @description Thông tin kế hoạch học tập {năm học: {học kỳ: [môn học]}}
+ */
 export type StudyPlanType = Record<string, SemesterType>;
 
+/**
+ * @description Service lấy thông tin kế hoạch học tập
+ */
 class StudyPlanServive {
-	studyPlan: StudyPlanType;
+	/**
+	 * @description Thông tin kế hoạch học tập
+	 */
+	private studyPlan: StudyPlanType;
 
-	async get() {
+	/**
+	 * @description Lấy thông tin kế hoạch học tập
+	 * @returns Thông tin kế hoạch học tập
+	 */
+	async get(): Promise<StudyPlanType> {
 		if (this.studyPlan) return this.studyPlan;
 
 		const htmlString = (await client.get(
-			'/htql/sinhvien/ctdt/codes/sindex.php?mID=S101'
+			'/htql/sinhvien/ctdt/codes/sindex.php?mID=S101',
 		)) as unknown as string;
 
 		const dom = new DOMParser().parseFromString(htmlString, 'text/html');
@@ -61,4 +89,4 @@ class StudyPlanServive {
 	}
 }
 
-export default new StudyPlanServive();
+export default new StudyPlanServive() as StudyPlanServive;

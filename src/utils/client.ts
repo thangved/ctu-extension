@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios, { AxiosInstance } from 'axios';
 
 const client = axios.create({
 	baseURL: window.location.origin,
@@ -7,4 +7,4 @@ const client = axios.create({
 
 client.interceptors.response.use((res) => res.data);
 
-export default client;
+export default client as AxiosInstance;

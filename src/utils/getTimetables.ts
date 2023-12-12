@@ -13,7 +13,7 @@ function recursive(
 	coursesCode: string[],
 	currentIndex: number,
 	result: TimetableType[],
-	excepts: Record<string, boolean>
+	excepts: Record<string, boolean>,
 ) {
 	if (currentIndex === calendar.length) {
 		return result;
@@ -30,12 +30,12 @@ function recursive(
 			coursesCode,
 			currentIndex + 1,
 			result,
-			excepts
+			excepts,
 		);
 	}
 
 	const currentCourse = calendar.find(
-		(course) => course.code === currentCourseCode
+		(course) => course.code === currentCourseCode,
 	);
 	const _result = [];
 	const _dayHash = [];
@@ -44,7 +44,7 @@ function recursive(
 		for (const filteredGroup of filteredGroups || []) {
 			if (_result.length > maxLength) {
 				throw new Error(
-					'Số lượng thời khóa biểu quá lớn!! Vui lòng chọn ít nhóm hơn hoặc tăng giới hạn lên.'
+					'Số lượng thời khóa biểu quá lớn!! Vui lòng chọn ít nhóm hơn hoặc tăng giới hạn lên.',
 				);
 			}
 
@@ -87,7 +87,7 @@ function recursive(
 		coursesCode,
 		currentIndex + 1,
 		_result,
-		excepts
+		excepts,
 	);
 }
 
@@ -95,7 +95,7 @@ export default function getTimetables(
 	filter: TimetableSemesterType,
 	calendar: CourseTypeWithGroups[],
 	excepts: Record<string, boolean>,
-	maximun = maxLength
+	maximun = maxLength,
 ) {
 	maxLength = maximun;
 
@@ -106,7 +106,7 @@ export default function getTimetables(
 	for (const course of calendar.map((course) => course.code)) {
 		if (!filter[course]?.length) {
 			filter[course] = Object.keys(
-				calendar.find(({ code }) => course === code)?.groups || {}
+				calendar.find(({ code }) => course === code)?.groups || {},
 			);
 		}
 	}
@@ -114,7 +114,7 @@ export default function getTimetables(
 	let result = [{}];
 
 	const coursesCode = Object.keys(filter).sort(
-		(a, b) => filter[a].length - filter[b].length
+		(a, b) => filter[a].length - filter[b].length,
 	);
 
 	result = recursive([], filter, calendar, coursesCode, 0, result, excepts);
