@@ -7,7 +7,7 @@ const __dirname = path.resolve(path.dirname(''));
 const main = async () => {
 	try {
 		const manifest = JSON.parse(
-			fs.readFileSync(path.resolve(__dirname, './dist/manifest.json'))
+			fs.readFileSync(path.resolve(__dirname, './dist/manifest.json')),
 		);
 
 		const version = manifest.version;
@@ -19,7 +19,7 @@ const main = async () => {
 
 		await zip(
 			path.resolve(__dirname, './dist/'),
-			path.resolve(__dirname, `./${zipName}`)
+			path.resolve(__dirname, `./${zipName}`),
 		);
 	} catch (error) {
 		console.log('Post build: ', error);
