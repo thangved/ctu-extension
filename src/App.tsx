@@ -1,7 +1,6 @@
 import {
 	BugOutlined,
 	CalendarOutlined,
-	CarryOutFilled,
 	CarryOutOutlined,
 	ChromeOutlined,
 	FacebookOutlined,
@@ -13,7 +12,6 @@ import {
 	Button,
 	Card,
 	Col,
-	Descriptions,
 	Row,
 	Space,
 	Tabs,
