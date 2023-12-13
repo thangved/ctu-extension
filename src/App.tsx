@@ -20,10 +20,11 @@ import {
 	Typography,
 } from 'antd';
 import { Content } from 'antd/es/layout/layout';
+import Grade from './features/Grade';
 import Report from './features/Report';
 import StudyPlan from './features/StudyPlan';
 import Timetable from './features/Timetable';
-import Grade from './features/Grade';
+import { useEffect, useState } from 'react';
 
 const tabItems: TabsProps['items'] = [
 	{
@@ -78,7 +79,7 @@ const tabItems: TabsProps['items'] = [
 	},
 	{
 		key: 'grade',
-		label: 'Thống kê điểm',
+		label: 'Thống kê điểm (Mới)',
 		icon: <DashboardOutlined />,
 		children: <Grade />,
 	},
@@ -90,7 +91,17 @@ const tabItems: TabsProps['items'] = [
 	},
 ];
 
+const __ = 'ctu-extension:activeKey'; // HACK
+
 const App = () => {
+	const [activeKey, setActiveKey] = useState(() =>
+		window.localStorage.getItem(__),
+	);
+
+	useEffect(() => {
+		window.localStorage.setItem(__, activeKey);
+	}, [activeKey]);
+
 	return (
 		<>
 			<Row>
@@ -98,7 +109,13 @@ const App = () => {
 
 				<Col sm={16}>
 					<Content>
-						<Tabs items={tabItems} defaultActiveKey="grade" />
+						<Tabs
+							items={tabItems}
+							activeKey={activeKey}
+							onChange={(newActiveKey) =>
+								setActiveKey(newActiveKey)
+							}
+						/>
 					</Content>
 				</Col>
 
