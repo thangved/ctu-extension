@@ -1,11 +1,29 @@
-import { Card, Spin, message } from 'antd';
+import { Card, Col, Row, Spin, message } from 'antd';
+import * as Highcharts from 'highcharts';
+import { HighchartsReact } from 'highcharts-react-official';
 import { useEffect, useState } from 'react';
 import gradeService from '../../services/grade.service';
 import { Grade } from '../../utils/parserScoresHtml';
+import React = require('react');
+
+const scoreTextList = ['A', 'B+', 'B', 'C+', 'C', 'D+', 'D', 'F'];
+
+function countScoreText(scoreText: string, grades: Grade[]) {
+	return grades.reduce((prev, current) => {
+		return (
+			prev +
+			current.subjects.reduce((prev, current) => {
+				return prev + (current.scoreText === scoreText ? 1 : 0);
+			}, 0)
+		);
+	}, 0);
+}
 
 export default function Grade() {
 	const [isLoading, setIsLoading] = useState(false);
-	const [, setGrades] = useState<Grade[]>([]);
+	const [grades, setGrades] = useState<Grade[]>([]);
+
+	console.log(grades);
 
 	useEffect(() => {
 		(async () => {
@@ -24,7 +42,224 @@ export default function Grade() {
 
 	return (
 		<Card title="Điểm học tập qua các học kỳ">
-			{isLoading ? <Spin /> : <></>}
+			{isLoading ? (
+				<Spin />
+			) : (
+				<>
+					<Row>
+						<Col md={24} lg={12}>
+							<HighchartsReact
+								highcharts={Highcharts}
+								options={{
+									title: {
+										text: 'Điểm trung bình và tích lũy qua các học kỳ',
+									},
+									series: [
+										{
+											data: grades.map(
+												(grade) => grade.average,
+											),
+											type: 'column',
+											name: 'Điểm trung bình',
+										},
+										{
+											data: grades.map(
+												(grade) => grade.gpa,
+											),
+											name: 'Điểm trung bình tích lũy',
+											color: 'red',
+										},
+									],
+									xAxis: {
+										categories: grades.map(
+											(grade) =>
+												`${grade.semester} - ${grade.year}`,
+										),
+									},
+									yAxis: {
+										title: {
+											text: 'Điểm',
+										},
+									},
+									accessibility: {
+										enabled: false,
+									},
+								}}
+							/>
+						</Col>
+						<Col md={24} lg={12}>
+							<HighchartsReact
+								highcharts={Highcharts}
+								options={{
+									title: {
+										text: 'Số tín chỉ tích lũy qua các học kỳ',
+									},
+									series: [
+										{
+											data: grades.map(
+												(grade) => grade.credits,
+											),
+											name: 'Số tín chỉ tích lũy trong học kỳ',
+											type: 'column',
+										},
+										{
+											data: grades.map(
+												(grade) => grade.totalCredits,
+											),
+											name: 'Tổng số tín chỉ',
+											color: 'green',
+										},
+									],
+									yAxis: {
+										title: {
+											text: 'Tín chỉ',
+										},
+									},
+									xAxis: {
+										categories: grades.map(
+											(grade) =>
+												`${grade.semester} - ${grade.year}`,
+										),
+									},
+									accessibility: {
+										enabled: false,
+									},
+								}}
+							/>
+						</Col>
+
+						<Col md={24} lg={12}>
+							<HighchartsReact
+								highcharts={Highcharts}
+								options={{
+									title: {
+										text: 'Thống kê theo điểm chữ',
+									},
+									chart: {
+										type: 'pie',
+									},
+									series: [
+										{
+											name: 'Điểm',
+											colorByPoint: true,
+											data: scoreTextList.map(
+												(scoreText) => ({
+													y: countScoreText(
+														scoreText,
+														grades,
+													),
+													name: scoreText,
+												}),
+											),
+										},
+									],
+									accessibility: {
+										enabled: false,
+									},
+								}}
+							/>
+						</Col>
+
+						<Col md={24} lg={12}>
+							<HighchartsReact
+								highcharts={Highcharts}
+								options={{
+									title: {
+										text: 'Điểm các môn',
+									},
+									series: [
+										{
+											data: grades.reduce(
+												(prev, grade) => [
+													...prev,
+													...grade.subjects
+														.filter(
+															(sub) =>
+																sub.code !==
+																'SHCVHT',
+														)
+														.map(
+															(sub) => sub.score,
+														),
+												],
+												[],
+											),
+											name: 'Điểm',
+											type: 'bar',
+										},
+									],
+									yAxis: {
+										title: {
+											text: 'Điểm',
+										},
+									},
+									xAxis: {
+										categories: grades.reduce(
+											(prev, grade) => [
+												...prev,
+												...grade.subjects
+													.filter(
+														(sub) =>
+															sub.code !==
+															'SHCVHT',
+													)
+													.map((sub) => sub.name),
+											],
+											[],
+										),
+									},
+									accessibility: {
+										enabled: false,
+									},
+								}}
+							/>
+						</Col>
+
+						<Col xs={24}>
+							{/* <Table
+								size="small"
+								columns={[
+									{
+										dataIndex: 'code',
+										title: 'Mã học phần',
+									},
+									{
+										dataIndex: 'name',
+										title: 'Tên học phần',
+									},
+									{
+										dataIndex: 'score',
+										title: 'Điểm',
+										width: 200,
+										render(value) {
+											return (
+												<Progress
+													percent={(value / 10) * 100}
+													format={(value) =>
+														(value / 10).toFixed(2)
+													}
+												/>
+											);
+										},
+									},
+								]}
+								dataSource={grades.reduce(
+									(prev, current) => [
+										...prev,
+										...current.subjects.filter(
+											(sub) => sub.code !== 'SHCVHT',
+										),
+									],
+									[],
+								)}
+								pagination={false}
+								showHeader={false}
+								bordered={false}
+							/> */}
+						</Col>
+					</Row>
+				</>
+			)}
 		</Card>
 	);
 }

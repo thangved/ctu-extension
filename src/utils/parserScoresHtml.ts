@@ -45,10 +45,10 @@ export default function parserScoresHtml(scoreHtml: string): Grade[] {
 		for (let j = 1; j < subjectRows.length; j++) {
 			const cells = subjectRows[j].querySelectorAll('td');
 
-			const code = cells[1].textContent;
-			const name = cells[2].textContent;
+			const code = cells[1].textContent.trim();
+			const name = cells[2].textContent.trim();
 			const credits = Number(cells[5].textContent);
-			const scoreText = cells[6].textContent;
+			const scoreText = cells[6].textContent.trim();
 			const score = Number(cells[7].textContent);
 
 			const subject: Subject = {
@@ -77,6 +77,11 @@ export default function parserScoresHtml(scoreHtml: string): Grade[] {
 			credits = Number(cells[5].textContent);
 			gpa = Number(cells[7].textContent);
 			totalCredits = Number(cells[9].textContent);
+		} else if (grades[i - 2]) {
+			average = grades[i - 2].average;
+			gpa = grades[i - 2].gpa;
+			credits = grades[i - 2].credits;
+			totalCredits = grades[i - 2].totalCredits;
 		}
 
 		grades.push({
