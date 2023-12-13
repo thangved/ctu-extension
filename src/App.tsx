@@ -20,9 +20,10 @@ import {
 	Typography,
 } from 'antd';
 import { Content } from 'antd/es/layout/layout';
-import Report from './components/Report';
-import StudyPlan from './components/StudyPlan';
-import Timetable from './components/Timetable';
+import Report from './features/Report';
+import StudyPlan from './features/StudyPlan';
+import Timetable from './features/Timetable';
+import Grade from './features/Grade';
 
 const tabItems: TabsProps['items'] = [
 	{
@@ -79,6 +80,7 @@ const tabItems: TabsProps['items'] = [
 		key: 'grade',
 		label: 'Thống kê điểm',
 		icon: <DashboardOutlined />,
+		children: <Grade />,
 	},
 	{
 		key: 'report',

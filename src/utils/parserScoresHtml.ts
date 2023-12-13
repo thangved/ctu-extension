@@ -1,7 +1,25 @@
-export default function parserScoresHtml(scoreHtml: string) {
+export type Subject = {
+	code: string;
+	name: string;
+	credits: number;
+	scoreText: string;
+	score: number;
+};
+
+export type Grade = {
+	year: string;
+	semester: string;
+	average: number;
+	gpa: number;
+	credits: number;
+	totalCredits: number;
+	subjects: Subject[];
+};
+
+export default function parserScoresHtml(scoreHtml: string): Grade[] {
 	const dom = new DOMParser().parseFromString(scoreHtml, 'text/html');
 
-	const grades = [];
+	const grades: Grade[] = [];
 
 	const tables = dom.querySelectorAll(
 		'form[name="frmXemDiem"] > table',
@@ -33,7 +51,7 @@ export default function parserScoresHtml(scoreHtml: string) {
 			const scoreText = cells[6].textContent;
 			const score = Number(cells[7].textContent);
 
-			const subject = {
+			const subject: Subject = {
 				code,
 				name,
 				credits,
