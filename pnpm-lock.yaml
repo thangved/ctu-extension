@@ -20,6 +20,9 @@ dependencies:
   react-dom:
     specifier: ^18.2.0
     version: 18.2.0(react@18.2.0)
+  typescript:
+    specifier: ^5.3.3
+    version: 5.3.3
   zip-a-folder:
     specifier: ^3.1.5
     version: 3.1.5
@@ -56,7 +59,7 @@ devDependencies:
     specifier: ^7.33.2
     version: 7.33.2(eslint@8.55.0)
   husky:
-    specifier: ^8.0.3
+    specifier: ^8.0.0
     version: 8.0.3
   nodemon:
     specifier: ^3.0.2
@@ -3286,7 +3289,6 @@ packages:
     resolution: {integrity: sha512-pXWcraxM0uxAS+tN0AG/BF2TyqmHO014Z070UsJ+pFvYuRSq8KH8DmWpnbXe0pEPDHXZV3FcAbJkijJ5oNEnWw==}
     engines: {node: '>=14.17'}
     hasBin: true
-    dev: true
 
   /unbox-primitive@1.0.2:
     resolution: {integrity: sha512-61pPlCD9h51VoreyJ0BReideM3MDKMKnh6+V9L08331ipq6Q8OFXZYiqP6n/tbHx4s5I9uRhcye6BrbkizkBDw==}

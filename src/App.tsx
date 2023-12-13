@@ -3,6 +3,7 @@ import {
 	CalendarOutlined,
 	CarryOutOutlined,
 	ChromeOutlined,
+	DashboardOutlined,
 	FacebookOutlined,
 	GithubOutlined,
 	GlobalOutlined,
@@ -75,6 +76,11 @@ const tabItems: TabsProps['items'] = [
 		icon: <CarryOutOutlined />,
 	},
 	{
+		key: 'grade',
+		label: 'Thống kê điểm',
+		icon: <DashboardOutlined />,
+	},
+	{
 		key: 'report',
 		label: 'Phản hồi',
 		children: <Report />,
@@ -90,7 +96,7 @@ const App = () => {
 
 				<Col sm={16}>
 					<Content>
-						<Tabs items={tabItems} defaultActiveKey="home" />
+						<Tabs items={tabItems} defaultActiveKey="grade" />
 					</Content>
 				</Col>
 
