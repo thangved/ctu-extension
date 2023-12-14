@@ -80,6 +80,8 @@ export default function Grade() {
 										title: {
 											text: 'Điểm',
 										},
+										min: 0,
+										max: 4,
 									},
 									accessibility: {
 										enabled: false,
@@ -192,6 +194,8 @@ export default function Grade() {
 										title: {
 											text: 'Điểm',
 										},
+										min: 0,
+										max: 10,
 									},
 									xAxis: {
 										categories: grades.reduce(
