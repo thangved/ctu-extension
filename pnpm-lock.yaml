@@ -9,8 +9,8 @@ dependencies:
     specifier: ^5.2.6
     version: 5.2.6(react-dom@18.2.0)(react@18.2.0)
   antd:
-    specifier: ^5.12.2
-    version: 5.12.2(react-dom@18.2.0)(react@18.2.0)
+    specifier: ^5.12.3
+    version: 5.12.3(react-dom@18.2.0)(react@18.2.0)
   axios:
     specifier: ^1.6.2
     version: 1.6.2
@@ -786,8 +786,8 @@ packages:
     engines: {node: '>=12'}
     dev: false
 
-  /antd@5.12.2(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-lJ4pdBRboN2Tl5hXTqgxUjGIercB2YIK7Z8fVDushgrJ55RhywJjvcQVnBmuxcSPuWEF2Yu8SNBVAnaV4EqzWA==}
+  /antd@5.12.3(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-JnlrzUUcMx6yrrGfjyOIXtjToAYurl6UqEZFzl0VUT0fZuvhcfVwNTwe2ZIAjbbczjEx3lS7NDnuQmMuEycDuw==}
     peerDependencies:
       react: '>=16.9.0'
       react-dom: '>=16.9.0'
