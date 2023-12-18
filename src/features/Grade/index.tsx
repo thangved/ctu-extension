@@ -3,7 +3,7 @@ import * as Highcharts from 'highcharts';
 import { HighchartsReact } from 'highcharts-react-official';
 import { useEffect, useState } from 'react';
 import gradeService from '../../services/grade.service';
-import { Grade } from '../../utils/parserScoresHtml';
+import { Grade, Subject } from '../../utils/parserScoresHtml';
 import React = require('react');
 
 const scoreTextList = ['A', 'B+', 'B', 'C+', 'C', 'D+', 'D', 'F'];
@@ -23,8 +23,6 @@ export default function Grade() {
 	const [isLoading, setIsLoading] = useState(false);
 	const [grades, setGrades] = useState<Grade[]>([]);
 
-	console.log(grades);
-
 	useEffect(() => {
 		(async () => {
 			try {
@@ -39,6 +37,26 @@ export default function Grade() {
 			}
 		})();
 	}, []);
+
+	const subjects: Subject[] = React.useMemo(
+		() =>
+			grades.reduce(
+				(prev, { subjects }) => [
+					...prev,
+					...subjects.reduce(
+						(prev, subject) =>
+							subject.code === 'SHCVHT'
+								? prev
+								: [...prev, subject],
+						[],
+					),
+				],
+				[],
+			),
+		[grades],
+	);
+
+	console.log(subjects);
 
 	return (
 		<Card title="Điểm học tập qua các học kỳ">
@@ -163,60 +181,54 @@ export default function Grade() {
 						</Col>
 
 						<Col md={24} lg={12}>
-							<HighchartsReact
-								highcharts={Highcharts}
-								options={{
-									title: {
-										text: 'Điểm các môn',
-									},
-									series: [
-										{
-											data: grades.reduce(
-												(prev, grade) => [
-													...prev,
-													...grade.subjects
-														.filter(
-															(sub) =>
-																sub.code !==
-																'SHCVHT',
-														)
-														.map(
-															(sub) => sub.score,
-														),
-												],
-												[],
-											),
-											name: 'Điểm',
-											type: 'bar',
-										},
-									],
-									yAxis: {
+							{subjects.length && (
+								<HighchartsReact
+									highcharts={Highcharts}
+									options={{
 										title: {
-											text: 'Điểm',
+											text: 'Điểm các môn',
 										},
-										min: 0,
-										max: 10,
-									},
-									xAxis: {
-										categories: grades.reduce(
-											(prev, grade) => [
-												...prev,
-												...grade.subjects
-													.filter(
-														(sub) =>
-															sub.code !==
-															'SHCVHT',
-													)
-													.map((sub) => sub.name),
-											],
-											[],
-										),
-									},
-									accessibility: {
-										enabled: false,
-									},
-								}}
-							/>
+										plotOptions: {
+											bar: {
+												dataLabels: {
+													enabled: true,
+												},
+												groupPadding: 0.1,
+											},
+											series: {
+												pointWidth: 10,
+											},
+										},
+										chart: {
+											height: subjects.length * 20,
+										},
+										series: [
+											{
+												data: subjects.map(
+													(sub) => sub.score,
+												),
+												name: 'Điểm',
+												type: 'bar',
+											},
+										],
+										yAxis: {
+											title: {
+												text: 'Điểm',
+											},
+											min: 0,
+											max: 10,
+										},
+										xAxis: {
+											categories: subjects.map(
+												(sub) => sub.name,
+											),
+										},
+										accessibility: {
+											enabled: false,
+										},
+									}}
+								/>
+							)}
 						</Col>
 
 						<Col xs={24}>
