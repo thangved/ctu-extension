@@ -8,12 +8,20 @@ import React = require('react');
 
 const scoreTextList = ['A', 'B+', 'B', 'C+', 'C', 'D+', 'D', 'F'];
 
-function countScoreText(scoreText: string, grades: Grade[]) {
+function countScoreText(
+	scoreText: string,
+	grades: Grade[],
+	withCredits = false,
+) {
 	return grades.reduce((prev, current) => {
 		return (
 			prev +
 			current.subjects.reduce((prev, current) => {
-				return prev + (current.scoreText === scoreText ? 1 : 0);
+				return (
+					prev +
+					(current.scoreText === scoreText ? 1 : 0) *
+						(withCredits ? current.credits : 1)
+				);
 			}, 0)
 		);
 	}, 0);
@@ -160,13 +168,44 @@ export default function Grade() {
 									},
 									series: [
 										{
-											name: 'Điểm',
+											name: 'Số lượng',
 											colorByPoint: true,
 											data: scoreTextList.map(
 												(scoreText) => ({
 													y: countScoreText(
 														scoreText,
 														grades,
+													),
+													name: scoreText,
+												}),
+											),
+										},
+									],
+									accessibility: {
+										enabled: false,
+									},
+								}}
+							/>
+
+							<HighchartsReact
+								highcharts={Highcharts}
+								options={{
+									title: {
+										text: 'Thống kê theo điểm chữ * tín chỉ',
+									},
+									chart: {
+										type: 'pie',
+									},
+									series: [
+										{
+											name: 'Số lượng',
+											colorByPoint: true,
+											data: scoreTextList.map(
+												(scoreText) => ({
+													y: countScoreText(
+														scoreText,
+														grades,
+														true,
 													),
 													name: scoreText,
 												}),
