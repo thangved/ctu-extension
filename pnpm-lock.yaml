@@ -9,8 +9,8 @@ dependencies:
     specifier: ^5.2.6
     version: 5.2.6(react-dom@18.2.0)(react@18.2.0)
   antd:
-    specifier: ^5.13.1
-    version: 5.13.1(react-dom@18.2.0)(react@18.2.0)
+    specifier: ^5.13.2
+    version: 5.13.2(react-dom@18.2.0)(react@18.2.0)
   axios:
     specifier: ^1.6.2
     version: 1.6.2
@@ -531,8 +531,8 @@ packages:
       react-dom: 18.2.0(react@18.2.0)
     dev: false
 
-  /@rc-component/tour@1.12.1(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-P2pvSN+rImacOoTuT4NZ+tdjJmxoi6FZ9w++7GnYK6hVeU8qD+iLnDHkgtE7tuvpZxIRS3dPF5O2ykupHx9E/g==}
+  /@rc-component/tour@1.12.3(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-U4mf1FiUxGCwrX4ed8op77Y8VKur+8Y/61ylxtqGbcSoh1EBC7bWd/DkLu0ClTUrKZInqEi1FL7YgFtnT90vHA==}
     engines: {node: '>=8.x'}
     peerDependencies:
       react: '>=16.9.0'
@@ -802,8 +802,8 @@ packages:
     engines: {node: '>=12'}
     dev: false
 
-  /antd@5.13.1(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-/qAPsr6UyJPSFZQD9G7kW98GelH2Bajli+1q7CRW4IinYQ0R0UVJckFX11emByhiU4Jd4WNH/hOO+fZtp0eVDA==}
+  /antd@5.13.2(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-P+N8gc0NOPy2WqJj/57Ey3dZUmb7nEUwAM+CIJaR5SOEjZnhEtMGRJSt+3lnhJ3MNRR39aR6NYkRVp2mYfphiA==}
     peerDependencies:
       react: '>=16.9.0'
       react-dom: '>=16.9.0'
@@ -815,7 +815,7 @@ packages:
       '@ctrl/tinycolor': 3.6.1
       '@rc-component/color-picker': 1.5.1(react-dom@18.2.0)(react@18.2.0)
       '@rc-component/mutate-observer': 1.1.0(react-dom@18.2.0)(react@18.2.0)
-      '@rc-component/tour': 1.12.1(react-dom@18.2.0)(react@18.2.0)
+      '@rc-component/tour': 1.12.3(react-dom@18.2.0)(react@18.2.0)
       '@rc-component/trigger': 1.18.2(react-dom@18.2.0)(react@18.2.0)
       classnames: 2.5.1
       copy-to-clipboard: 3.3.3
