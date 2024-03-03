@@ -15,11 +15,11 @@ dependencies:
     specifier: ^1.6.7
     version: 1.6.7
   highcharts:
-    specifier: ^11.2.0
-    version: 11.2.0
+    specifier: ^11.3.0
+    version: 11.3.0
   highcharts-react-official:
     specifier: ^3.2.1
-    version: 3.2.1(highcharts@11.2.0)(react@18.2.0)
+    version: 3.2.1(highcharts@11.3.0)(react@18.2.0)
   react:
     specifier: ^18.2.0
     version: 18.2.0
@@ -1753,18 +1753,18 @@ packages:
       function-bind: 1.1.2
     dev: true
 
-  /highcharts-react-official@3.2.1(highcharts@11.2.0)(react@18.2.0):
+  /highcharts-react-official@3.2.1(highcharts@11.3.0)(react@18.2.0):
     resolution: {integrity: sha512-hyQTX7ezCxl7JqumaWiGsroGWalzh24GedQIgO3vJbkGOZ6ySRAltIYjfxhrq4HszJOySZegotEF7v+haQ75UA==}
     peerDependencies:
       highcharts: '>=6.0.0'
       react: '>=16.8.0'
     dependencies:
-      highcharts: 11.2.0
+      highcharts: 11.3.0
       react: 18.2.0
     dev: false
 
-  /highcharts@11.2.0:
-    resolution: {integrity: sha512-9i650YK7ZBA1Mgtr3avMkLVCAI45RQvYnwi+eHsdFSaBGuQN6BHoa4j4lMkSJLv0V4LISTK1z7J7G82Lzd7zwg==}
+  /highcharts@11.3.0:
+    resolution: {integrity: sha512-Dk+Qfk/xit8KnXKPDxmcVcq48ZlcVSq7oYJR5VZlAVWnJ0BY3JFFi1GOvgSNUzlh2wzsfenihWpkAkWoag4Xqg==}
     dev: false
 
   /husky@8.0.3:
