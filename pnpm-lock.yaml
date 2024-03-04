@@ -30,8 +30,8 @@ dependencies:
     specifier: ^5.3.3
     version: 5.3.3
   zip-a-folder:
-    specifier: ^3.1.5
-    version: 3.1.5
+    specifier: ^3.1.6
+    version: 3.1.6
 
 devDependencies:
   '@types/chrome':
@@ -3473,8 +3473,8 @@ packages:
     engines: {node: '>=10'}
     dev: true
 
-  /zip-a-folder@3.1.5:
-    resolution: {integrity: sha512-w7ZOjJS17MYqdjVEFiqa537H/hxVGcwxnmCcmOaUXDoezttVrWkbSob7nit4lqUqha+Q0pOFTCVsBttBx6hs5A==}
+  /zip-a-folder@3.1.6:
+    resolution: {integrity: sha512-u+qRL0sSsq2T2mDFcDzdgCSVO8sChsJ4swd2aZlzyoIoNwyVL7HBHPKDQVq1t0utd8nPXzCq44gAKzXAhbvpXA==}
     dependencies:
       archiver: 6.0.1
       glob: 10.3.10
