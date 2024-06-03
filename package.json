@@ -33,7 +33,7 @@
 	},
 	"dependencies": {
 		"@ant-design/icons": "^5.3.7",
-		"antd": "^5.17.0",
+		"antd": "^5.18.0",
 		"axios": "^1.6.8",
 		"highcharts": "^11.4.1",
 		"highcharts-react-official": "^3.2.1",
