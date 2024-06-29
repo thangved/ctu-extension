@@ -1,5 +1,6 @@
 import {
 	DeleteOutlined,
+	InfoCircleOutlined,
 	InfoCircleTwoTone,
 	PlusOutlined,
 	SyncOutlined,
@@ -10,10 +11,12 @@ import {
 	Button,
 	Card,
 	Checkbox,
+	Flex,
 	Pagination,
 	Popover,
 	Space,
 	Table,
+	Tooltip,
 	Typography,
 	message,
 	notification,
@@ -54,12 +57,30 @@ const getColumns = (
 	excepts: Record<string, boolean>,
 	courses: CourseTypeWithGroups[],
 ): ColumnsType<CourseTypeWithGroups> => [
-	{ dataIndex: 'code', title: 'Mã học phần' },
-	{ dataIndex: 'name', title: 'Tên học phần' },
-	{ dataIndex: 'credit', title: 'Số tín chỉ' },
 	{
 		dataIndex: 'code',
-		title: 'Nhóm đã chọn',
+		title: <Typography.Text>Mã học phần</Typography.Text>,
+		render(code) {
+			return <Typography.Text>{code}</Typography.Text>;
+		},
+	},
+	{
+		dataIndex: 'name',
+		title: <Typography.Text>Tên học phần</Typography.Text>,
+		render(name) {
+			return <Typography.Text>{name}</Typography.Text>;
+		},
+	},
+	{
+		dataIndex: 'credit',
+		title: <Typography.Text>Số tín chỉ</Typography.Text>,
+		render(credit) {
+			return <Typography.Text>{credit}</Typography.Text>;
+		},
+	},
+	{
+		dataIndex: 'code',
+		title: <Typography.Text>Đã chọn</Typography.Text>,
 		render(code) {
 			const isFiltered = filter[code]?.length > 0;
 
@@ -90,13 +111,21 @@ const getColumns = (
 	{
 		dataIndex: 'code',
 		title: (
-			<Typography.Text>
-				Chọn những ngày mà bạn <strong>không muốn</strong> học
-			</Typography.Text>
+			<Flex align="center" gap={10}>
+				<Typography.Text>Loại trừ</Typography.Text>
+				<Tooltip title="Chọn các ngày bạn không muốn học">
+					<Button shape="circle" size="small" type="text">
+						<InfoCircleOutlined />
+					</Button>
+				</Tooltip>
+			</Flex>
 		),
 		render(code) {
 			return (
-				<div onClick={(event) => event.stopPropagation()}>
+				<div
+					onClick={(event) => event.stopPropagation()}
+					style={{ maxWidth: 200 }}
+				>
 					<Checkbox.Group
 						onChange={(checked) => {
 							const groups = courses.find(
@@ -138,7 +167,6 @@ const getColumns = (
 			return (
 				<Button
 					type={isExcept ? 'primary' : 'default'}
-					size="small"
 					icon={isExcept ? <PlusOutlined /> : <DeleteOutlined />}
 					danger={!isExcept}
 					onClick={async (event) => {

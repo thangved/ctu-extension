@@ -1,9 +1,8 @@
-import { Button, Descriptions, Space, Table, Tag } from 'antd';
+import { Button, Table, Timeline, Typography } from 'antd';
 import { CourseTypeWithGroups } from '../../services/course.service';
 import timetableService, {
 	TimetableSemesterType,
 } from '../../services/timetable.service';
-import { ArrowRightOutlined } from '@ant-design/icons';
 
 interface GroupsTableProps {
 	record: CourseTypeWithGroups;
@@ -19,64 +18,96 @@ const GroupsTable = ({
 	timetable,
 }: GroupsTableProps) => (
 	<Table
+		size="small"
 		columns={[
 			{
 				dataIndex: 'id',
-				title: 'Mã nhóm',
+				title: <Typography.Text>Mã nhóm</Typography.Text>,
+				render(id) {
+					return <Typography.Text>{id}</Typography.Text>;
+				},
 			},
 			{
 				dataIndex: 'name',
-				title: 'Tên nhóm',
+				title: <Typography.Text>Tên nhóm</Typography.Text>,
+				render(name) {
+					return <Typography.Text>{name}</Typography.Text>;
+				},
+			},
+			{
+				dataIndex: 'lecture',
+				title: <Typography.Text>Giảng viên</Typography.Text>,
+				render(lecture) {
+					return (
+						<Typography.Text>
+							{lecture.code} - {lecture.name}
+						</Typography.Text>
+					);
+				},
 			},
 			{
 				dataIndex: 'wholesale',
-				title: 'Sỉ số',
-			},
-			{
-				dataIndex: 'remain',
-				title: 'Còn lại',
-			},
-			{
-				dataIndex: 'id',
-				title: 'Ngày học',
-				render(_, record) {
+				title: <Typography.Text>Sĩ số</Typography.Text>,
+				render(wholesale, record) {
 					return (
-						<Descriptions
-							size="small"
-							column={1}
-							bordered
-							items={record.sessions.map((session) => {
-								return {
-									label: `Thứ ${session.day}`,
-									children: (
-										<Space direction="horizontal">
-											<Tag color="blue">
-												{session.start}
-											</Tag>
-											<ArrowRightOutlined />
-											<Tag color="green">
-												{session.start +
-													session.lesson -
-													1}
-											</Tag>
-										</Space>
-									),
-								};
-							})}
-						/>
+						<Typography.Text>
+							{record.remain}/{wholesale}
+						</Typography.Text>
 					);
 				},
 			},
 			{
 				dataIndex: 'id',
-				title: 'Chọn',
+				title: <Typography.Text>Thời gian</Typography.Text>,
+				render(_, record) {
+					return (
+						<>
+							<Timeline
+								mode="left"
+								style={{ padding: 10 }}
+								items={record.sessions.map(
+									(session, index) => ({
+										label: `Thứ ${session.day}`,
+										children: (
+											<div
+												style={{
+													display: 'flex',
+													flexDirection: 'column',
+													gap: 5,
+													background: '#ddd',
+													padding: 10,
+													borderRadius: 10,
+												}}
+											>
+												<Typography.Text strong>
+													{session.location}
+												</Typography.Text>
+												<Typography.Text>
+													Tiết {session.start} -{' '}
+													{session.start +
+														session.lesson -
+														1}
+												</Typography.Text>
+											</div>
+										),
+										key: index,
+									}),
+								)}
+							/>
+						</>
+					);
+				},
+				width: 300,
+			},
+			{
+				dataIndex: 'id',
+				title: <Typography.Text>Chọn</Typography.Text>,
 				render(id) {
 					const isSelected =
 						timetable[record.code] &&
 						timetable[record.code].indexOf(id) !== -1;
 					return (
 						<Button
-							size="small"
 							type="primary"
 							danger={isSelected}
 							onClick={async () =>
@@ -92,12 +123,15 @@ const GroupsTable = ({
 						</Button>
 					);
 				},
+				fixed: 'right',
+				align: 'center',
 			},
 		]}
 		rowKey="id"
 		dataSource={Object.keys(record.groups).map((key) => record.groups[key])}
 		pagination={false}
 		sticky
+		bordered
 	/>
 );
 

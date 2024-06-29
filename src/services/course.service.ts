@@ -29,10 +29,18 @@ class CourseService {
 			groups: {},
 		}));
 
-		for (const course of courses) {
-			const groups = await groupService.find(course.code, year, semester);
-			course.groups = groups;
-		}
+		await groupService.login();
+
+		await Promise.all(
+			courses.map(async (course) => {
+				const groups = await groupService.find(
+					course.code,
+					year,
+					semester,
+				);
+				course.groups = groups;
+			}),
+		);
 
 		return courses;
 	}
