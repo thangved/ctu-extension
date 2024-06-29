@@ -1,7 +1,7 @@
 {
 	"manifest_version": 3,
 	"name": "CTU Extension",
-	"version": "3.0.7",
+	"version": "3.1.0",
 	"description": "Tiện ích mở rộng cho sinh viên CTU với các tính năng như sắp thời khóa biểu, bỏ qua captcha khi đăng nhập vào hệ thống quản lý",
 	"content_scripts": [
 		{
