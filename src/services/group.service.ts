@@ -34,6 +34,10 @@ export interface GroupType {
 	 * @description Mã lớp học phần
 	 */
 	id: string;
+	lecture: {
+		code?: string;
+		name?: string;
+	};
 	/**
 	 * @description Số lượng tín chỉ
 	 */
@@ -68,6 +72,7 @@ class GroupService {
 		await client.postForm('/htql/dkmh/student/dang_nhap.php', {
 			txtMatKhau: 'p',
 		});
+		this.logged = true;
 	}
 
 	/**
@@ -133,10 +138,18 @@ class GroupService {
 
 			if (!hashedGroups[groupId]) {
 				hashedGroups[groupId] = {
-					name: row.children[9 - distance].textContent?.trim() ?? '',
+					name: row.children[11 - distance].textContent?.trim() ?? '',
 					id: groupId,
-					wholesale: Number(row.children[6 - distance].textContent),
-					remain: Number(row.children[7 - distance].textContent),
+					lecture: {
+						code:
+							row.children[6 - distance].textContent?.trim() ??
+							'',
+						name:
+							row.children[7 - distance].textContent?.trim() ??
+							'',
+					},
+					wholesale: Number(row.children[8 - distance].textContent),
+					remain: Number(row.children[9 - distance].textContent),
 					sessions: [],
 				};
 			}
