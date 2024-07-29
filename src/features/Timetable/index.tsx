@@ -35,6 +35,7 @@ import getTimetables from '../../utils/getTimetables';
 import SemesterSelector from '../SemesterSelector';
 import GroupsTable from './GroupsTable';
 import RenderTimetable from './RenderTimetable';
+import Link from 'antd/es/typography/Link';
 
 const lengthOptons: DefaultOptionType[] = [
 	{ value: 10, label: '10' },
@@ -348,7 +349,20 @@ const Timetable = () => {
 					type="error"
 					showIcon
 					message="Cảnh báo"
-					description="Hiện không có lịch học nào phù hợp với điều kiện bạn đã chọn, hãy thử chọn lại các điều kiện"
+					description={
+						<Typography>
+							Hiện không có lịch học nào phù hợp với điều kiện bạn
+							đã chọn, hãy thử loại trừ các ngày bạn không muốn
+							học hoặc chọn thêm nhóm học phần.{' '}
+							<Link
+								href="https://ctu.thangved.com/docs"
+								target="_blank"
+								rel="noopener noreferrer"
+							>
+								Tài liệu hướng dẫn
+							</Link>
+						</Typography>
+					}
 				/>
 			)}
 		</div>
