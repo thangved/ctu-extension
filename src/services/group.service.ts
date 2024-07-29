@@ -56,14 +56,7 @@ export interface GroupType {
  * @description Service lấy thông tin lớp học phần
  */
 class GroupService {
-	/**
-	 * @description Trạng thái đăng nhập
-	 */
-	private logged: boolean;
-
-	constructor() {
-		this.logged = false;
-	}
+	constructor() {}
 
 	/**
 	 * @description Đăng nhập vào hệ thống
@@ -72,7 +65,6 @@ class GroupService {
 		await client.postForm('/htql/dkmh/student/dang_nhap.php', {
 			txtMatKhau: 'p',
 		});
-		this.logged = true;
 	}
 
 	/**
@@ -87,10 +79,7 @@ class GroupService {
 		year: string,
 		semester: string,
 	): Promise<Record<string, GroupType>> {
-		// Đăng nhập nếu chưa đăng nhập
-		if (!this.logged) {
-			await this.login();
-		}
+		await this.login();
 
 		// Lấy thông tin lớp học phần
 		year = year.split('-')[1];
