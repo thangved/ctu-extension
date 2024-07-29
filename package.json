@@ -20,7 +20,7 @@
 		"@types/esbuild-copy-static-files": "^0.1.3",
 		"@types/react": "^18.3.3",
 		"@types/react-dom": "^18.3.0",
-		"@typescript-eslint/eslint-plugin": "^7.8.0",
+		"@typescript-eslint/eslint-plugin": "^7.17.0",
 		"@typescript-eslint/parser": "^7.13.1",
 		"esbuild": "^0.21.5",
 		"esbuild-copy-static-files": "^0.1.0",
