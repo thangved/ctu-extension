@@ -123,7 +123,6 @@ const getColumns = (
 				<div
 					onClick={(event) => event.stopPropagation()}
 					style={{ maxWidth: 200 }}
-					role="button"
 				>
 					<Checkbox.Group
 						onChange={(checked) => {

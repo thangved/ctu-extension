@@ -12,7 +12,7 @@ export default function Footer({
 	lengthOptions,
 	maxLength,
 	setMaxLength,
-}: FooterProps) {
+}: Readonly<FooterProps>) {
 	return (
 		<Space>
 			<Typography.Text>Giới hạn tính</Typography.Text>
