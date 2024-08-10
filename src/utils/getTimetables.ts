@@ -48,6 +48,10 @@ function recursive(
 				);
 			}
 
+			if (!currentCourse.groups[filteredGroup]) {
+				continue;
+			}
+
 			const sessions = currentCourse.groups[filteredGroup].sessions;
 
 			let confilct = false;

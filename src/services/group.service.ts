@@ -34,6 +34,10 @@ export interface GroupType {
 	 * @description Mã lớp học phần
 	 */
 	id: string;
+	lecture: {
+		code?: string;
+		name?: string;
+	};
 	/**
 	 * @description Số lượng tín chỉ
 	 */
@@ -52,14 +56,7 @@ export interface GroupType {
  * @description Service lấy thông tin lớp học phần
  */
 class GroupService {
-	/**
-	 * @description Trạng thái đăng nhập
-	 */
-	private logged: boolean;
-
-	constructor() {
-		this.logged = false;
-	}
+	constructor() {}
 
 	/**
 	 * @description Đăng nhập vào hệ thống
@@ -82,10 +79,7 @@ class GroupService {
 		year: string,
 		semester: string,
 	): Promise<Record<string, GroupType>> {
-		// Đăng nhập nếu chưa đăng nhập
-		if (!this.logged) {
-			await this.login();
-		}
+		await this.login();
 
 		// Lấy thông tin lớp học phần
 		year = year.split('-')[1];
@@ -133,10 +127,18 @@ class GroupService {
 
 			if (!hashedGroups[groupId]) {
 				hashedGroups[groupId] = {
-					name: row.children[9 - distance].textContent?.trim() ?? '',
+					name: row.children[11 - distance].textContent?.trim() ?? '',
 					id: groupId,
-					wholesale: Number(row.children[6 - distance].textContent),
-					remain: Number(row.children[7 - distance].textContent),
+					lecture: {
+						code:
+							row.children[6 - distance].textContent?.trim() ??
+							'',
+						name:
+							row.children[7 - distance].textContent?.trim() ??
+							'',
+					},
+					wholesale: Number(row.children[8 - distance].textContent),
+					remain: Number(row.children[9 - distance].textContent),
 					sessions: [],
 				};
 			}
