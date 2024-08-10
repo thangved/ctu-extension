@@ -121,13 +121,11 @@ const StudyPlan = () => {
 						);
 					})
 				) : (
-					<>
-						<RenderTable
-							year={year}
-							semester={semester}
-							studyPlan={studyPlan[year]?.[semester]}
-						/>
-					</>
+					<RenderTable
+						year={year}
+						semester={semester}
+						studyPlan={studyPlan[year]?.[semester]}
+					/>
 				)}
 			</Content>
 		</>

@@ -1,20 +1,16 @@
 import {
 	DeleteOutlined,
 	InfoCircleOutlined,
-	InfoCircleTwoTone,
 	PlusOutlined,
 	SyncOutlined,
 } from '@ant-design/icons';
 import {
 	Alert,
-	AutoComplete,
 	Button,
 	Card,
 	Checkbox,
 	Flex,
 	Pagination,
-	Popover,
-	Space,
 	Table,
 	Tooltip,
 	Typography,
@@ -23,6 +19,7 @@ import {
 } from 'antd';
 import { DefaultOptionType } from 'antd/es/select';
 import { ColumnsType } from 'antd/es/table';
+import Link from 'antd/es/typography/Link';
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import courseService, {
 	CourseTypeWithGroups,
@@ -33,11 +30,11 @@ import timetableService, {
 } from '../../services/timetable.service';
 import getTimetables from '../../utils/getTimetables';
 import SemesterSelector from '../SemesterSelector';
+import Footer from './Footer';
 import GroupsTable from './GroupsTable';
 import RenderTimetable from './RenderTimetable';
-import Link from 'antd/es/typography/Link';
 
-const lengthOptons: DefaultOptionType[] = [
+const lengthOptions: DefaultOptionType[] = [
 	{ value: 10, label: '10' },
 	{ value: 100, label: '100' },
 	{ value: 1000, label: '1000' },
@@ -276,27 +273,13 @@ const Timetable = () => {
 				}}
 			/>
 			<Table
-				footer={() => {
-					return (
-						<Space>
-							<Typography.Text>Giới hạn tính</Typography.Text>
-							<AutoComplete
-								placeholder="Giới hạn tính"
-								value={maxLength}
-								style={{ width: 200 }}
-								options={lengthOptons}
-								onSelect={(value) => setMaxLength(value)}
-							/>
-
-							<Popover
-								title="Lưu ý"
-								content="Giới hạn quá cao có thể gây ra tình trạng tràn bộ nhớ"
-							>
-								<InfoCircleTwoTone />
-							</Popover>
-						</Space>
-					);
-				}}
+				footer={() => (
+					<Footer
+						lengthOptions={lengthOptions}
+						maxLength={maxLength}
+						setMaxLength={setMaxLength}
+					/>
+				)}
 				pagination={false}
 				size="small"
 				loading={loading}
