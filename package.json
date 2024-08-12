@@ -25,20 +25,20 @@
 		"esbuild-copy-static-files": "^0.1.0",
 		"eslint": "^8.57.0",
 		"eslint-plugin-react": "^7.35.0",
-		"husky": "^9.0.11",
+		"husky": "^9.1.4",
 		"nodemon": "^3.1.4",
-		"prettier": "^3.3.2",
+		"prettier": "^3.3.3",
 		"prop-types": "^15.8.1"
 	},
 	"dependencies": {
 		"@ant-design/icons": "^5.4.0",
-		"antd": "^5.20.0",
+		"antd": "^5.20.1",
 		"axios": "^1.7.3",
 		"highcharts": "^11.4.6",
 		"highcharts-react-official": "^3.2.1",
 		"react": "^18.3.1",
 		"react-dom": "^18.3.1",
 		"typescript": "^5.5.4",
-		"zip-a-folder": "^3.1.6"
+		"zip-a-folder": "^3.1.7"
 	}
 }
