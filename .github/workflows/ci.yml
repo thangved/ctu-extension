@@ -1,22 +1,13 @@
 name: npm audit
 
 on:
-    pull_request:
-    push:
-        branches:
-            - main
+    - push
+    - pull_request
 jobs:
-    scan:
-        name: npm audit
+    install:
         runs-on: ubuntu-latest
+
         steps:
-            - uses: actions/checkout@v3
-            - name: install dependencies
-              run: npm ci
-            - uses: oke-py/npm-audit-action@v2
+            - uses: pnpm/action-setup@v4
               with:
-                  audit_level: moderate
-                  github_token: ${{ secrets.GITHUB_TOKEN }}
-                  issue_assignees: oke-py
-                  issue_labels: vulnerability,test
-                  dedupe_issues: true
+                  version: 9
