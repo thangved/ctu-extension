@@ -56,8 +56,8 @@ const RenderTimetable = ({
 			const _timetable: TimetableSemesterType = {};
 
 			for (const courseCode in timetable) {
+				if (!timetable[courseCode]) continue;
 				const groupId = timetable[courseCode];
-
 				_timetable[courseCode] = [groupId];
 			}
 
