@@ -131,6 +131,7 @@ const getColumns = (
 			return (
 				<div
 					onClick={(event) => event.stopPropagation()}
+					role="button"
 					style={{ maxWidth: 200 }}
 				>
 					<Checkbox.Group
