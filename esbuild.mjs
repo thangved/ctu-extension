@@ -1,7 +1,7 @@
-import * as esbuild from 'esbuild';
+import { build } from 'esbuild';
 import copyStaticFiles from 'esbuild-copy-static-files';
 
-esbuild.build({
+build({
 	entryPoints: ['src/index.tsx'],
 	bundle: true,
 	outfile: 'dist/bundle.js',

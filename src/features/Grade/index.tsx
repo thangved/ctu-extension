@@ -1,13 +1,19 @@
 import { Card, Col, Row, Spin, message } from 'antd';
-import * as Highcharts from 'highcharts';
+import Highcharts from 'highcharts';
 import { HighchartsReact } from 'highcharts-react-official';
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import gradeService from '../../services/grade.service';
 import { Grade, Subject } from '../../utils/parserScoresHtml';
-import React = require('react');
 
 const scoreTextList = ['A', 'B+', 'B', 'C+', 'C', 'D+', 'D', 'F'];
 
+/**
+ * @description Count score text
+ * @param scoreText - Score text
+ * @param grades - List of grades
+ * @param withCredits - Count with credits
+ * @returns Count of score text
+ */
 function countScoreText(
 	scoreText: string,
 	grades: Grade[],
@@ -27,6 +33,10 @@ function countScoreText(
 	}, 0);
 }
 
+/**
+ * @description Grade component
+ * @returns Grade component
+ */
 export default function Grade() {
 	const [isLoading, setIsLoading] = useState(false);
 	const [grades, setGrades] = useState<Grade[]>([]);
@@ -63,8 +73,6 @@ export default function Grade() {
 			),
 		[grades],
 	);
-
-	
 
 	return (
 		<Card title="Điểm học tập qua các học kỳ">

@@ -16,6 +16,11 @@ export type Grade = {
 	subjects: Subject[];
 };
 
+/**
+ * @description Parse the scores page HTML to get the grades
+ * @param scoreHtml - HTML string of the scores page
+ * @returns Array of Grade objects
+ */
 export default function parserScoresHtml(scoreHtml: string): Grade[] {
 	const dom = new DOMParser().parseFromString(scoreHtml, 'text/html');
 
@@ -32,10 +37,7 @@ export default function parserScoresHtml(scoreHtml: string): Grade[] {
 		const firstRowCenterCell = firstRow.querySelectorAll('td')[1];
 
 		const semester = firstRowCenterCell.textContent.split(' ')[4];
-		const year =
-			firstRowCenterCell.textContent.split(' ')[7] +
-			' - ' +
-			firstRowCenterCell.textContent.split(' ')[9];
+		const year = `${firstRowCenterCell.textContent.split(' ')[7]} - ${firstRowCenterCell.textContent.split(' ')[9]}`;
 
 		const subjectsTable = tables[i].querySelector('table');
 		const subjectRows = subjectsTable.querySelectorAll('tr');

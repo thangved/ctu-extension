@@ -10,6 +10,11 @@ export interface SemesterSelectorProps {
 	onChange?: (year: string, semester: string) => void;
 }
 
+/**
+ *
+ * @param props - Props of SemesterSelector
+ * @returns
+ */
 const SemesterSelector = ({ onChange }: SemesterSelectorProps) => {
 	const [studyPlan, setStudyPlan] = useState<StudyPlanType>({});
 	const [year, setYear] = useState<string>('');

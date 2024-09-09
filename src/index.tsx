@@ -15,6 +15,9 @@ window.addEventListener('load', () => {
 	}
 });
 
+/**
+ * @description Mount app
+ */
 async function mountApp() {
 	const pageHeader = document.getElementById('page-header');
 

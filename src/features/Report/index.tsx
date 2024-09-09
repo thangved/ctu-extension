@@ -1,5 +1,9 @@
 import { Button, Typography } from 'antd';
 
+/**
+ * @description Report component
+ * @returns Report component
+ */
 const Report = () => {
 	return (
 		<div>
