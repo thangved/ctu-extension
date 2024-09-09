@@ -56,8 +56,6 @@ export interface GroupType {
  * @description Service lấy thông tin lớp học phần
  */
 class GroupService {
-	constructor() {}
-
 	/**
 	 * @description Đăng nhập vào hệ thống
 	 */
