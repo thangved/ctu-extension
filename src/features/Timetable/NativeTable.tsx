@@ -17,6 +17,10 @@ const RenderRow = ({ row }: { row: number }) => {
 	);
 };
 
+/**
+ * @description Native table component
+ * @returns Native table component
+ */
 export default function NativeTable() {
 	return (
 		<>
