@@ -217,7 +217,7 @@ export default function Grade() {
 					</Col>
 
 					<Col md={24} lg={12}>
-						{!!subjects.length && (
+						{Boolean(subjects.length) && (
 							<HighchartsReact
 								highcharts={Highcharts}
 								options={{
