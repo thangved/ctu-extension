@@ -132,6 +132,7 @@ const getColumns = (
 				<div
 					onClick={(event) => event.stopPropagation()}
 					role="button"
+					aria-hidden
 					style={{ maxWidth: 200 }}
 				>
 					<Checkbox.Group
