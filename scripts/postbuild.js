@@ -18,8 +18,6 @@ const main = async () => {
 
 		const zipName = `${name}-v${version}.zip`;
 
-		
-
 		await zip(
 			path.resolve(__dirname, './dist/'),
 			path.resolve(__dirname, `./${zipName}`),
