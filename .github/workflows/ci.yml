@@ -1,0 +1,13 @@
+name: npm audit
+
+on:
+    - push
+    - pull_request
+jobs:
+    install:
+        runs-on: ubuntu-latest
+
+        steps:
+            - uses: pnpm/action-setup@v4
+              with:
+                  version: 9
