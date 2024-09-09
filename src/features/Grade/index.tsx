@@ -1,5 +1,5 @@
 import { Card, Col, Row, Spin, message } from 'antd';
-import * as Highcharts from 'highcharts';
+import Highcharts from 'highcharts';
 import { HighchartsReact } from 'highcharts-react-official';
 import React, { useEffect, useState } from 'react';
 import gradeService from '../../services/grade.service';
