@@ -16,6 +16,11 @@ export interface RenderTimetableProps {
 	semester: string;
 }
 
+/**
+ * @description Render row component
+ * @param props - Props of RenderRow
+ * @returns Render row component
+ */
 const RenderRow = ({ row }: { row: number }) => {
 	return (
 		<tr>
@@ -30,6 +35,11 @@ const RenderRow = ({ row }: { row: number }) => {
 	);
 };
 
+/**
+ * @description Render timetable component
+ * @param props - Props of RenderTimetable
+ * @returns Render timetable component
+ */
 const RenderTimetable = ({
 	timetable,
 	courses,
@@ -38,6 +48,9 @@ const RenderTimetable = ({
 }: RenderTimetableProps) => {
 	const tableRef = useRef<HTMLTableElement>(null);
 
+	/**
+	 * @description Select timetable
+	 */
 	const handleSelectTimetable = async () => {
 		try {
 			const _timetable: TimetableSemesterType = {};
@@ -56,6 +69,9 @@ const RenderTimetable = ({
 		}
 	};
 
+	/**
+	 * @description Reset timetable
+	 */
 	const handleReset = async () => {
 		try {
 			await timetableService.setSemester(year, semester, {});

@@ -48,6 +48,15 @@ const lengthOptions: DefaultOptionType[] = [
 	{ value: 500000, label: '500000' },
 ];
 
+/**
+ * @description Get columns
+ * @param filter - Filter
+ * @param year - Year
+ * @param semester - Semester
+ * @param excepts - Excepts
+ * @param courses - List of courses
+ * @returns Columns
+ */
 const getColumns = (
 	filter: Record<string, string[]>,
 	year: string,
@@ -179,6 +188,9 @@ const getColumns = (
 	},
 ];
 
+/**
+ * @description Timetable
+ */
 const Timetable = () => {
 	const [year, setYear] = useState<string>('');
 	const [semester, setSemester] = useState<string>('');
@@ -235,6 +247,13 @@ const Timetable = () => {
 		}
 	}, [filter, courses, excepts, maxLength]);
 
+	const handleChangePage = useCallback((page: number) => setPage(page), []);
+	const getRowClassName = useCallback(
+		(record: CourseTypeWithGroups) =>
+			excepts[record.code] ? 'ttb-removed' : '',
+		[excepts],
+	);
+
 	useEffect(() => {
 		if (!year || !semester) return;
 
@@ -244,6 +263,9 @@ const Timetable = () => {
 	}, [year, semester]);
 
 	useEffect(() => {
+		/**
+		 * @description Handle change
+		 */
 		const handler = async () => {
 			setPage(1);
 			await fetchTimetable(year, semester);
@@ -283,9 +305,7 @@ const Timetable = () => {
 				pagination={false}
 				size="small"
 				loading={loading}
-				rowClassName={(record) =>
-					excepts[record.code] ? 'ttb-removed' : ''
-				}
+				rowClassName={getRowClassName}
 				columns={getColumns(filter, year, semester, excepts, courses)}
 				rowKey="code"
 				dataSource={courses}
@@ -311,7 +331,7 @@ const Timetable = () => {
 						pageSize={1}
 						showQuickJumper
 						showSizeChanger={false}
-						onChange={(page) => setPage(page)}
+						onChange={handleChangePage}
 					/>
 				</Card>
 			)}

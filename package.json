@@ -5,7 +5,7 @@
 	"type": "module",
 	"scripts": {
 		"format": "prettier --write .",
-		"prepare": "husky install",
+		"prepare": "husky",
 		"dev": "nodemon --exec \"node esbuild.mjs\" --ignore dist --watch",
 		"build": "node esbuild.mjs",
 		"postbuild": "node scripts/postbuild",

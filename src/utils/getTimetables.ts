@@ -6,6 +6,17 @@ type DayHashType = Record<string, Record<string, boolean>>;
 
 let maxLength = 1000;
 
+/**
+ * @description Get all possible timetables
+ * @param dayHash - Day hash
+ * @param filter - Filter by course code and group id
+ * @param calendar - List of courses
+ * @param coursesCode - List of course code
+ * @param currentIndex - Current index
+ * @param result - Result
+ * @param excepts - Except courses
+ * @returns All possible timetables
+ */
 function recursive(
 	dayHash: DayHashType[],
 	filter: TimetableSemesterType,
@@ -95,6 +106,14 @@ function recursive(
 	);
 }
 
+/**
+ * @description Get all possible timetables
+ * @param filter - Filter by course code and group id
+ * @param calendar - List of courses
+ * @param excepts - Except courses
+ * @param maximun - Maximun timetables
+ * @returns All possible timetables
+ */
 export default function getTimetables(
 	filter: TimetableSemesterType,
 	calendar: CourseTypeWithGroups[],
