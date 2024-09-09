@@ -64,7 +64,7 @@ export default function Grade() {
 		[grades],
 	);
 
-	console.log(subjects);
+	
 
 	return (
 		<Card title="Điểm học tập qua các học kỳ">
