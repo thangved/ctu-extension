@@ -14,6 +14,11 @@ interface RenderTableProps {
 	studyPlan: CourseType[];
 }
 
+/**
+ * @description Render table component
+ * @param props - Props of RenderTable
+ * @returns Render table component
+ */
 const RenderTable = ({ year, semester, studyPlan }: RenderTableProps) => {
 	return (
 		<Card style={{ marginTop: 10 }}>
@@ -47,6 +52,10 @@ const RenderTable = ({ year, semester, studyPlan }: RenderTableProps) => {
 	);
 };
 
+/**
+ * @description Study plan component
+ * @returns Study plan component
+ */
 const StudyPlan = () => {
 	const [studyPlan, setStudyPlan] = useState<StudyPlanType>({});
 	const [view, setView] = useState<'all' | 'semester'>('semester');

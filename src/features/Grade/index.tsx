@@ -8,6 +8,13 @@ import React = require('react');
 
 const scoreTextList = ['A', 'B+', 'B', 'C+', 'C', 'D+', 'D', 'F'];
 
+/**
+ * @description Count score text
+ * @param scoreText - Score text
+ * @param grades - List of grades
+ * @param withCredits - Count with credits
+ * @returns Count of score text
+ */
 function countScoreText(
 	scoreText: string,
 	grades: Grade[],
@@ -27,6 +34,10 @@ function countScoreText(
 	}, 0);
 }
 
+/**
+ * @description Grade component
+ * @returns Grade component
+ */
 export default function Grade() {
 	const [isLoading, setIsLoading] = useState(false);
 	const [grades, setGrades] = useState<Grade[]>([]);

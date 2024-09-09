@@ -11,6 +11,11 @@ interface GroupsTableProps {
 	semester: string;
 }
 
+/**
+ * @description Groups table component
+ * @param props - Props of GroupsTable
+ * @returns Groups table component
+ */
 const GroupsTable = ({
 	record,
 	year,

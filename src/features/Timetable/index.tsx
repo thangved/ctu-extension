@@ -51,6 +51,15 @@ const lengthOptons: DefaultOptionType[] = [
 	{ value: 500000, label: '500000' },
 ];
 
+/**
+ * @description Get columns
+ * @param filter - Filter
+ * @param year - Year
+ * @param semester - Semester
+ * @param excepts - Excepts
+ * @param courses - List of courses
+ * @returns Columns
+ */
 const getColumns = (
 	filter: Record<string, string[]>,
 	year: string,
@@ -182,6 +191,9 @@ const getColumns = (
 	},
 ];
 
+/**
+ * @description Timetable
+ */
 const Timetable = () => {
 	const [year, setYear] = useState<string>('');
 	const [semester, setSemester] = useState<string>('');
@@ -247,6 +259,9 @@ const Timetable = () => {
 	}, [year, semester]);
 
 	useEffect(() => {
+		/**
+		 * @description Handle change
+		 */
 		const handler = async () => {
 			setPage(1);
 			await fetchTimetable(year, semester);

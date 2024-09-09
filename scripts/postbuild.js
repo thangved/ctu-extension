@@ -4,6 +4,9 @@ import { zip } from 'zip-a-folder';
 
 const __dirname = path.resolve(path.dirname(''));
 
+/**
+ * @description Post build script to create a zip file of the build folder
+ */
 const main = async () => {
 	try {
 		const manifest = JSON.parse(
