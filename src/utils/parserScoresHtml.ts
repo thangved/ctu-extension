@@ -37,10 +37,7 @@ export default function parserScoresHtml(scoreHtml: string): Grade[] {
 		const firstRowCenterCell = firstRow.querySelectorAll('td')[1];
 
 		const semester = firstRowCenterCell.textContent.split(' ')[4];
-		const year =
-			firstRowCenterCell.textContent.split(' ')[7] +
-			' - ' +
-			firstRowCenterCell.textContent.split(' ')[9];
+		const year = `${firstRowCenterCell.textContent.split(' ')[7]} - ${firstRowCenterCell.textContent.split(' ')[9]}`;
 
 		const subjectsTable = tables[i].querySelector('table');
 		const subjectRows = subjectsTable.querySelectorAll('tr');
