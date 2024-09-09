@@ -8,6 +8,11 @@ export type FooterProps = {
 	lengthOptions: DefaultOptionType[];
 };
 
+/**
+ * @description Footer component of the timetable page
+ * @param props - FooterProps
+ * @returns React component
+ */
 export default function Footer({
 	lengthOptions,
 	maxLength,

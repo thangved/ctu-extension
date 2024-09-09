@@ -16,6 +16,11 @@ export type Grade = {
 	subjects: Subject[];
 };
 
+/**
+ * @description Parse the scores page HTML to get the grades
+ * @param scoreHtml - HTML string of the scores page
+ * @returns Array of Grade objects
+ */
 export default function parserScoresHtml(scoreHtml: string): Grade[] {
 	const dom = new DOMParser().parseFromString(scoreHtml, 'text/html');
 
