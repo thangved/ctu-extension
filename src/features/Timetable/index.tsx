@@ -250,6 +250,13 @@ const Timetable = () => {
 		}
 	}, [filter, courses, excepts, maxLength]);
 
+	const handleChangePage = useCallback((page: number) => setPage(page), []);
+	const getRowClassName = useCallback(
+		(record: CourseTypeWithGroups) =>
+			excepts[record.code] ? 'ttb-removed' : '',
+		[excepts],
+	);
+
 	useEffect(() => {
 		if (!year || !semester) return;
 
@@ -300,7 +307,7 @@ const Timetable = () => {
 								value={maxLength}
 								style={{ width: 200 }}
 								options={lengthOptons}
-								onSelect={(value) => setMaxLength(value)}
+								onSelect={setMaxLength}
 							/>
 
 							<Popover
@@ -315,9 +322,7 @@ const Timetable = () => {
 				pagination={false}
 				size="small"
 				loading={loading}
-				rowClassName={(record) =>
-					excepts[record.code] ? 'ttb-removed' : ''
-				}
+				rowClassName={getRowClassName}
 				columns={getColumns(filter, year, semester, excepts, courses)}
 				rowKey="code"
 				dataSource={courses}
@@ -343,7 +348,7 @@ const Timetable = () => {
 						pageSize={1}
 						showQuickJumper
 						showSizeChanger={false}
-						onChange={(page) => setPage(page)}
+						onChange={handleChangePage}
 					/>
 				</Card>
 			)}
