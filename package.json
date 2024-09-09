@@ -1,8 +1,7 @@
 {
 	"name": "ctu-extension",
 	"version": "1.0.0",
-	"description": "",
-	"main": "index.js",
+	"description": "A useful extension for CTU students",
 	"type": "module",
 	"scripts": {
 		"format": "prettier --write .",

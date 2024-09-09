@@ -103,25 +103,21 @@ const App = () => {
 	}, [activeKey]);
 
 	return (
-		<>
-			<Row>
-				<Col sm={4}></Col>
+		<Row>
+			<Col sm={4} />
 
-				<Col sm={16}>
-					<Content>
-						<Tabs
-							items={tabItems}
-							activeKey={activeKey}
-							onChange={(newActiveKey) =>
-								setActiveKey(newActiveKey)
-							}
-						/>
-					</Content>
-				</Col>
+			<Col sm={16}>
+				<Content>
+					<Tabs
+						items={tabItems}
+						activeKey={activeKey}
+						onChange={(newActiveKey) => setActiveKey(newActiveKey)}
+					/>
+				</Content>
+			</Col>
 
-				<Col sm={4}></Col>
-			</Row>
-		</>
+			<Col sm={4} />
+		</Row>
 	);
 };
 

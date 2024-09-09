@@ -66,40 +66,34 @@ const GroupsTable = ({
 				title: <Typography.Text>Thời gian</Typography.Text>,
 				render(_, record) {
 					return (
-						<>
-							<Timeline
-								mode="left"
-								style={{ padding: 10 }}
-								items={record.sessions.map(
-									(session, index) => ({
-										label: `Thứ ${session.day}`,
-										children: (
-											<div
-												style={{
-													display: 'flex',
-													flexDirection: 'column',
-													gap: 5,
-													background: '#ddd',
-													padding: 10,
-													borderRadius: 10,
-												}}
-											>
-												<Typography.Text strong>
-													{session.location}
-												</Typography.Text>
-												<Typography.Text>
-													Tiết {session.start} -{' '}
-													{session.start +
-														session.lesson -
-														1}
-												</Typography.Text>
-											</div>
-										),
-										key: index,
-									}),
-								)}
-							/>
-						</>
+						<Timeline
+							mode="left"
+							style={{ padding: 10 }}
+							items={record.sessions.map((session, index) => ({
+								label: `Thứ ${session.day}`,
+								children: (
+									<div
+										style={{
+											display: 'flex',
+											flexDirection: 'column',
+											gap: 5,
+											background: '#ddd',
+											padding: 10,
+											borderRadius: 10,
+										}}
+									>
+										<Typography.Text strong>
+											{session.location}
+										</Typography.Text>
+										<Typography.Text>
+											Tiết {session.start} -{' '}
+											{session.start + session.lesson - 1}
+										</Typography.Text>
+									</div>
+								),
+								key: index,
+							}))}
+						/>
 					);
 				},
 				width: 300,
