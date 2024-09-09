@@ -266,7 +266,7 @@ export default function Grade() {
 							/>
 						)}
 					</Col>
-					<Col xs={24}></Col>
+					<Col xs={24} />
 				</Row>
 			)}
 		</Card>

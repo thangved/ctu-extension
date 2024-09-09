@@ -104,7 +104,7 @@ const App = () => {
 
 	return (
 		<Row>
-			<Col sm={4}></Col>
+			<Col sm={4} />
 
 			<Col sm={16}>
 				<Content>
@@ -116,7 +116,7 @@ const App = () => {
 				</Content>
 			</Col>
 
-			<Col sm={4}></Col>
+			<Col sm={4} />
 		</Row>
 	);
 };
