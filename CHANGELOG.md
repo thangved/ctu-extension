@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.2.1](https://github.com/thangved/ctu-extension/compare/v3.2.0...v3.2.1) (2024-09-09)
+
+
+### Bug Fixes
+
+* remove unexpected empty constructor ([0dec2c1](https://github.com/thangved/ctu-extension/commit/0dec2c1abfd79e63fd410b6b23cfe4c91a5cad56))
+
 ## [3.2.0](https://github.com/thangved/ctu-extension/compare/v3.1.0...v3.2.0) (2024-08-10)
 
 ### Features
