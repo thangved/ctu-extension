@@ -25,12 +25,12 @@ const RenderRow = ({ row }: { row: number }) => {
 	return (
 		<tr>
 			<td>{row}</td>
-			<td className={`ttb-2-${row}`}></td>
-			<td className={`ttb-3-${row}`}></td>
-			<td className={`ttb-4-${row}`}></td>
-			<td className={`ttb-5-${row}`}></td>
-			<td className={`ttb-6-${row}`}></td>
-			<td className={`ttb-7-${row}`}></td>
+			<td className={`ttb-2-${row}`} />
+			<td className={`ttb-3-${row}`} />
+			<td className={`ttb-4-${row}`} />
+			<td className={`ttb-5-${row}`} />
+			<td className={`ttb-6-${row}`} />
+			<td className={`ttb-7-${row}`} />
 		</tr>
 	);
 };

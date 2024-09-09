@@ -18,7 +18,7 @@ const main = async () => {
 
 		const zipName = `${name}-v${version}.zip`;
 
-		console.log('Post build: ', zipName);
+		
 
 		await zip(
 			path.resolve(__dirname, './dist/'),
