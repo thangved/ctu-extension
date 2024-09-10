@@ -24,7 +24,7 @@
 		"esbuild": "^0.23.1",
 		"esbuild-copy-static-files": "^0.1.0",
 		"eslint": "^8.57.0",
-		"eslint-plugin-react": "^7.35.0",
+		"eslint-plugin-react": "^7.35.2",
 		"husky": "^9.1.5",
 		"nodemon": "^3.1.4",
 		"prettier": "^3.3.3",
@@ -32,7 +32,7 @@
 	},
 	"dependencies": {
 		"@ant-design/icons": "^5.4.0",
-		"antd": "^5.20.5",
+		"antd": "^5.20.6",
 		"axios": "^1.7.7",
 		"highcharts": "^11.4.8",
 		"highcharts-react-official": "^3.2.1",
