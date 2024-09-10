@@ -64,8 +64,57 @@ const getColumns = (
 	excepts: Record<string, boolean>,
 	courses: CourseTypeWithGroups[],
 ): ColumnsType<CourseTypeWithGroups> => {
-	const stopPropagation = (event: React.MouseEvent<HTMLElement>) =>
+	/**
+	 * @description Stop propagation
+	 * @returns - Stop propagation
+	 */
+	const getStopPropagation = () => (event: React.MouseEvent<HTMLElement>) =>
 		event.stopPropagation();
+
+	/**
+	 * @description Get handle toggle
+	 * @param code - Code
+	 * @returns Handle toggle
+	 */
+	const getHandleToggle =
+		(code: string) =>
+		async (event: React.MouseEvent<HTMLElement, MouseEvent>) => {
+			event.stopPropagation();
+			await exceptService.toggle(year, semester, code);
+		};
+
+	/**
+	 * @description Get handle check day
+	 * @param code - Group code
+	 * @returns Handle check day
+	 */
+	const getHandleCheckDay = (code: string) => (checked: string[]) => {
+		const groups = courses.find((e) => e.code === code).groups;
+
+		const _filter = Object.keys(groups)
+			.map((key) => groups[key])
+			.filter((group) => {
+				const sessions = group.sessions;
+
+				return sessions.every(
+					(session) => !checked.includes(session.day),
+				);
+			})
+			.map((group) => group.id);
+
+		timetableService.set(year, semester, code, _filter);
+	};
+
+	/**
+	 * @description Get handle reset
+	 * @param code - Group code
+	 * @returns Handle reset
+	 */
+	const getHandleReset =
+		(code: string) => async (event: React.MouseEvent) => {
+			event.stopPropagation();
+			await timetableService.set(year, semester, code, []);
+		};
 
 	return [
 		{
@@ -94,18 +143,13 @@ const getColumns = (
 			title: <Typography.Text>Đã chọn</Typography.Text>,
 			render(code) {
 				const isFiltered = filter[code]?.length > 0;
-				const handleClick = async (event: React.MouseEvent) => {
-					event.stopPropagation();
-					await timetableService.set(year, semester, code, []);
-				};
-
 				return isFiltered ? (
 					<>
 						{filter[code]?.join(', ')}{' '}
 						<Button
 							size="small"
 							icon={<SyncOutlined />}
-							onClick={handleClick}
+							onClick={getHandleReset(code)}
 						>
 							Đặt lại
 						</Button>
@@ -128,30 +172,14 @@ const getColumns = (
 				</Flex>
 			),
 			render(code) {
-				const handleCheckboxChange = (checked: string[]) => {
-					const groups = courses.find((e) => e.code === code).groups;
-
-					const _filter = Object.keys(groups)
-						.map((key) => groups[key])
-						.filter((group) => {
-							const sessions = group.sessions;
-
-							return sessions.every(
-								(session) => !checked.includes(session.day),
-							);
-						})
-						.map((group) => group.id);
-
-					timetableService.set(year, semester, code, _filter);
-				};
 				return (
 					<div
-						onClick={stopPropagation}
+						onClick={getStopPropagation()}
 						role="button"
 						aria-hidden
 						style={{ maxWidth: 200 }}
 					>
-						<Checkbox.Group onChange={handleCheckboxChange}>
+						<Checkbox.Group onChange={getHandleCheckDay(code)}>
 							<Checkbox value="2">Thứ 2</Checkbox>
 							<Checkbox value="3">Thứ 3</Checkbox>
 							<Checkbox value="4">Thứ 4</Checkbox>
@@ -168,19 +196,13 @@ const getColumns = (
 			title: 'Loại trừ',
 			render(code) {
 				const isExcept = excepts[code];
-				const handleClick = async (
-					event: React.MouseEvent<HTMLElement, MouseEvent>,
-				) => {
-					event.stopPropagation();
-					return await exceptService.toggle(year, semester, code);
-				};
 
 				return (
 					<Button
 						type={isExcept ? 'primary' : 'default'}
 						icon={isExcept ? <PlusOutlined /> : <DeleteOutlined />}
 						danger={!isExcept}
-						onClick={handleClick}
+						onClick={getHandleToggle(code)}
 					>
 						{isExcept ? 'Đã loại' : 'Loại'}
 					</Button>
