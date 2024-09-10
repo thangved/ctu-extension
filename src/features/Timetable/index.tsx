@@ -63,132 +63,132 @@ const getColumns = (
 	semester: string,
 	excepts: Record<string, boolean>,
 	courses: CourseTypeWithGroups[],
-): ColumnsType<CourseTypeWithGroups> => [
-	{
-		dataIndex: 'code',
-		title: <Typography.Text>Mã học phần</Typography.Text>,
-		render(code) {
-			return <Typography.Text>{code}</Typography.Text>;
-		},
-	},
-	{
-		dataIndex: 'name',
-		title: <Typography.Text>Tên học phần</Typography.Text>,
-		render(name) {
-			return <Typography.Text>{name}</Typography.Text>;
-		},
-	},
-	{
-		dataIndex: 'credit',
-		title: <Typography.Text>Số tín chỉ</Typography.Text>,
-		render(credit) {
-			return <Typography.Text>{credit}</Typography.Text>;
-		},
-	},
-	{
-		dataIndex: 'code',
-		title: <Typography.Text>Đã chọn</Typography.Text>,
-		render(code) {
-			const isFiltered = filter[code]?.length > 0;
+): ColumnsType<CourseTypeWithGroups> => {
+	const stopPropagation = (event: React.MouseEvent<HTMLElement>) =>
+		event.stopPropagation();
 
-			return isFiltered ? (
-				<>
-					{filter[code]?.join(', ')}{' '}
-					<Button
-						size="small"
-						icon={<SyncOutlined />}
-						onClick={async (event) => {
-							event.stopPropagation();
-							await timetableService.set(
-								year,
-								semester,
-								code,
-								[],
+	return [
+		{
+			dataIndex: 'code',
+			title: <Typography.Text>Mã học phần</Typography.Text>,
+			render(code) {
+				return <Typography.Text>{code}</Typography.Text>;
+			},
+		},
+		{
+			dataIndex: 'name',
+			title: <Typography.Text>Tên học phần</Typography.Text>,
+			render(name) {
+				return <Typography.Text>{name}</Typography.Text>;
+			},
+		},
+		{
+			dataIndex: 'credit',
+			title: <Typography.Text>Số tín chỉ</Typography.Text>,
+			render(credit) {
+				return <Typography.Text>{credit}</Typography.Text>;
+			},
+		},
+		{
+			dataIndex: 'code',
+			title: <Typography.Text>Đã chọn</Typography.Text>,
+			render(code) {
+				const isFiltered = filter[code]?.length > 0;
+				const handleClick = async (event: React.MouseEvent) => {
+					event.stopPropagation();
+					await timetableService.set(year, semester, code, []);
+				};
+
+				return isFiltered ? (
+					<>
+						{filter[code]?.join(', ')}{' '}
+						<Button
+							size="small"
+							icon={<SyncOutlined />}
+							onClick={handleClick}
+						>
+							Đặt lại
+						</Button>
+					</>
+				) : (
+					<>Không có nhóm nào được chọn</>
+				);
+			},
+		},
+		{
+			dataIndex: 'code',
+			title: (
+				<Flex align="center" gap={10}>
+					<Typography.Text>Loại trừ</Typography.Text>
+					<Tooltip title="Chọn các ngày bạn không muốn học">
+						<Button shape="circle" size="small" type="text">
+							<InfoCircleOutlined />
+						</Button>
+					</Tooltip>
+				</Flex>
+			),
+			render(code) {
+				const handleCheckboxChange = (checked: string[]) => {
+					const groups = courses.find((e) => e.code === code).groups;
+
+					const _filter = Object.keys(groups)
+						.map((key) => groups[key])
+						.filter((group) => {
+							const sessions = group.sessions;
+
+							return sessions.every(
+								(session) => !checked.includes(session.day),
 							);
-						}}
+						})
+						.map((group) => group.id);
+
+					timetableService.set(year, semester, code, _filter);
+				};
+				return (
+					<div
+						onClick={stopPropagation}
+						role="button"
+						aria-hidden
+						style={{ maxWidth: 200 }}
 					>
-						Đặt lại
-					</Button>
-				</>
-			) : (
-				<>Không có nhóm nào được chọn</>
-			);
+						<Checkbox.Group onChange={handleCheckboxChange}>
+							<Checkbox value="2">Thứ 2</Checkbox>
+							<Checkbox value="3">Thứ 3</Checkbox>
+							<Checkbox value="4">Thứ 4</Checkbox>
+							<Checkbox value="5">Thứ 5</Checkbox>
+							<Checkbox value="6">Thứ 6</Checkbox>
+							<Checkbox value="7">Thứ 7</Checkbox>
+						</Checkbox.Group>
+					</div>
+				);
+			},
 		},
-	},
-	{
-		dataIndex: 'code',
-		title: (
-			<Flex align="center" gap={10}>
-				<Typography.Text>Loại trừ</Typography.Text>
-				<Tooltip title="Chọn các ngày bạn không muốn học">
-					<Button shape="circle" size="small" type="text">
-						<InfoCircleOutlined />
-					</Button>
-				</Tooltip>
-			</Flex>
-		),
-		render(code) {
-			return (
-				<div
-					onClick={(event) => event.stopPropagation()}
-					role="button"
-					aria-hidden
-					style={{ maxWidth: 200 }}
-				>
-					<Checkbox.Group
-						onChange={(checked) => {
-							const groups = courses.find(
-								(e) => e.code === code,
-							).groups;
+		{
+			dataIndex: 'code',
+			title: 'Loại trừ',
+			render(code) {
+				const isExcept = excepts[code];
+				const handleClick = async (
+					event: React.MouseEvent<HTMLElement, MouseEvent>,
+				) => {
+					event.stopPropagation();
+					return await exceptService.toggle(year, semester, code);
+				};
 
-							const _filter = Object.keys(groups)
-								.map((key) => groups[key])
-								.filter((group) => {
-									const sessions = group.sessions;
-
-									return sessions.every(
-										(session) =>
-											!checked.includes(session.day),
-									);
-								})
-								.map((group) => group.id);
-
-							timetableService.set(year, semester, code, _filter);
-						}}
+				return (
+					<Button
+						type={isExcept ? 'primary' : 'default'}
+						icon={isExcept ? <PlusOutlined /> : <DeleteOutlined />}
+						danger={!isExcept}
+						onClick={handleClick}
 					>
-						<Checkbox value="2">Thứ 2</Checkbox>
-						<Checkbox value="3">Thứ 3</Checkbox>
-						<Checkbox value="4">Thứ 4</Checkbox>
-						<Checkbox value="5">Thứ 5</Checkbox>
-						<Checkbox value="6">Thứ 6</Checkbox>
-						<Checkbox value="7">Thứ 7</Checkbox>
-					</Checkbox.Group>
-				</div>
-			);
+						{isExcept ? 'Đã loại' : 'Loại'}
+					</Button>
+				);
+			},
 		},
-	},
-	{
-		dataIndex: 'code',
-		title: 'Loại trừ',
-		render(code) {
-			const isExcept = excepts[code];
-
-			return (
-				<Button
-					type={isExcept ? 'primary' : 'default'}
-					icon={isExcept ? <PlusOutlined /> : <DeleteOutlined />}
-					danger={!isExcept}
-					onClick={async (event) => {
-						event.stopPropagation();
-						return await exceptService.toggle(year, semester, code);
-					}}
-				>
-					{isExcept ? 'Đã loại' : 'Loại'}
-				</Button>
-			);
-		},
-	},
-];
+	];
+};
 
 /**
  * @description Timetable
@@ -279,6 +279,25 @@ const Timetable = () => {
 		return () => chrome.storage.sync.onChanged.removeListener(handler);
 	}, [year, semester]);
 
+	const getFooter = useCallback(
+		() => (
+			<Footer
+				lengthOptions={lengthOptions}
+				maxLength={maxLength}
+				setMaxLength={setMaxLength}
+			/>
+		),
+		[maxLength],
+	);
+
+	const handleChangeSemester = useCallback(
+		(year: string, semester: string) => {
+			setYear(year);
+			setSemester(semester);
+		},
+		[],
+	);
+
 	return (
 		<div>
 			{timetables.length > 50 && (
@@ -290,20 +309,9 @@ const Timetable = () => {
 				/>
 			)}
 
-			<SemesterSelector
-				onChange={(year, semester) => {
-					setYear(year);
-					setSemester(semester);
-				}}
-			/>
+			<SemesterSelector onChange={handleChangeSemester} />
 			<Table
-				footer={() => (
-					<Footer
-						lengthOptions={lengthOptions}
-						maxLength={maxLength}
-						setMaxLength={setMaxLength}
-					/>
-				)}
+				footer={getFooter}
 				pagination={false}
 				size="small"
 				loading={loading}

@@ -56,11 +56,7 @@ const SemesterSelector = ({ onChange }: SemesterSelectorProps) => {
 		<Space style={{ marginBottom: 10, marginTop: 10 }}>
 			<Typography>Năm học</Typography>
 
-			<Select
-				value={year}
-				placeholder="Năm học"
-				onChange={(value) => setYear(value)}
-			>
+			<Select value={year} placeholder="Năm học" onChange={setYear}>
 				{years.map((year) => (
 					<Select.Option key={year} value={year}>
 						{year}
@@ -73,7 +69,7 @@ const SemesterSelector = ({ onChange }: SemesterSelectorProps) => {
 			<Select
 				value={semester}
 				placeholder="Học kỳ"
-				onChange={(value) => setSemester(value)}
+				onChange={setSemester}
 			>
 				{semesters.map((semester) => (
 					<Select.Option key={semester} value={semester}>

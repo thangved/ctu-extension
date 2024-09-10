@@ -105,18 +105,19 @@ const GroupsTable = ({
 					const isSelected =
 						timetable[record.code] &&
 						timetable[record.code].indexOf(id) !== -1;
+					const handleClick = async () => {
+						await timetableService.toggle(
+							year,
+							semester,
+							record.code,
+							id,
+						);
+					};
 					return (
 						<Button
 							type="primary"
 							danger={isSelected}
-							onClick={async () =>
-								await timetableService.toggle(
-									year,
-									semester,
-									record.code,
-									id,
-								)
-							}
+							onClick={handleClick}
 						>
 							{isSelected ? 'Xóa' : 'Chọn'}
 						</Button>
