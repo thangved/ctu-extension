@@ -33,6 +33,7 @@ import SemesterSelector from '../SemesterSelector';
 import Footer from './Footer';
 import GroupsTable from './GroupsTable';
 import RenderTimetable from './RenderTimetable';
+import { GroupType } from '../../services/group.service';
 
 const lengthOptions: DefaultOptionType[] = [
 	{ value: 10, label: '10' },
@@ -91,15 +92,15 @@ const getColumns = (
 	const getHandleCheckDay = (code: string) => (checked: string[]) => {
 		const groups = courses.find((e) => e.code === code).groups;
 
+		const filterer = (group: GroupType) => {
+			return group.sessions.every(
+				(session) => !checked.includes(session.day),
+			);
+		};
+
 		const _filter = Object.keys(groups)
 			.map((key) => groups[key])
-			.filter((group) => {
-				const sessions = group.sessions;
-
-				return sessions.every(
-					(session) => !checked.includes(session.day),
-				);
-			})
+			.filter(filterer)
 			.map((group) => group.id);
 
 		timetableService.set(year, semester, code, _filter);
