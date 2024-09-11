@@ -111,7 +111,7 @@ const App = () => {
 					<Tabs
 						items={tabItems}
 						activeKey={activeKey}
-						onChange={(newActiveKey) => setActiveKey(newActiveKey)}
+						onChange={setActiveKey}
 					/>
 				</Content>
 			</Col>

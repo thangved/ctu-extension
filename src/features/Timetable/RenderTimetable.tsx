@@ -1,7 +1,7 @@
 import { SaveOutlined, SyncOutlined } from '@ant-design/icons';
 import { Button, Card, message } from 'antd';
 import ButtonGroup from 'antd/es/button/button-group';
-import { useEffect, useRef } from 'react';
+import { useCallback, useEffect, useRef } from 'react';
 import { renderToString } from 'react-dom/server';
 import COLORS from '../../constants/colors';
 import { CourseTypeWithGroups } from '../../services/course.service';
@@ -33,7 +33,7 @@ const RenderTimetable = ({
 	/**
 	 * @description Select timetable
 	 */
-	const handleSelectTimetable = async () => {
+	const handleSelectTimetable = useCallback(async () => {
 		try {
 			const _timetable: TimetableSemesterType = {};
 
@@ -49,12 +49,12 @@ const RenderTimetable = ({
 		} catch (error) {
 			message.error(error.message);
 		}
-	};
+	}, [year, semester, timetable]);
 
 	/**
 	 * @description Reset timetable
 	 */
-	const handleReset = async () => {
+	const handleReset = useCallback(async () => {
 		try {
 			await timetableService.setSemester(year, semester, {});
 
@@ -62,7 +62,7 @@ const RenderTimetable = ({
 		} catch (error) {
 			message.error(error.message);
 		}
-	};
+	}, [year, semester]);
 
 	useEffect(() => {
 		const courseCodes = Object.keys(timetable);

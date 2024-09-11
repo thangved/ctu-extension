@@ -26,7 +26,7 @@ export default function Footer({
 				value={maxLength}
 				style={{ width: 200 }}
 				options={lengthOptions}
-				onSelect={(value) => setMaxLength(value)}
+				onSelect={setMaxLength}
 			/>
 
 			<Popover
