@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.2.2](https://github.com/thangved/ctu-extension/compare/v3.2.1...v3.2.2) (2024-09-11)
+
+
+### Bug Fixes
+
+* avoid `.bind` or local function in jsx ([ec264da](https://github.com/thangved/ctu-extension/commit/ec264da8bc043617701bd2aef1e5becf4130ac1b))
+
 ## [3.2.1](https://github.com/thangved/ctu-extension/compare/v3.2.0...v3.2.1) (2024-09-09)
 
 ### Bug Fixes
