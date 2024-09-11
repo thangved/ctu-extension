@@ -74,6 +74,14 @@ const StudyPlan = () => {
 		fetchData();
 	}, []);
 
+	const handleChangeSemester = useCallback(
+		(year: string, semester: string) => {
+			setYear(year);
+			setSemester(semester);
+		},
+		[],
+	);
+
 	return (
 		<>
 			<Space>
@@ -91,19 +99,14 @@ const StudyPlan = () => {
 				<Select
 					value={view}
 					placeholder="Chế độ xem"
-					onChange={(value) => setView(value)}
+					onChange={setView}
 				>
 					<Select.Option value="all">Toàn bộ</Select.Option>
 					<Select.Option value="semester">Học kỳ</Select.Option>
 				</Select>
 
 				{view === 'semester' && (
-					<SemesterSelector
-						onChange={(year, semester) => {
-							setYear(year);
-							setSemester(semester);
-						}}
-					/>
+					<SemesterSelector onChange={handleChangeSemester} />
 				)}
 			</Space>
 
