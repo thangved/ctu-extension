@@ -92,6 +92,10 @@ const getColumns = (
 	const getHandleCheckDay = (code: string) => (checked: string[]) => {
 		const groups = courses.find((e) => e.code === code).groups;
 
+		/**
+		 * @description Drop all groups that have sessions on checked days
+		 * @param group - Group
+		 */
 		const filterer = (group: GroupType) => {
 			return group.sessions.every(
 				(session) => !checked.includes(session.day),
