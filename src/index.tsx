@@ -18,7 +18,7 @@ window.addEventListener('load', () => {
 /**
  * @description Mount app
  */
-async function mountApp() {
+function mountApp() {
 	const pageHeader = document.getElementById('page-header');
 
 	const rootId = Math.random().toString(36);
