@@ -2,17 +2,15 @@
 
 ## [3.2.3](https://github.com/thangved/ctu-extension/compare/v3.2.2...v3.2.3) (2024-09-12)
 
-
 ### Bug Fixes
 
-* make `mountApp` to sync function [#251](https://github.com/thangved/ctu-extension/issues/251) ([673e221](https://github.com/thangved/ctu-extension/commit/673e221ee737341c92586dfb5deebc90b2e03aad))
+-   make `mountApp` to sync function [#251](https://github.com/thangved/ctu-extension/issues/251) ([673e221](https://github.com/thangved/ctu-extension/commit/673e221ee737341c92586dfb5deebc90b2e03aad))
 
 ## [3.2.2](https://github.com/thangved/ctu-extension/compare/v3.2.1...v3.2.2) (2024-09-11)
 
-
 ### Bug Fixes
 
-* avoid `.bind` or local function in jsx ([ec264da](https://github.com/thangved/ctu-extension/commit/ec264da8bc043617701bd2aef1e5becf4130ac1b))
+-   avoid `.bind` or local function in jsx ([ec264da](https://github.com/thangved/ctu-extension/commit/ec264da8bc043617701bd2aef1e5becf4130ac1b))
 
 ## [3.2.1](https://github.com/thangved/ctu-extension/compare/v3.2.0...v3.2.1) (2024-09-09)
 
