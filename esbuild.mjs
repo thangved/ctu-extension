@@ -1,5 +1,8 @@
 import { build } from 'esbuild';
 import copyStaticFiles from 'esbuild-copy-static-files';
+import generateBanner from './scripts/utils/generateBanner.js';
+
+const banner = generateBanner();
 
 build({
 	entryPoints: ['src/index.tsx'],
@@ -13,4 +16,8 @@ build({
 			dest: './dist',
 		}),
 	],
+	banner: {
+		js: banner,
+		css: banner,
+	},
 });

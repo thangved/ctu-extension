@@ -8,31 +8,36 @@
 		"prepare": "husky",
 		"dev": "nodemon --exec \"node esbuild.mjs\" --ignore dist --watch",
 		"build": "node esbuild.mjs",
+		"prebuild": "node scripts/prebuild",
 		"postbuild": "node scripts/postbuild",
-		"lint": "eslint . --ext .js,.jsx,.ts,.tsx"
+		"lint": "eslint ."
 	},
 	"keywords": [],
-	"author": "",
+	"author": {
+		"email": "root@thangved.com",
+		"name": "Kim Minh Thang",
+		"url": "https://thangved.com"
+	},
 	"license": "ISC",
 	"devDependencies": {
 		"@types/chrome": "^0.0.272",
 		"@types/esbuild-copy-static-files": "^0.1.3",
-		"@types/react": "^18.3.6",
+		"@types/react": "^18.3.9",
 		"@types/react-dom": "^18.3.0",
-		"@typescript-eslint/eslint-plugin": "^7.18.0",
-		"@typescript-eslint/parser": "^7.18.0",
-		"esbuild": "^0.23.1",
+		"@typescript-eslint/eslint-plugin": "^8.7.0",
+		"@typescript-eslint/parser": "^8.7.0",
+		"esbuild": "^0.24.0",
 		"esbuild-copy-static-files": "^0.1.0",
-		"eslint": "^8.57.1",
+		"eslint": "^9.11.1",
 		"eslint-plugin-react": "^7.36.1",
 		"husky": "^9.1.6",
-		"nodemon": "^3.1.4",
+		"nodemon": "^3.1.7",
 		"prettier": "^3.3.3",
 		"prop-types": "^15.8.1"
 	},
 	"dependencies": {
-		"@ant-design/icons": "^5.4.0",
-		"antd": "^5.20.6",
+		"@ant-design/icons": "^5.5.1",
+		"antd": "^5.21.1",
 		"axios": "^1.7.7",
 		"highcharts": "^11.4.8",
 		"highcharts-react-official": "^3.2.1",
@@ -41,7 +46,7 @@
 		"typescript": "^5.6.2",
 		"zip-a-folder": "^3.1.7"
 	},
-	"packageManager": "pnpm@9.10.0+sha512.73a29afa36a0d092ece5271de5177ecbf8318d454ecd701343131b8ebc0c1a91c487da46ab77c8e596d6acf1461e3594ced4becedf8921b074fbd8653ed7051c",
+	"packageManager": "pnpm@9.11.0+sha512.0a203ffaed5a3f63242cd064c8fb5892366c103e328079318f78062f24ea8c9d50bc6a47aa3567cabefd824d170e78fa2745ed1f16b132e16436146b7688f19b",
 	"pnpm": {
 		"overrides": {
 			"braces@<3.0.3": ">=3.0.3",
