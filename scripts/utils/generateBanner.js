@@ -6,6 +6,10 @@ const rootPath = path.resolve(__dirname, '.');
 
 const packageJsonPath = path.resolve(rootPath, './package.json');
 
+/**
+ * Generate banner for the project
+ * @returns {string} banner
+ */
 export default function generateBanner() {
 	const packageJson = JSON.parse(fs.readFileSync(packageJsonPath));
 	const banner = `
@@ -25,6 +29,11 @@ ${generateDependencyList(packageJson.devDependencies)}
 	return banner;
 }
 
+/**
+ * Generate list of dependencies
+ * @param {Object} dependencies - Dependencies object
+ * @returns {string} list
+ */
 function generateDependencyList(dependencies = {}) {
 	const dependenciesName = Object.keys(dependencies);
 	const list = dependenciesName
