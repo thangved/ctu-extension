@@ -10,7 +10,7 @@ const packageJsonPath = path.resolve(rootPath, './package.json');
 /**
  * @description Pre build script to update the version in the manifest file
  */
-const main = async () => {
+const main = () => {
 	try {
 		const packageJson = JSON.parse(fs.readFileSync(packageJsonPath));
 		const publicManifest = JSON.parse(fs.readFileSync(publicManifestPath));
