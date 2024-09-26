@@ -5,7 +5,8 @@ import { zip } from 'zip-a-folder';
 const __dirname = path.resolve(path.dirname(''));
 const rootPath = path.resolve(__dirname, '.');
 
-const distManifestPath = path.resolve(rootPath, './dist/manifest.json');
+const distPath = path.resolve(rootPath, './dist/');
+const distManifestPath = path.resolve(distPath, './manifest.json');
 
 /**
  * @description Post build script to create a zip file of the build folder
@@ -17,12 +18,11 @@ const main = async () => {
 		const version = manifest.version;
 		const name = manifest.short_name;
 
-		const zipName = `${name}-v${version}.zip`;
+		const defaultZipName = `${name}.zip`;
+		const versionZipName = `${name}-v${version}.zip`;
 
-		await zip(
-			path.resolve(__dirname, './dist/'),
-			path.resolve(__dirname, `./${zipName}`),
-		);
+		await zip(distPath, path.resolve(__dirname, `./${defaultZipName}`));
+		await zip(distPath, path.resolve(__dirname, `./${versionZipName}`));
 	} catch (error) {
 		console.error('Post build: ', error);
 	}
