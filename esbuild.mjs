@@ -20,4 +20,5 @@ build({
 		js: banner,
 		css: banner,
 	},
+	logLevel: 'debug',
 });
