@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.3.1](https://github.com/thangved/ctu-extension/compare/v3.3.0...v3.3.1) (2024-09-26)
+
+
+### Miscellaneous Chores
+
+* release 3.3.1 ([b0605ea](https://github.com/thangved/ctu-extension/commit/b0605ea6451e9a58aacc364410bc0c8f680f9609))
+
 ## [3.3.0](https://github.com/thangved/ctu-extension/compare/v3.2.5...v3.3.0) (2024-09-26)
 
 ### Miscellaneous Chores
