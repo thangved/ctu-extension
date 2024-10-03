@@ -1,13 +1,22 @@
-name: npm audit
+name: CI
 
 on:
     - push
     - pull_request
 jobs:
-    install:
+    build:
+        name: Install & Build
         runs-on: ubuntu-latest
 
         steps:
-            - uses: pnpm/action-setup@v4
+            - uses: actions/checkout@v4
+            - name: Install Node.js
+              uses: actions/setup-node@v2
               with:
-                  version: 9
+                  node-version: 20
+            - name: Install pnpm
+              run: npm install -g pnpm
+            - name: Install dependencies
+              run: pnpm install
+            - name: Build
+              run: pnpm build
