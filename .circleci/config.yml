@@ -2,19 +2,19 @@ version: 2.1
 
 jobs:
     build:
-        docker:
-            - image: circleci/node:20
+        executor: node/default
 
         steps:
             - checkout
-
+            - node/install-packages:
+                  pkg-manager: pnpm
             - run:
                   name: Install dependencies
-                  command: npm install
+                  command: pnpm install
 
             - run:
                   name: Build
-                  command: npm run build
+                  command: pnpm build
 
 workflows:
     version: 2
