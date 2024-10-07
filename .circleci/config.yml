@@ -1,0 +1,25 @@
+version: 2.1
+
+orbs:
+    node: circleci/node@6.1.0
+
+jobs:
+    build:
+        executor: node/default
+
+        steps:
+            - checkout
+            - node/install-packages:
+                  pkg-manager: pnpm
+            - run:
+                  name: Install dependencies
+                  command: pnpm install
+
+            - run:
+                  name: Build
+                  command: pnpm build
+
+workflows:
+    ci:
+        jobs:
+            - build
