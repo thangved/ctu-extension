@@ -1,5 +1,13 @@
 # Changelog
 
+## [3.3.3](https://github.com/thangved/ctu-extension/compare/v3.3.2...v3.3.3) (2024-10-11)
+
+
+### Bug Fixes
+
+* **deps:** update dependency antd to v5.21.3 ([ef64e04](https://github.com/thangved/ctu-extension/commit/ef64e0469e1213c32259f99bd8ec998da5c45030))
+* **deps:** update dependency typescript to v5.6.3 ([9416af7](https://github.com/thangved/ctu-extension/commit/9416af7f0b6bc309619f894ec451fbaf4a23e657))
+
 ## [3.3.2](https://github.com/thangved/ctu-extension/compare/v3.3.1...v3.3.2) (2024-10-01)
 
 ### Bug Fixes
