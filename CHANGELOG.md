@@ -2,10 +2,9 @@
 
 ## [3.3.7](https://github.com/thangved/ctu-extension/compare/v3.3.6...v3.3.7) (2024-11-07)
 
-
 ### Bug Fixes
 
-* **deps:** update dependency zip-a-folder to v3.1.8 ([6bca805](https://github.com/thangved/ctu-extension/commit/6bca80594ca2d6797d9c57f8e7853648d8726253))
+-   **deps:** update dependency zip-a-folder to v3.1.8 ([6bca805](https://github.com/thangved/ctu-extension/commit/6bca80594ca2d6797d9c57f8e7853648d8726253))
 
 ## [3.3.6](https://github.com/thangved/ctu-extension/compare/v3.3.5...v3.3.6) (2024-10-28)
 
