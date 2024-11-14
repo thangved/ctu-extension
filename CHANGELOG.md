@@ -2,10 +2,9 @@
 
 ## [3.3.9](https://github.com/thangved/ctu-extension/compare/v3.3.8...v3.3.9) (2024-11-14)
 
-
 ### Bug Fixes
 
-* **deps:** update dependency antd to v5.22.1 ([0ada7d5](https://github.com/thangved/ctu-extension/commit/0ada7d5b4889bf127fdc4a4d30e348c254417546))
+-   **deps:** update dependency antd to v5.22.1 ([0ada7d5](https://github.com/thangved/ctu-extension/commit/0ada7d5b4889bf127fdc4a4d30e348c254417546))
 
 ## [3.3.8](https://github.com/thangved/ctu-extension/compare/v3.3.7...v3.3.8) (2024-11-12)
 
