@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.3.11](https://github.com/thangved/ctu-extension/compare/v3.3.10...v3.3.11) (2024-11-27)
+
+### Bug Fixes
+
+-   **deps:** update dependency axios to v1.7.8 ([d01c725](https://github.com/thangved/ctu-extension/commit/d01c7258bb1e07cf2cfd10bdbfd91d33623de027))
+-   **deps:** update dependency zip-a-folder to v3.1.8 ([7f5de35](https://github.com/thangved/ctu-extension/commit/7f5de358848ee0f5044d339aaac1ad8028f7dd17))
+
 ## [3.3.10](https://github.com/thangved/ctu-extension/compare/v3.3.9...v3.3.10) (2024-11-27)
 
 ### Bug Fixes
