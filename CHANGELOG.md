@@ -1,5 +1,13 @@
 # Changelog
 
+## [3.3.10](https://github.com/thangved/ctu-extension/compare/v3.3.9...v3.3.10) (2024-11-27)
+
+### Bug Fixes
+
+-   **deps:** update dependency antd to v5.22.2 ([8ad3737](https://github.com/thangved/ctu-extension/commit/8ad3737a0ebc9fc1f1956dd2197dc6895b52c712))
+-   **deps:** update dependency axios to v1.7.8 ([356eb86](https://github.com/thangved/ctu-extension/commit/356eb86397af3a32c20cdf95e4116909800e7ecc))
+-   **deps:** update dependency typescript to v5.7.2 ([497d5a8](https://github.com/thangved/ctu-extension/commit/497d5a81d0e8eb980b9764ee87731a337b7b3967))
+
 ## [3.3.9](https://github.com/thangved/ctu-extension/compare/v3.3.8...v3.3.9) (2024-11-14)
 
 ### Bug Fixes
