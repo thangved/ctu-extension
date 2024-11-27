@@ -1,5 +1,48 @@
 # Changelog
 
+## [3.3.9](https://github.com/thangved/ctu-extension/compare/v3.3.8...v3.3.9) (2024-11-14)
+
+### Bug Fixes
+
+-   **deps:** update dependency antd to v5.22.1 ([0ada7d5](https://github.com/thangved/ctu-extension/commit/0ada7d5b4889bf127fdc4a4d30e348c254417546))
+
+## [3.3.8](https://github.com/thangved/ctu-extension/compare/v3.3.7...v3.3.8) (2024-11-12)
+
+### Bug Fixes
+
+-   **deps:** update dependency antd to v5.22.0 ([7db102d](https://github.com/thangved/ctu-extension/commit/7db102d8dd9737f4e48db569ba972a2b4a8a02ce))
+
+## [3.3.7](https://github.com/thangved/ctu-extension/compare/v3.3.6...v3.3.7) (2024-11-07)
+
+### Bug Fixes
+
+-   **deps:** update dependency zip-a-folder to v3.1.8 ([6bca805](https://github.com/thangved/ctu-extension/commit/6bca80594ca2d6797d9c57f8e7853648d8726253))
+
+## [3.3.6](https://github.com/thangved/ctu-extension/compare/v3.3.5...v3.3.6) (2024-10-28)
+
+### Bug Fixes
+
+-   **deps:** update dependency antd to v5.21.6 ([ae04d4c](https://github.com/thangved/ctu-extension/commit/ae04d4ce3ebf29c228896cafcaf4860a744afdfd))
+
+## [3.3.5](https://github.com/thangved/ctu-extension/compare/v3.3.4...v3.3.5) (2024-10-21)
+
+### Bug Fixes
+
+-   **deps:** update dependency antd to v5.21.5 ([abe761d](https://github.com/thangved/ctu-extension/commit/abe761dfcf770b572365cc3ea0b7fcaf795bd4f3))
+
+## [3.3.4](https://github.com/thangved/ctu-extension/compare/v3.3.3...v3.3.4) (2024-10-16)
+
+### Bug Fixes
+
+-   **deps:** update dependency antd to v5.21.4 ([b82b6a8](https://github.com/thangved/ctu-extension/commit/b82b6a8e3f82c4007a8d0e436d756536d6b02c03))
+
+## [3.3.3](https://github.com/thangved/ctu-extension/compare/v3.3.2...v3.3.3) (2024-10-11)
+
+### Bug Fixes
+
+-   **deps:** update dependency antd to v5.21.3 ([ef64e04](https://github.com/thangved/ctu-extension/commit/ef64e0469e1213c32259f99bd8ec998da5c45030))
+-   **deps:** update dependency typescript to v5.6.3 ([9416af7](https://github.com/thangved/ctu-extension/commit/9416af7f0b6bc309619f894ec451fbaf4a23e657))
+
 ## [3.3.2](https://github.com/thangved/ctu-extension/compare/v3.3.1...v3.3.2) (2024-10-01)
 
 ### Bug Fixes
