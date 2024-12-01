@@ -1,5 +1,15 @@
 # Changelog
 
+## [3.3.12](https://github.com/thangved/ctu-extension/compare/v3.3.11...v3.3.12) (2024-12-01)
+
+### Bug Fixes
+
+-   **deps:** update dependency @ant-design/icons to v5.5.2 ([b58659c](https://github.com/thangved/ctu-extension/commit/b58659c334c1c2112b9a2e3a3a5f660a900f5163))
+-   **deps:** update dependency antd to v5.22.2 ([774a56b](https://github.com/thangved/ctu-extension/commit/774a56b151ccc8993e823842a239cff1a7d43c15))
+-   **deps:** update dependency axios to v1.7.8 ([6482959](https://github.com/thangved/ctu-extension/commit/6482959edc8901595530aae8d5bc93cff2d01045))
+-   **deps:** update dependency typescript to v5.7.2 ([432fca9](https://github.com/thangved/ctu-extension/commit/432fca96c14b09c77a19d95322758a5ccf280c75))
+-   **deps:** update dependency zip-a-folder to v3.1.8 ([11e3bb9](https://github.com/thangved/ctu-extension/commit/11e3bb9f86040c85290558ab031d3277634b950d))
+
 ## [3.3.11](https://github.com/thangved/ctu-extension/compare/v3.3.10...v3.3.11) (2024-11-27)
 
 ### Bug Fixes
