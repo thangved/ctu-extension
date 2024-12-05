@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.3.14](https://github.com/thangved/ctu-extension/compare/v3.3.13...v3.3.14) (2024-12-05)
+
+
+### Bug Fixes
+
+* **deps:** update dependency axios to v1.7.9 ([97989af](https://github.com/thangved/ctu-extension/commit/97989af724911ffade537655f80c6cdbaa5bcf2a))
+
 ## [3.3.13](https://github.com/thangved/ctu-extension/compare/v3.3.12...v3.3.13) (2024-12-03)
 
 ### Bug Fixes
