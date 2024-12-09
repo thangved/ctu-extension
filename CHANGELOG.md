@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.3.15](https://github.com/thangved/ctu-extension/compare/v3.3.14...v3.3.15) (2024-12-09)
+
+### Bug Fixes
+
+-   avoid use promise in if ([9ef550e](https://github.com/thangved/ctu-extension/commit/9ef550e2090aa75c40e578cda7054777c511e8db))
+-   fix login redirected ([ef1dfbb](https://github.com/thangved/ctu-extension/commit/ef1dfbbd159dca9234377d8766d32df685675fa7))
+
 ## [3.3.14](https://github.com/thangved/ctu-extension/compare/v3.3.13...v3.3.14) (2024-12-05)
 
 ### Bug Fixes
