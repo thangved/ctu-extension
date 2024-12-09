@@ -56,7 +56,7 @@ export interface GroupType {
  * @description Service lấy thông tin lớp học phần
  */
 class GroupService {
-	private pendingLogin: Promise<any> | null = null;
+	private pendingLogin: Promise<unknown> | null = null;
 	/**
 	 * @description Đăng nhập vào hệ thống
 	 */
