@@ -61,7 +61,7 @@ class GroupService {
 	 * @description Đăng nhập vào hệ thống
 	 */
 	async login(): Promise<void> {
-		if (this.pendingLogin) {
+		if (Boolean(this.pendingLogin)) {
 			await this.pendingLogin;
 			return;
 		}
