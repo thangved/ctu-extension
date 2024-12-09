@@ -56,13 +56,23 @@ export interface GroupType {
  * @description Service lấy thông tin lớp học phần
  */
 class GroupService {
+	private pendingLogin: Promise<unknown> | null = null;
 	/**
 	 * @description Đăng nhập vào hệ thống
 	 */
 	async login(): Promise<void> {
-		await client.postForm('/htql/dkmh/student/dang_nhap.php', {
-			txtMatKhau: 'p',
-		});
+		if (this.pendingLogin) {
+			await this.pendingLogin;
+			return;
+		}
+		this.pendingLogin = client
+			.postForm('/htql/dkmh/student/dang_nhap.php', {
+				txtMatKhau: 'p',
+			})
+			.catch(() => {
+				// Just ignore error because I'm a chill developer
+			});
+		await this.pendingLogin;
 	}
 
 	/**
