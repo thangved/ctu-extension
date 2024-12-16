@@ -2,11 +2,10 @@
 
 ## [3.3.17](https://github.com/thangved/ctu-extension/compare/v3.3.16...v3.3.17) (2024-12-16)
 
-
 ### Bug Fixes
 
-* **deps:** update dependency antd to v5.22.5 ([e34bd75](https://github.com/thangved/ctu-extension/commit/e34bd75c91d6e62e2fcc6bc9e628ae580d40ab19))
-* lost data after reload ([77c1268](https://github.com/thangved/ctu-extension/commit/77c126870c24ca44eb90a01e39c9de143d075a16))
+-   **deps:** update dependency antd to v5.22.5 ([e34bd75](https://github.com/thangved/ctu-extension/commit/e34bd75c91d6e62e2fcc6bc9e628ae580d40ab19))
+-   lost data after reload ([77c1268](https://github.com/thangved/ctu-extension/commit/77c126870c24ca44eb90a01e39c9de143d075a16))
 
 ## [3.3.16](https://github.com/thangved/ctu-extension/compare/v3.3.15...v3.3.16) (2024-12-10)
 
