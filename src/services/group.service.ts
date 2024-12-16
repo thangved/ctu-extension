@@ -69,9 +69,7 @@ class GroupService {
 			.postForm('/htql/dkmh/student/dang_nhap.php', {
 				txtMatKhau: 'p',
 			})
-			.catch(() => {
-				// Just ignore error because I'm a chill developer
-			});
+			.catch(() => Promise.resolve('Login success'));
 		await this.pendingLogin;
 	}
 
@@ -108,7 +106,7 @@ class GroupService {
 		const table = dom.querySelectorAll('.border_1')[1] as HTMLTableElement;
 
 		if (!table) {
-			return {};
+			return this.find(code, year, semester);
 		}
 
 		const rows = Array.from(table.querySelectorAll('tr')).slice(
