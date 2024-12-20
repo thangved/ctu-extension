@@ -59,7 +59,10 @@ function registerDkmhFe() {
 							type: IframeEvent.FindGroupsSuccess,
 							data: result,
 						};
-						window.parent.window.postMessage(res, '*');
+						window.parent.window.postMessage(
+							res,
+							`https://${loggedHost}`,
+						);
 						break;
 					}
 					default:
