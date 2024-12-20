@@ -42,6 +42,9 @@ function mountApp() {
 	);
 }
 
+/**
+ * Register dkmh-fe
+ */
 function registerDkmhFe() {
 	window.addEventListener(
 		'message',

@@ -106,7 +106,11 @@ class GroupService {
 				},
 			};
 
-			const handler = (event: MessageEvent<IframeEventData>) => {
+			/**
+			 * Xử lý sự kiện message từ iframe
+			 * @param event - Sự kiện message từ iframe
+			 */
+			const iframeHandler = (event: MessageEvent<IframeEventData>) => {
 				switch (event.data.type) {
 					case IframeEvent.FindGroupsSuccess: {
 						const {
@@ -118,7 +122,10 @@ class GroupService {
 						if (params.semester !== semester) break;
 
 						resolve(groups);
-						this.iframe.removeEventListener('message', handler);
+						this.iframe.removeEventListener(
+							'message',
+							iframeHandler,
+						);
 						break;
 					}
 					default:
@@ -126,7 +133,7 @@ class GroupService {
 				}
 			};
 
-			window.addEventListener('message', handler);
+			window.addEventListener('message', iframeHandler);
 
 			// Lấy thông tin lớp học phần
 			this.iframe.contentWindow.postMessage(

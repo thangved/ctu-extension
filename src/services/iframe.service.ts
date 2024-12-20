@@ -10,6 +10,9 @@ type FindGroupsParams = {
 	semester: string;
 };
 
+/**
+ * Iframe service
+ */
 class IframeService {
 	private http: AxiosInstance;
 
@@ -26,6 +29,10 @@ class IframeService {
 		this.http.interceptors.response.use((res) => res.data);
 	}
 
+	/**
+	 * Tìm kiếm lớp học phần
+	 * @param param - Thông tin lớp học phần
+	 */
 	async findGroups({
 		code,
 		semester,
