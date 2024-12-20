@@ -2,15 +2,11 @@ import { ConfigProvider } from 'antd';
 import viVN from 'antd/lib/locale/vi_VN';
 import { createRoot } from 'react-dom/client';
 import App from './App';
+import { dkmhFeHost, loggedHost } from './constants/hosts';
+import iframeService from './services/iframe.service';
+import { IframeEvent, IframeEventData } from './shared/iframe';
 import './styles/main.css';
 import removeTxtMaBaoVe from './utils/removeTxtMaBaoVe';
-import { dkmhFeHost, loggedHost } from './constants/hosts';
-import {
-	IframeEvent,
-	IframeEventData,
-	IframeEventDataFindGroupsSuccess,
-} from './shared/iframe';
-import iframeService from './services/iframe.service';
 
 window.addEventListener('load', () => {
 	if (![loggedHost, dkmhFeHost].includes(window.location.host)) {

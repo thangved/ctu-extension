@@ -1,6 +1,5 @@
 import { dkmhFeHost } from '../constants/hosts';
 import { IframeEvent, IframeEventData } from '../shared/iframe';
-import client from '../utils/client';
 
 /**
  * @description Thông tin một buổi học của một lớp học phần
@@ -107,7 +106,7 @@ class GroupService {
 				},
 			};
 
-			const handler = async (event: MessageEvent<IframeEventData>) => {
+			const handler = (event: MessageEvent<IframeEventData>) => {
 				switch (event.data.type) {
 					case IframeEvent.FindGroupsSuccess: {
 						const {

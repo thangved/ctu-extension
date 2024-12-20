@@ -1,11 +1,8 @@
 import axios, { AxiosInstance } from 'axios';
-import { GroupType } from './group.service';
-import { dkmhApiHost } from '../constants/hosts';
 import Cookies from 'js-cookie';
-import {
-	IframeEventData,
-	IframeEventDataFindGroupsSuccess,
-} from '../shared/iframe';
+import { dkmhApiHost } from '../constants/hosts';
+import { IframeEventDataFindGroupsSuccess } from '../shared/iframe';
+import { GroupType } from './group.service';
 
 type FindGroupsParams = {
 	code: string;
