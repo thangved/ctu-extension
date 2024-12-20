@@ -49,6 +49,7 @@ function registerDkmhFe() {
 	window.addEventListener(
 		'message',
 		async (event: MessageEvent<IframeEventData>) => {
+			if (event.origin !== `https://${dkmhFeHost}`) return;
 			try {
 				switch (event.data.type) {
 					case IframeEvent.FindGroups: {
