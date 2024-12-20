@@ -12,12 +12,14 @@
                 "https://htql.ctu.edu.vn/*",
                 "https://dkmh3.ctu.edu.vn/*",
                 "https://dkmh.ctu.edu.vn/*",
-                "https://qldt.ctu.edu.vn/*"
+                "https://qldt.ctu.edu.vn/*",
+                "https://dkmhfe.ctu.edu.vn/*"
             ],
             "css": [
                 "bundle.css"
             ],
-            "run_at": "document_start"
+            "run_at": "document_start",
+            "all_frames": true
         }
     ],
     "action": {

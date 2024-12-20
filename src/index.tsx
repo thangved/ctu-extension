@@ -2,16 +2,23 @@ import { ConfigProvider } from 'antd';
 import viVN from 'antd/lib/locale/vi_VN';
 import { createRoot } from 'react-dom/client';
 import App from './App';
+import { dkmhFeHost, loggedHost } from './constants/hosts';
+import iframeService from './services/iframe.service';
+import { IframeEvent, IframeEventData } from './shared/iframe';
 import './styles/main.css';
 import removeTxtMaBaoVe from './utils/removeTxtMaBaoVe';
 
-const loggedHost = 'dkmh.ctu.edu.vn';
-
 window.addEventListener('load', () => {
-	removeTxtMaBaoVe();
+	if (![loggedHost, dkmhFeHost].includes(window.location.host)) {
+		removeTxtMaBaoVe();
+	}
 
 	if (window.location.host === loggedHost) {
 		mountApp();
+	}
+
+	if (window.location.host === dkmhFeHost) {
+		registerDkmhFe();
 	}
 });
 
@@ -25,11 +32,32 @@ function mountApp() {
 
 	pageHeader.outerHTML += /*html*/ `
 	<div id="${rootId}"></div>
+	<iframe src="/htql/dkmh/student/dang_nhap.php" id="dkmhfe-iframe" style="display: none;"></iframe>
 	`;
 
 	createRoot(document.getElementById(rootId)).render(
 		<ConfigProvider locale={viVN}>
 			<App />
 		</ConfigProvider>,
+	);
+}
+
+/**
+ * Register dkmh-fe
+ */
+function registerDkmhFe() {
+	window.addEventListener(
+		'message',
+		async (event: MessageEvent<IframeEventData>) => {
+			if (event.origin !== `https://${loggedHost}`) return;
+			if (event.data.type === IframeEvent.FindGroups) {
+				const result = await iframeService.findGroups(event.data.data);
+				const res: IframeEventData = {
+					type: IframeEvent.FindGroupsSuccess,
+					data: result,
+				};
+				window.parent.window.postMessage(res, `https://${loggedHost}`);
+			}
+		},
 	);
 }
