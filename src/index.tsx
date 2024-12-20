@@ -49,25 +49,20 @@ function registerDkmhFe() {
 	window.addEventListener(
 		'message',
 		async (event: MessageEvent<IframeEventData>) => {
-			if (event.origin !== `https://${dkmhFeHost}`) return;
+			if (event.origin !== `https://${loggedHost}`) return;
 			try {
-				switch (event.data.type) {
-					case IframeEvent.FindGroups: {
-						const result = await iframeService.findGroups(
-							event.data.data,
-						);
-						const res: IframeEventData = {
-							type: IframeEvent.FindGroupsSuccess,
-							data: result,
-						};
-						window.parent.window.postMessage(
-							res,
-							`https://${loggedHost}`,
-						);
-						break;
-					}
-					default:
-						break;
+				if (event.data.type === IframeEvent.FindGroups) {
+					const result = await iframeService.findGroups(
+						event.data.data,
+					);
+					const res: IframeEventData = {
+						type: IframeEvent.FindGroupsSuccess,
+						data: result,
+					};
+					window.parent.window.postMessage(
+						res,
+						`https://${loggedHost}`,
+					);
 				}
 			} catch (error) {
 				console.log(error);

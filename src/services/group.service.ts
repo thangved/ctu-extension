@@ -111,25 +111,17 @@ class GroupService {
 			 * @param event - Sự kiện message từ iframe
 			 */
 			const iframeHandler = (event: MessageEvent<IframeEventData>) => {
-				switch (event.data.type) {
-					case IframeEvent.FindGroupsSuccess: {
-						const {
-							data: { groups, params },
-						} = event.data;
+				if (event.data.type === IframeEvent.FindGroupsSuccess) {
+					const {
+						data: { groups, params },
+					} = event.data;
 
-						if (params.code !== code) break;
-						if (params.year !== year) break;
-						if (params.semester !== semester) break;
+					if (params.code !== code) return;
+					if (params.year !== year) return;
+					if (params.semester !== semester) return;
 
-						resolve(groups);
-						this.iframe.removeEventListener(
-							'message',
-							iframeHandler,
-						);
-						break;
-					}
-					default:
-						break;
+					resolve(groups);
+					this.iframe.removeEventListener('message', iframeHandler);
 				}
 			};
 
