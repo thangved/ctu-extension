@@ -50,22 +50,13 @@ function registerDkmhFe() {
 		'message',
 		async (event: MessageEvent<IframeEventData>) => {
 			if (event.origin !== `https://${loggedHost}`) return;
-			try {
-				if (event.data.type === IframeEvent.FindGroups) {
-					const result = await iframeService.findGroups(
-						event.data.data,
-					);
-					const res: IframeEventData = {
-						type: IframeEvent.FindGroupsSuccess,
-						data: result,
-					};
-					window.parent.window.postMessage(
-						res,
-						`https://${loggedHost}`,
-					);
-				}
-			} catch (error) {
-				console.log(error);
+			if (event.data.type === IframeEvent.FindGroups) {
+				const result = await iframeService.findGroups(event.data.data);
+				const res: IframeEventData = {
+					type: IframeEvent.FindGroupsSuccess,
+					data: result,
+				};
+				window.parent.window.postMessage(res, `https://${loggedHost}`);
 			}
 		},
 	);
