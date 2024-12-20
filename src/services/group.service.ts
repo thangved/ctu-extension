@@ -117,7 +117,7 @@ class GroupService {
 						if (params.code !== code) break;
 						if (params.year !== year) break;
 						if (params.semester !== semester) break;
-						console.log(groups);
+						
 						resolve(groups);
 						this.iframe.removeEventListener('message', handler);
 						break;
