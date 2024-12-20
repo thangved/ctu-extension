@@ -14,7 +14,7 @@ type FindGroupsParams = {
  * Iframe service
  */
 class IframeService {
-	private http: AxiosInstance;
+	private readonly http: AxiosInstance;
 
 	constructor() {
 		this.http = axios.create({
@@ -135,6 +135,23 @@ class IframeService {
 
 			if (!group.dkmh_thu_trong_tuan_ma) continue;
 
+			/**
+			 * Xử lý chuỗi tiet_hoc thành mảng các tiết học
+			 * @param prev - Giá trị trước đó
+			 * @param current - Giá trị hiện tại
+			 * @param index - Chỉ số của giá trị hiện tại
+			 * @returns
+			 */
+			const handleReduce = (
+				prev: number,
+				current: string,
+				index: number,
+			): number => {
+				if (prev) return prev;
+				if (current === '-') return 0;
+				return index + 1;
+			};
+
 			result[groupCode].sessions.push({
 				day: `${group.dkmh_thu_trong_tuan_ma}`,
 				lesson: group.tiet_hoc.replace(/-/g, '').length,
@@ -143,11 +160,7 @@ class IframeService {
 					group.tiet_hoc
 						.replace(/-/g, '')
 						.split('')
-						.reduce(
-							(prev, current, index) =>
-								prev ? prev : current !== '-' ? index + 1 : 0,
-							0,
-						),
+						.reduce(handleReduce, 0),
 				),
 			});
 		}
@@ -163,4 +176,4 @@ class IframeService {
 	}
 }
 
-export default new IframeService() as IframeService;
+export default new IframeService();
