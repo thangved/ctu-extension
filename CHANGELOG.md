@@ -1,5 +1,13 @@
 # Changelog
 
+## [3.3.18](https://github.com/thangved/ctu-extension/compare/v3.3.17...v3.3.18) (2024-12-20)
+
+### Bug Fixes
+
+-   **find-groups:** call group service via iframe ([6d3680c](https://github.com/thangved/ctu-extension/commit/6d3680c18e4655060356555cfed047be6c9c9bf2))
+-   **security:** add origin for post message ([3de44ec](https://github.com/thangved/ctu-extension/commit/3de44ecff5fb5b30f941bca9c8a8a9683455a1b4))
+-   **security:** check origin ([0706abe](https://github.com/thangved/ctu-extension/commit/0706abe3a22b8e9d190547e526d931dc91d6a956))
+
 ## [3.3.17](https://github.com/thangved/ctu-extension/compare/v3.3.16...v3.3.17) (2024-12-16)
 
 ### Bug Fixes
