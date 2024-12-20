@@ -4,14 +4,25 @@ import { createRoot } from 'react-dom/client';
 import App from './App';
 import './styles/main.css';
 import removeTxtMaBaoVe from './utils/removeTxtMaBaoVe';
-
-const loggedHost = 'dkmh.ctu.edu.vn';
+import { dkmhFeHost, loggedHost } from './constants/hosts';
+import {
+	IframeEvent,
+	IframeEventData,
+	IframeEventDataFindGroupsSuccess,
+} from './shared/iframe';
+import iframeService from './services/iframe.service';
 
 window.addEventListener('load', () => {
-	removeTxtMaBaoVe();
+	if (![loggedHost, dkmhFeHost].includes(window.location.host)) {
+		removeTxtMaBaoVe();
+	}
 
 	if (window.location.host === loggedHost) {
 		mountApp();
+	}
+
+	if (window.location.host === dkmhFeHost) {
+		registerDkmhFe();
 	}
 });
 
@@ -25,11 +36,39 @@ function mountApp() {
 
 	pageHeader.outerHTML += /*html*/ `
 	<div id="${rootId}"></div>
+	<iframe src="/htql/dkmh/student/dang_nhap.php" id="dkmhfe-iframe" style="display: none;"></iframe>
 	`;
 
 	createRoot(document.getElementById(rootId)).render(
 		<ConfigProvider locale={viVN}>
 			<App />
 		</ConfigProvider>,
+	);
+}
+
+function registerDkmhFe() {
+	window.addEventListener(
+		'message',
+		async (event: MessageEvent<IframeEventData>) => {
+			try {
+				switch (event.data.type) {
+					case IframeEvent.FindGroups: {
+						const result = await iframeService.findGroups(
+							event.data.data,
+						);
+						const res: IframeEventData = {
+							type: IframeEvent.FindGroupsSuccess,
+							data: result,
+						};
+						window.parent.window.postMessage(res, '*');
+						break;
+					}
+					default:
+						break;
+				}
+			} catch (error) {
+				console.log(error);
+			}
+		},
 	);
 }

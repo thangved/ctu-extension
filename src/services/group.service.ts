@@ -1,3 +1,5 @@
+import { dkmhFeHost } from '../constants/hosts';
+import { IframeEvent, IframeEventData } from '../shared/iframe';
 import client from '../utils/client';
 
 /**
@@ -57,6 +59,7 @@ export interface GroupType {
  */
 class GroupService {
 	private pendingLogin: Promise<unknown> | null = null;
+	private iframe: HTMLIFrameElement = null;
 	/**
 	 * @description Đăng nhập vào hệ thống
 	 */
@@ -65,11 +68,16 @@ class GroupService {
 			await this.pendingLogin;
 			return;
 		}
-		this.pendingLogin = client
-			.postForm('/htql/dkmh/student/dang_nhap.php', {
-				txtMatKhau: 'p',
-			})
-			.catch(() => Promise.resolve('Login success'));
+
+		this.pendingLogin = new Promise((resolve) => {
+			this.iframe = document.getElementById(
+				'dkmhfe-iframe',
+			) as HTMLIFrameElement;
+			this.iframe.addEventListener('load', () => {
+				resolve(null);
+			});
+		});
+
 		await this.pendingLogin;
 	}
 
@@ -87,79 +95,46 @@ class GroupService {
 	): Promise<Record<string, GroupType>> {
 		await this.login();
 
-		// Lấy thông tin lớp học phần
-		year = year.split('-')[1];
+		return new Promise<Record<string, GroupType>>((resolve) => {
+			year = year.split('-')[0];
 
-		const htmlString = (await client.postForm(
-			'/htql/dkmh/student/index.php?action=dmuc_mhoc_hky',
-			{
-				cmbHocKy: semester,
-				cmbNamHoc: year,
-				txtMaMH: code,
-				flag: 1,
-				Button: 'Tìm',
-			},
-		)) as unknown as string;
+			const params: IframeEventData = {
+				type: IframeEvent.FindGroups,
+				data: {
+					code,
+					year,
+					semester,
+				},
+			};
 
-		const dom = new DOMParser().parseFromString(htmlString, 'text/html');
+			const handler = async (event: MessageEvent<IframeEventData>) => {
+				switch (event.data.type) {
+					case IframeEvent.FindGroupsSuccess: {
+						const {
+							data: { groups, params },
+						} = event.data;
 
-		const table = dom.querySelectorAll('.border_1')[1] as HTMLTableElement;
+						if (params.code !== code) break;
+						if (params.year !== year) break;
+						if (params.semester !== semester) break;
+						console.log(groups);
+						resolve(groups);
+						this.iframe.removeEventListener('message', handler);
+						break;
+					}
+					default:
+						break;
+				}
+			};
 
-		if (!table) {
-			return this.find(code, year, semester);
-		}
+			window.addEventListener('message', handler);
 
-		const rows = Array.from(table.querySelectorAll('tr')).slice(
-			1,
-		) as HTMLTableRowElement[];
-
-		if (rows[0].querySelector('td').colSpan === 12) {
-			return {};
-		}
-
-		const hashedGroups: Record<string, GroupType> = {};
-
-		for (const row of rows) {
-			let distance = 0;
-			const noSechedule = Number.isNaN(
-				Number(row.children[2].textContent),
+			// Lấy thông tin lớp học phần
+			this.iframe.contentWindow.postMessage(
+				params,
+				`https://${dkmhFeHost}`,
 			);
-
-			if (noSechedule) {
-				distance = 3;
-			}
-
-			const groupId = row.children[1].textContent?.trim() ?? '';
-
-			if (!hashedGroups[groupId]) {
-				hashedGroups[groupId] = {
-					name: row.children[11 - distance].textContent?.trim() ?? '',
-					id: groupId,
-					lecture: {
-						code:
-							row.children[6 - distance].textContent?.trim() ??
-							'',
-						name:
-							row.children[7 - distance].textContent?.trim() ??
-							'',
-					},
-					wholesale: Number(row.children[8 - distance].textContent),
-					remain: Number(row.children[9 - distance].textContent),
-					sessions: [],
-				};
-			}
-
-			if (noSechedule) continue;
-
-			hashedGroups[groupId].sessions.push({
-				day: row.children[2].textContent?.trim() ?? '',
-				start: Number(row.children[3].textContent),
-				lesson: Number(row.children[4].textContent),
-				location: row.children[5].textContent?.trim() ?? '',
-			});
-		}
-
-		return hashedGroups;
+		});
 	}
 }
 
