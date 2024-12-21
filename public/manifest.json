@@ -26,10 +26,9 @@
         "default_popup": "popup.html"
     },
     "icons": {
-        "192": "icons/icon-192x192.png",
-        "256": "icons/icon-256x256.png",
-        "384": "icons/icon-384x384.png",
-        "512": "icons/icon-512x512.png"
+        "64": "icons/pwa-64x64.png",
+        "192": "icons/pwa-192x192.png",
+        "512": "icons/pwa-512x512.png"
     },
     "author": "Kim Minh Thang<thangved02@gmail.com>",
     "short_name": "ctu-extension",
