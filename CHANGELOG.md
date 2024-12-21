@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.4.0](https://github.com/thangved/ctu-extension/compare/v3.3.18...v3.4.0) (2024-12-21)
+
+
+### Features
+
+* new logo ([f3d796c](https://github.com/thangved/ctu-extension/commit/f3d796c4ac3bace98c9131b8fe7c52ab87884464))
+
 ## [3.3.18](https://github.com/thangved/ctu-extension/compare/v3.3.17...v3.3.18) (2024-12-20)
 
 ### Bug Fixes
