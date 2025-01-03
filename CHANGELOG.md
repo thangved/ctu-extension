@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.5.1](https://github.com/thangved/ctu-extension/compare/v3.5.0...v3.5.1) (2025-01-03)
+
+
+### Bug Fixes
+
+* **deps:** update dependency antd to v5.22.7 ([64b8347](https://github.com/thangved/ctu-extension/commit/64b83479ef9ae8a234562af33c5c66a26c755247))
+
 ## [3.5.0](https://github.com/thangved/ctu-extension/compare/v3.4.0...v3.5.0) (2024-12-24)
 
 ### Features
