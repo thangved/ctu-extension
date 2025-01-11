@@ -1,5 +1,11 @@
 # Changelog
 
+## [3.5.3](https://github.com/thangved/ctu-extension/compare/v3.5.2...v3.5.3) (2025-01-11)
+
+### Bug Fixes
+
+-   **deps:** update dependency typescript to v5.7.3 ([7873ace](https://github.com/thangved/ctu-extension/commit/7873acecf1556a14f093223052b3def33d0e7309))
+
 ## [3.5.2](https://github.com/thangved/ctu-extension/compare/v3.5.1...v3.5.2) (2025-01-07)
 
 ### Bug Fixes
