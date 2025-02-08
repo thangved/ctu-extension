@@ -1,5 +1,15 @@
 # Changelog
 
+## [3.5.6](https://github.com/thangved/ctu-extension/compare/v3.5.5...v3.5.6) (2025-02-08)
+
+
+### Bug Fixes
+
+* **deps:** update dependency @ant-design/icons to v5.6.0 ([#500](https://github.com/thangved/ctu-extension/issues/500)) ([3eb7e62](https://github.com/thangved/ctu-extension/commit/3eb7e62fa56acfb00834d39f103d2e4e243b6951))
+* **deps:** update dependency @ant-design/icons to v5.6.1 ([#513](https://github.com/thangved/ctu-extension/issues/513)) ([e348c03](https://github.com/thangved/ctu-extension/commit/e348c033a6a5f80e6702eca6b921db8e329119e1))
+* **deps:** update dependency antd to v5.23.3 ([#504](https://github.com/thangved/ctu-extension/issues/504)) ([303bc71](https://github.com/thangved/ctu-extension/commit/303bc71980dd8bd128b86245511096c6039d7e86))
+* **deps:** update dependency antd to v5.23.4 ([#510](https://github.com/thangved/ctu-extension/issues/510)) ([6a2de9a](https://github.com/thangved/ctu-extension/commit/6a2de9addbb25918e477c46cd2a4460cf38e21db))
+
 ## [3.5.5](https://github.com/thangved/ctu-extension/compare/v3.5.4...v3.5.5) (2025-01-21)
 
 ### Bug Fixes
