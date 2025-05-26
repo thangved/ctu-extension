@@ -17,7 +17,7 @@ importers:
         version: 6.0.0(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
       antd:
         specifier: ^5.21.1
-        version: 5.25.2(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
+        version: 5.25.3(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
       axios:
         specifier: ^1.7.7
         version: 1.9.0
@@ -91,8 +91,8 @@ importers:
 
 packages:
 
-  '@ant-design/colors@7.2.0':
-    resolution: {integrity: sha512-bjTObSnZ9C/O8MB/B4OUtd/q9COomuJAR2SYfhxLyHvCKn4EKwCN3e+fWGMo7H5InAyV0wL17jdE9ALrdOW/6A==}
+  '@ant-design/colors@7.2.1':
+    resolution: {integrity: sha512-lCHDcEzieu4GA3n8ELeZ5VQ8pKQAWcGGLRTQ50aQM2iqPpq2evTxER84jfdPvsPAtEcZ7m44NI45edFMo8oOYQ==}
 
   '@ant-design/colors@8.0.0':
     resolution: {integrity: sha512-6YzkKCw30EI/E9kHOIXsQDHmMvTllT8STzjMb4K2qzit33RW2pqCJP0sk+hidBntXxE+Vz4n1+RvCTfBw6OErw==}
@@ -553,8 +553,8 @@ packages:
     resolution: {integrity: sha512-bN798gFfQX+viw3R7yrGWRqnrN2oRkEkUjjl4JNn4E8GxxbjtG3FbrEIIY3l8/hrwUwIeCZvi4QuOTP4MErVug==}
     engines: {node: '>=12'}
 
-  antd@5.25.2:
-    resolution: {integrity: sha512-7R2nUvlHhey7Trx64+hCtGXOiy+DTUs1Lv5bwbV1LzEIZIhWb0at1AM6V3K108a5lyoR9n7DX3ptlLF7uYV/DQ==}
+  antd@5.25.3:
+    resolution: {integrity: sha512-tBBcAFRjmWM3sitxrL/FEbQL+MTQntYY5bGa5c1ZZZHXWCynkhS3Ch/gy25mGMUY1M/9Uw3pH029v/RGht1x3w==}
     peerDependencies:
       react: '>=16.9.0'
       react-dom: '>=16.9.0'
@@ -1964,7 +1964,7 @@ packages:
 
 snapshots:
 
-  '@ant-design/colors@7.2.0':
+  '@ant-design/colors@7.2.1':
     dependencies:
       '@ant-design/fast-color': 2.0.6
 
@@ -2002,7 +2002,7 @@ snapshots:
 
   '@ant-design/icons@5.6.1(react-dom@19.1.0(react@19.1.0))(react@19.1.0)':
     dependencies:
-      '@ant-design/colors': 7.2.0
+      '@ant-design/colors': 7.2.1
       '@ant-design/icons-svg': 4.4.2
       '@babel/runtime': 7.27.1
       classnames: 2.5.1
@@ -2405,9 +2405,9 @@ snapshots:
 
   ansi-styles@6.2.1: {}
 
-  antd@5.25.2(react-dom@19.1.0(react@19.1.0))(react@19.1.0):
+  antd@5.25.3(react-dom@19.1.0(react@19.1.0))(react@19.1.0):
     dependencies:
-      '@ant-design/colors': 7.2.0
+      '@ant-design/colors': 7.2.1
       '@ant-design/cssinjs': 1.23.0(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
       '@ant-design/cssinjs-utils': 1.1.3(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
       '@ant-design/fast-color': 2.0.6
