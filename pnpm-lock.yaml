@@ -44,8 +44,8 @@ importers:
         version: 3.1.9
     devDependencies:
       '@types/chrome':
-        specifier: ^0.0.323
-        version: 0.0.323
+        specifier: ^0.0.324
+        version: 0.0.324
       '@types/esbuild-copy-static-files':
         specifier: ^0.1.3
         version: 0.1.4
@@ -438,8 +438,8 @@ packages:
       react: '>=18.0.0'
       react-dom: '>=18.0.0'
 
-  '@types/chrome@0.0.323':
-    resolution: {integrity: sha512-ipiDwx41lmGeLnbiT6ENOayvWXdkqKqNwqDQWEuz6dujaX7slSkk1nbSt5Q5c6xnQ708+kuCFrC00VLltSbWVA==}
+  '@types/chrome@0.0.324':
+    resolution: {integrity: sha512-puFoA5uJbN9+oaD/MjtMY13H7vPvO/IlSP4pe+uD/c+hB7HsbcOOLVRZlRWgkDSqupw4R+53pS9K9ORHYyMBCg==}
 
   '@types/esbuild-copy-static-files@0.1.4':
     resolution: {integrity: sha512-Xv4zewzzit6lccvS9sPcte2pe1xLDaKHm3KcjUEJuf1DV06oy2d0/DgjoGCHyM1bSMOrf1cFtB9pQmXJeVnJ0g==}
@@ -2275,7 +2275,7 @@ snapshots:
       react-dom: 19.1.0(react@19.1.0)
       react-is: 18.3.1
 
-  '@types/chrome@0.0.323':
+  '@types/chrome@0.0.324':
     dependencies:
       '@types/filesystem': 0.0.36
       '@types/har-format': 1.2.15
