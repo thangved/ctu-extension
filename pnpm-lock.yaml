@@ -26,7 +26,7 @@ importers:
         version: 12.4.0
       highcharts-react-official:
         specifier: ^3.2.1
-        version: 3.2.2(highcharts@12.4.0)(react@19.1.1)
+        version: 3.2.3(highcharts@12.4.0)(react@19.1.1)
       js-cookie:
         specifier: ^3.0.5
         version: 3.0.5
@@ -1061,8 +1061,8 @@ packages:
     resolution: {integrity: sha512-0hJU9SCPvmMzIBdZFqNPXWa6dqh7WdH0cII9y+CyS8rG3nL48Bclra9HmKhVVUHyPWNH5Y7xDwAB7bfgSjkUMQ==}
     engines: {node: '>= 0.4'}
 
-  highcharts-react-official@3.2.2:
-    resolution: {integrity: sha512-2kkWOB6RpdR26fmAJkrtJFG9xWFUDGKWyat88tW3fa/3l/Jc7D5ZfwTng2MZsdiKIH32AFy0Pr75udUe7uN6LA==}
+  highcharts-react-official@3.2.3:
+    resolution: {integrity: sha512-2gL8bVGe6Pf75tSe6IB5Ucd0nIOJX7ZrpttQBZVrjN2J9StdVZ12aOinXHIOFvlc6EzP8CbN13WS8NUq+9mptA==}
     peerDependencies:
       highcharts: '>=6.0.0'
       react: '>=16.8.0'
@@ -3181,7 +3181,7 @@ snapshots:
     dependencies:
       function-bind: 1.1.2
 
-  highcharts-react-official@3.2.2(highcharts@12.4.0)(react@19.1.1):
+  highcharts-react-official@3.2.3(highcharts@12.4.0)(react@19.1.1):
     dependencies:
       highcharts: 12.4.0
       react: 19.1.1
