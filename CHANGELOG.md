@@ -1,5 +1,42 @@
 # Changelog
 
+## [3.5.9](https://github.com/thangved/ctu-extension/compare/v3.5.8...v3.5.9) (2025-10-03)
+
+
+### Bug Fixes
+
+* **deps:** update dependency @ant-design/icons to v6 ([#559](https://github.com/thangved/ctu-extension/issues/559)) ([119849f](https://github.com/thangved/ctu-extension/commit/119849fb5c0d8d64e2e457b15fa3038e31b530f5))
+* **deps:** update dependency @ant-design/icons to v6.0.1 ([#612](https://github.com/thangved/ctu-extension/issues/612)) ([55c25df](https://github.com/thangved/ctu-extension/commit/55c25df55edb43a3144cab60a8c3222f59e22f98))
+* **deps:** update dependency @ant-design/icons to v6.0.2 ([#620](https://github.com/thangved/ctu-extension/issues/620)) ([4991d6f](https://github.com/thangved/ctu-extension/commit/4991d6f66bd6749e44ac74d3165d8a5fbf47d7f0))
+* **deps:** update dependency antd to v5.25.1 ([b5df265](https://github.com/thangved/ctu-extension/commit/b5df2659e437c520a0f817ec3dbbebb2774bb1b4))
+* **deps:** update dependency antd to v5.25.1 ([b93ad36](https://github.com/thangved/ctu-extension/commit/b93ad36ca15117292b9afe868d1208741140efd2))
+* **deps:** update dependency antd to v5.25.2 ([#560](https://github.com/thangved/ctu-extension/issues/560)) ([567d7fb](https://github.com/thangved/ctu-extension/commit/567d7fbdd5a550bee487b75a0415eb0ddae55eca))
+* **deps:** update dependency antd to v5.25.3 ([#561](https://github.com/thangved/ctu-extension/issues/561)) ([679a042](https://github.com/thangved/ctu-extension/commit/679a042f79c467aa40a299508cab7a575ab86c8b))
+* **deps:** update dependency antd to v5.25.4 ([#569](https://github.com/thangved/ctu-extension/issues/569)) ([128c108](https://github.com/thangved/ctu-extension/commit/128c1087f64b89ddc3f701108a558db4a7cecf9f))
+* **deps:** update dependency antd to v5.26.0 ([#576](https://github.com/thangved/ctu-extension/issues/576)) ([542af8b](https://github.com/thangved/ctu-extension/commit/542af8b08c7a7eb4e3354a5bbf3f2061f035f081))
+* **deps:** update dependency antd to v5.26.1 ([#581](https://github.com/thangved/ctu-extension/issues/581)) ([194a43e](https://github.com/thangved/ctu-extension/commit/194a43e1c7835c22e3e388681faa7503db71a342))
+* **deps:** update dependency antd to v5.26.2 ([#587](https://github.com/thangved/ctu-extension/issues/587)) ([8cb514d](https://github.com/thangved/ctu-extension/commit/8cb514d59bf2bcc0f749d6c9571dca77b4054339))
+* **deps:** update dependency antd to v5.26.5 ([#593](https://github.com/thangved/ctu-extension/issues/593)) ([58cd795](https://github.com/thangved/ctu-extension/commit/58cd79587504eda0c776c1a75f8813d319bd1338))
+* **deps:** update dependency antd to v5.27.3 ([985e85a](https://github.com/thangved/ctu-extension/commit/985e85ad16f82c20b207e09c0ae7d40e7f70d997))
+* **deps:** update dependency antd to v5.27.3 ([e93a038](https://github.com/thangved/ctu-extension/commit/e93a0381f097ce29eec056539ce0d6df3d3cdb6c))
+* **deps:** update dependency antd to v5.27.4 ([#626](https://github.com/thangved/ctu-extension/issues/626)) ([d7cb122](https://github.com/thangved/ctu-extension/commit/d7cb12235d8eac00638690c089b379de4d491bba))
+* **deps:** update dependency axios to v1.10.0 ([#580](https://github.com/thangved/ctu-extension/issues/580)) ([5fa2c6b](https://github.com/thangved/ctu-extension/commit/5fa2c6bdfd0c7d9fa6f6e4310f3dfb60f8115fdf))
+* **deps:** update dependency axios to v1.11.0 ([d8139bd](https://github.com/thangved/ctu-extension/commit/d8139bd240bf03102f5fbb44b75c794dd1a642e6))
+* **deps:** update dependency axios to v1.11.0 ([85c1336](https://github.com/thangved/ctu-extension/commit/85c133636109fb17b8465a6f5f6172fd8f857646))
+* **deps:** update dependency axios to v1.12.0 [security] ([#619](https://github.com/thangved/ctu-extension/issues/619)) ([014a10c](https://github.com/thangved/ctu-extension/commit/014a10ca1f0816fd69bb8fde8411dc5651371ef4))
+* **deps:** update dependency axios to v1.12.1 ([#621](https://github.com/thangved/ctu-extension/issues/621)) ([df95cb2](https://github.com/thangved/ctu-extension/commit/df95cb27ba60e300a3018d4e88365eb5245b2941))
+* **deps:** update dependency axios to v1.12.2 ([#623](https://github.com/thangved/ctu-extension/issues/623)) ([b7e55ff](https://github.com/thangved/ctu-extension/commit/b7e55fff100267870a1a27813746680d874b6d94))
+* **deps:** update dependency axios to v1.9.0 ([e254bd1](https://github.com/thangved/ctu-extension/commit/e254bd13064093cc59b950e055465a17d43e966a))
+* **deps:** update dependency axios to v1.9.0 ([9e0664f](https://github.com/thangved/ctu-extension/commit/9e0664fd1c5e1422b87e73671093492b78709b59))
+* **deps:** update dependency highcharts to v12 ([e15addb](https://github.com/thangved/ctu-extension/commit/e15addbe8a9fde94dae1a86405781dac4ccee217))
+* **deps:** update dependency highcharts to v12 ([145a7f9](https://github.com/thangved/ctu-extension/commit/145a7f967968374d48650c598a620ccec0ae29d2))
+* **deps:** update dependency highcharts-react-official to v3.2.2 ([#550](https://github.com/thangved/ctu-extension/issues/550)) ([69240f4](https://github.com/thangved/ctu-extension/commit/69240f4c1bd16795701b21fc0ee5b6a5c4362fa0))
+* **deps:** update dependency typescript to v5.8.3 ([#557](https://github.com/thangved/ctu-extension/issues/557)) ([5c7a12c](https://github.com/thangved/ctu-extension/commit/5c7a12c57958e17c1c8c0567a2c82429ce573cc5))
+* **deps:** update dependency typescript to v5.9.2 ([6872c37](https://github.com/thangved/ctu-extension/commit/6872c37c6c97b6a3860fce731185099a1b2182bd))
+* **deps:** update dependency typescript to v5.9.2 ([c6fa295](https://github.com/thangved/ctu-extension/commit/c6fa2951e7056a07e172fee95551b882bfce9eaf))
+* **deps:** update dependency zip-a-folder to v3.1.9 ([#551](https://github.com/thangved/ctu-extension/issues/551)) ([425a356](https://github.com/thangved/ctu-extension/commit/425a3566147c23aa5162eb77db8c6e95bea9eeec))
+* **deps:** update react monorepo to v19.1.12 ([#603](https://github.com/thangved/ctu-extension/issues/603)) ([378ed4a](https://github.com/thangved/ctu-extension/commit/378ed4a4a69c99ec04616ccdf21041518950b0f6))
+
 ## [3.5.8](https://github.com/thangved/ctu-extension/compare/v3.5.7...v3.5.8) (2025-05-16)
 
 ### Bug Fixes
