@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.5.8](https://github.com/thangved/ctu-extension/compare/v3.5.7...v3.5.8) (2025-05-16)
+
+### Bug Fixes
+
+-   **deps:** update dependency axios to v1.8.2 [security] ([3ff9e86](https://github.com/thangved/ctu-extension/commit/3ff9e86d0a81d37c9242201a571993e8ffadc7cb))
+-   **deps:** update dependency axios to v1.8.2 [security] ([ca59fda](https://github.com/thangved/ctu-extension/commit/ca59fda16041b8a1015c811d7be3eac2e80e6353))
+
 ## [3.5.7](https://github.com/thangved/ctu-extension/compare/v3.5.6...v3.5.7) (2025-02-17)
 
 ### Bug Fixes
