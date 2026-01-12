@@ -23,10 +23,10 @@ importers:
         version: 1.13.2
       highcharts:
         specifier: ^12.0.0
-        version: 12.4.0
+        version: 12.5.0
       highcharts-react-official:
         specifier: ^3.2.1
-        version: 3.2.3(highcharts@12.4.0)(react@19.2.3)
+        version: 3.2.3(highcharts@12.5.0)(react@19.2.3)
       js-cookie:
         specifier: ^3.0.5
         version: 3.0.5
@@ -1184,8 +1184,16 @@ packages:
       highcharts: '>=6.0.0'
       react: '>=16.8.0'
 
-  highcharts@12.4.0:
-    resolution: {integrity: sha512-o6UxxfChSUrvrZUbWrAuqL1HO/+exhAUPcZY6nnqLsadZQlnP16d082sg7DnXKZCk1gtfkyfkp6g3qkIZ9miZg==}
+  highcharts@12.5.0:
+    resolution: {integrity: sha512-uNSSv1KqRLNvkyXlf1FbeGWB1mJ/8/IYpVeqYiTIop5Wo8peUvNyzUfLa58vILsmXyz+XrETtgKIEOcSgBBKuQ==}
+    peerDependencies:
+      jspdf: ^3.0.0
+      svg2pdf.js: ^2.6.0
+    peerDependenciesMeta:
+      jspdf:
+        optional: true
+      svg2pdf.js:
+        optional: true
 
   husky@9.1.7:
     resolution: {integrity: sha512-5gs5ytaNjBrh5Ow3zrvdUUY+0VxIuWVL4i9irt6friV+BqdCfmV11CQTWMiBYWHbXhco+J1kHfTOUkePhCDvMA==}
@@ -3142,12 +3150,12 @@ snapshots:
     dependencies:
       function-bind: 1.1.2
 
-  highcharts-react-official@3.2.3(highcharts@12.4.0)(react@19.2.3):
+  highcharts-react-official@3.2.3(highcharts@12.5.0)(react@19.2.3):
     dependencies:
-      highcharts: 12.4.0
+      highcharts: 12.5.0
       react: 19.2.3
 
-  highcharts@12.4.0: {}
+  highcharts@12.5.0: {}
 
   husky@9.1.7: {}
 
