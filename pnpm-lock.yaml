@@ -41,7 +41,7 @@ importers:
         version: 5.9.3
       zip-a-folder:
         specifier: ^6.0.0
-        version: 6.0.1
+        version: 6.1.0
     devDependencies:
       '@types/chrome':
         specifier: ^0.1.0
@@ -1675,8 +1675,9 @@ packages:
     resolution: {integrity: sha512-rVksvsnNCdJ/ohGc6xgPwyN8eheCxsiLM8mxuE/t/mOVqJewPuO1miLpTHQiRgTKCLexL4MeAFVagts7HmNZ2Q==}
     engines: {node: '>=10'}
 
-  zip-a-folder@6.0.1:
-    resolution: {integrity: sha512-DALrwF0jDif8HChy4K+ZtVKeUYEIt9wlaip8bphWd7aZb0ecQmdqv+VfBkudMrNSs153mpsbIdemEeJ4G8e2Mw==}
+  zip-a-folder@6.1.0:
+    resolution: {integrity: sha512-c/warR1v5M19y0EOov8P25NunZu37Un8ha7CQbylUm+3dO0hpS9dg/fR8MKb8bUTwCyCgfVeRdx6D05NNKjl9g==}
+    hasBin: true
 
 snapshots:
 
@@ -3576,7 +3577,7 @@ snapshots:
 
   yocto-queue@0.1.0: {}
 
-  zip-a-folder@6.0.1:
+  zip-a-folder@6.1.0:
     dependencies:
       lzma: 2.3.2
       tinyglobby: 0.2.15
