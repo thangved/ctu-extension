@@ -19,7 +19,7 @@ jobs:
                   pnpm i
                   pnpm build
             - name: Upload & release
-              uses: mnao305/chrome-extension-upload@v5.0.0
+              uses: mnao305/chrome-extension-upload@v6.0.0
               with:
                   file-path: ctu-extension.zip
                   extension-id: lggkifjaacghbpebpcbaneimpogjbnmf
