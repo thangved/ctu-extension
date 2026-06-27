@@ -14,7 +14,7 @@ importers:
     dependencies:
       '@ant-design/icons':
         specifier: ^6.0.0
-        version: 6.3.1(react-dom@19.2.7(react@19.2.7))(react@19.2.7)
+        version: 6.3.2(react-dom@19.2.7(react@19.2.7))(react@19.2.7)
       antd:
         specifier: ^6.0.0
         version: 6.0.1(react-dom@19.2.7(react@19.2.7))(react@19.2.7)
@@ -120,8 +120,8 @@ packages:
   '@ant-design/icons-svg@4.5.0':
     resolution: {integrity: sha512-1BTUFyKPTBZ53MuTP8s0k5SFEXL7o3VHEOwLgzaoWKwnBeqIcqUtVshc4SKzhI6uACfqhJqBwBUE9FsWR3uULA==}
 
-  '@ant-design/icons@6.3.1':
-    resolution: {integrity: sha512-ShyvCaAzhO5LSMxuZHcl3qIMH3DPhr6qAp6h1q1avpz4rdAuDtc4rAQj4NrZd4NKQPXRXKlbTIehe5r4aMLHiA==}
+  '@ant-design/icons@6.3.2':
+    resolution: {integrity: sha512-B6O5a5XJ4wjtNOfZejXYwHW5zvKV5gYkjGf11dHGLEbKn0ABDGndo41+gfIiXyTFhvESj4XTotuud33mUFid0g==}
     engines: {node: '>=8'}
     peerDependencies:
       react: '>=16.0.0'
@@ -1747,7 +1747,7 @@ snapshots:
 
   '@ant-design/icons-svg@4.5.0': {}
 
-  '@ant-design/icons@6.3.1(react-dom@19.2.7(react@19.2.7))(react@19.2.7)':
+  '@ant-design/icons@6.3.2(react-dom@19.2.7(react@19.2.7))(react@19.2.7)':
     dependencies:
       '@ant-design/colors': 8.0.1
       '@ant-design/icons-svg': 4.5.0
@@ -2384,7 +2384,7 @@ snapshots:
       '@ant-design/cssinjs': 2.0.1(react-dom@19.2.7(react@19.2.7))(react@19.2.7)
       '@ant-design/cssinjs-utils': 2.0.2(react-dom@19.2.7(react@19.2.7))(react@19.2.7)
       '@ant-design/fast-color': 3.0.0
-      '@ant-design/icons': 6.3.1(react-dom@19.2.7(react@19.2.7))(react@19.2.7)
+      '@ant-design/icons': 6.3.2(react-dom@19.2.7(react@19.2.7))(react@19.2.7)
       '@ant-design/react-slick': 1.1.2(react@19.2.7)
       '@babel/runtime': 7.28.4
       '@rc-component/cascader': 1.8.0(react-dom@19.2.7(react@19.2.7))(react@19.2.7)
