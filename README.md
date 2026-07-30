@@ -12,18 +12,18 @@
 
 ## Features
 
--   [x] Skip login captcha
--   [x] View study plan
--   [x] Suggest timetable
--   [x] View study result
+- [x] Skip login captcha
+- [x] View study plan
+- [x] Suggest timetable
+- [x] View study result
 
 ## Stack
 
--   [x] React
--   [x] Redux
--   [x] Ant Design
+- [x] React
+- [x] Redux
+- [x] Ant Design
 
 ## Installation
 
--   [Chrome Web Store](https://chromewebstore.google.com/detail/ctu-extension/lggkifjaacghbpebpcbaneimpogjbnmf)
--   [Official website](https://ctu.thangved.com)
+- [Chrome Web Store](https://chromewebstore.google.com/detail/ctu-extension/lggkifjaacghbpebpcbaneimpogjbnmf)
+- [Official website](https://ctu.thangved.com)
