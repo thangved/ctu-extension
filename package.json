@@ -20,16 +20,16 @@
 	},
 	"license": "ISC",
 	"devDependencies": {
-		"@types/chrome": "^0.1.0",
+		"@types/chrome": "^0.2.0",
 		"@types/esbuild-copy-static-files": "^0.1.3",
 		"@types/js-cookie": "^3.0.6",
 		"@types/react": "^19.0.0",
 		"@types/react-dom": "^19.0.0",
 		"@typescript-eslint/eslint-plugin": "^8.7.0",
 		"@typescript-eslint/parser": "^8.7.0",
-		"esbuild": "^0.25.0",
+		"esbuild": "^0.28.0",
 		"esbuild-copy-static-files": "^0.1.0",
-		"eslint": "^9.11.1",
+		"eslint": "^10.0.0",
 		"eslint-plugin-react": "^7.36.1",
 		"husky": "^9.1.6",
 		"nodemon": "^3.1.7",
@@ -38,17 +38,17 @@
 	},
 	"dependencies": {
 		"@ant-design/icons": "^6.0.0",
-		"antd": "^5.21.1",
+		"antd": "^6.0.0",
+		"highcharts": "^13.0.0",
 		"axios": "^1.18.0",
-		"highcharts": "^12.0.0",
 		"highcharts-react-official": "^3.2.1",
 		"js-cookie": "^3.0.7",
 		"react": "^19.0.0",
 		"react-dom": "^19.0.0",
-		"typescript": "^5.6.2",
-		"zip-a-folder": "^3.1.7"
+		"typescript": "^7.0.0",
+		"zip-a-folder": "^6.0.0"
 	},
-	"packageManager": "pnpm@10.18.0+sha512.e804f889f1cecc40d572db084eec3e4881739f8dec69c0ff10d2d1beff9a4e309383ba27b5b750059d7f4c149535b6cd0d2cb1ed3aeb739239a4284a68f40cfa",
+	"packageManager": "pnpm@11.18.0+sha512.33d83c77da82f49fba836925c6f1b841181ec3132b670639bd012f7075f5c7cf634c5f870147c19aae7478fac01df09d8892e880454896edd23ee9b33757563c",
 	"pnpm": {
 		"overrides": {
 			"braces@<3.0.3": ">=3.0.3",

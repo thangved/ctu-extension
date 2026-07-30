@@ -9,17 +9,17 @@ jobs:
         runs-on: ubuntu-latest
 
         steps:
-            - uses: actions/checkout@v5
-            - uses: actions/setup-node@v4
+            - uses: actions/checkout@v7
+            - uses: actions/setup-node@v7
               with:
-                  node-version: 22
+                  node-version: 24
             - name: Build
               run: |
                   npm i -g pnpm
                   pnpm i
                   pnpm build
             - name: Upload & release
-              uses: mnao305/chrome-extension-upload@v5.0.0
+              uses: mnao305/chrome-extension-upload@v6.0.0
               with:
                   file-path: ctu-extension.zip
                   extension-id: lggkifjaacghbpebpcbaneimpogjbnmf
